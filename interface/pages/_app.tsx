@@ -1,3 +1,4 @@
+import type * as  next from 'next/app'
 import {
   createGlobalStyle,
   ThemeProvider,
@@ -35,12 +36,12 @@ const theme: DefaultTheme = {
   foreground: '#ebdbb2'
 };
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp(props: next.AppProps) {
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <props.Component {...props.pageProps} />
       </ThemeProvider>
     </>
   );
