@@ -10,4 +10,5 @@ There are one or two existing versions of this out in the wild - [mapartcraft](h
 + Ability to manually edit the generated map-art to tweak/fix things
 + Simpler, more direct output format (.schematic files) that don't need to be converted via third party tools
 + We were bored
++ We did this for you Lee
 
