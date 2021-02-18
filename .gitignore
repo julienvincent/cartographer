@@ -4,6 +4,9 @@
 
 node_modules
 dist
+build
 
-yarn-error.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 

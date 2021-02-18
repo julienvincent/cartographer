@@ -1,5 +1,4 @@
-import * as conversion from './conversion';
-import * as React from 'react';
+import * as conversion from '../pixels/conversion';
 
 enum CANVAS {
   SOURCE = 'SOURCE',
@@ -9,7 +8,8 @@ enum CANVAS {
 enum MAP_SCALE {
   X1 = 128
 }
-export function Component() {
+
+export const ImageProcessor = () => {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -25,8 +25,6 @@ export function Component() {
   };
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.files);
-
     const file = e.target.files?.[0];
     if (!file) {
       return;
@@ -90,10 +88,9 @@ export function Component() {
       <div
         onDrop={handleDrop}
         onDragEnd={(e) => e.preventDefault()}
-        style={{ background: 'red' }}
+        style={{ background: 'red', height: 20 }}
         onClick={openFileSelector}
       >
-        hello
         <input
           type="file"
           id="file"
