@@ -1,7 +1,10 @@
 import * as Components from '../components';
+import * as React from 'react';
 import Head from 'next/head';
 
-export default function Home() {
+export default function Root() {
+  const [file, setFile] = React.useState<File | undefined>();
+
   return (
     <div>
       <Head>
@@ -9,6 +12,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Components.ImageSelector
+        onFileSelected={(file) => {
+          setFile(file);
+        }}
+      />
+
+      {file ? <Components.SourceImage file={file} /> : null}
       <Components.ImageProcessor />
     </div>
   );

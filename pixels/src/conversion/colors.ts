@@ -1,5 +1,4 @@
 import { MC_COLOR_MAP } from '../data/mc-color-mapping';
-// @ts-ignore
 import * as nearest from 'nearest-color';
 import * as defs from '../defs';
 
