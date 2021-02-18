@@ -1,4 +1,4 @@
-import * as conversion from '../pixels/conversion';
+import * as pixels from '@cartographer/pixels';
 
 enum CANVAS {
   SOURCE = 'SOURCE',
@@ -43,36 +43,36 @@ export const ImageProcessor = () => {
       context.drawImage(image, 0, 0, width, height);
 
       const source_image_data = context.getImageData(0, 0, width, height);
-      const pixel_grid = conversion.convertImageDataToPixelGrid(
+      const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(
         source_image_data
       );
 
-      const scaled_pixel_grid = conversion.scaleDownPixelGrid(
+      const scaled_pixel_grid = pixels.conversion.scaleDownPixelGrid(
         pixel_grid,
         MAP_SCALE.X1,
         MAP_SCALE.X1
       );
 
-      const color_converted = conversion.colors.convertPixelGridColorsForMC(
+      const color_converted = pixels.conversion.convertPixelGridColorsForMC(
         scaled_pixel_grid
       );
 
-      const gray_scale = conversion.colors.applyGrayScale(scaled_pixel_grid);
+      const gray_scale = pixels.conversion.applyGrayScale(scaled_pixel_grid);
 
-      const gray_scale_color_converted = conversion.colors.convertPixelGridColorsForMC(
+      const gray_scale_color_converted = pixels.conversion.convertPixelGridColorsForMC(
         gray_scale
       );
 
       const target_canvas = getCanvas(CANVAS.TARGET);
       const tctx = target_canvas.getContext('2d')!;
 
-      const scaled_up_pixel_grid = conversion.scaleUpPixelGrid(
+      const scaled_up_pixel_grid = pixels.conversion.scaleUpPixelGrid(
         color_converted,
         620,
         620
       );
 
-      const target_image_data = conversion.convertPixelGridToImageData(
+      const target_image_data = pixels.conversion.convertPixelGridToImageData(
         scaled_up_pixel_grid
       );
 
@@ -103,4 +103,4 @@ export const ImageProcessor = () => {
       <canvas id={CANVAS.TARGET} />
     </div>
   );
-}
+};

@@ -6,6 +6,8 @@ node_modules
 dist
 build
 
+*.tsbuildinfo
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

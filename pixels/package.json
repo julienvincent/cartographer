@@ -1,0 +1,18 @@
+{
+  "name": "@cartographer/pixels",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index",
+  "types": "dist/index",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "nearest-color": "^0.4.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "typescript": "^4.1.5"
+  }
+}
