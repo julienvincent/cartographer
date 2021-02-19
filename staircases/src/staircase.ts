@@ -38,6 +38,7 @@ export const optimiseStaircase = (staircase: number[]): number[] => {
   }
 
   for (const group of heightMap) {
+    if (group == null) continue;
     for (const stair of group) {
       const min = Math.max(
         stair.n - 1 >= 0 && staircase[stair.n - 1] < staircase[stair.n]
