@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "interface",
-    "pixels"
+    "pixels",
+    "staircases"
   ],
   "scripts": {
     "build:packages": "tsc -b",
