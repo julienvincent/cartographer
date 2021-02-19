@@ -9,7 +9,7 @@
     "build:packages": "tsc -b",
     "build:interface": "cd interface && yarn build",
     "build": "yarn build:packages && yarn build:interface",
-    "start": "cd interface && yarn dev"
+    "start": "yarn build:packages && cd interface && yarn dev"
   },
   "dependencies": {
     "@types/node": "^14.14.28",

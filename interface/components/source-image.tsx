@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import * as React from 'react';
-import * as uuid from 'uuid';
 
 const Container = styled.div`
   position: relative;
