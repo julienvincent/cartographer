@@ -46,8 +46,7 @@ export const MC_COLOR_MAP = [
     ]
   },
   {
-    info:
-      'Block,of,Iron, Iron Door, Iron Trapdoor, Iron Bars, Weighted Pressure Plate (Heavy), Anvil, Brewing Stand',
+    info: 'Block,of,Iron, Iron Door, Iron Trapdoor, Iron Bars, Weighted Pressure Plate (Heavy), Anvil, Brewing Stand',
     colors: [
       [117, 117, 117],
       [144, 144, 144],
@@ -145,8 +144,7 @@ export const MC_COLOR_MAP = [
     ]
   },
   {
-    info:
-      'Purpur,(Block, Pillar, Slab), Magenta Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
+    info: 'Purpur,(Block, Pillar, Slab), Magenta Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
     colors: [
       [125, 53, 152],
       [153, 65, 186],
@@ -164,8 +162,7 @@ export const MC_COLOR_MAP = [
     ]
   },
   {
-    info:
-      'Hay,Bale, Sponge, Wet Sponge, Yellow Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
+    info: 'Hay,Bale, Sponge, Wet Sponge, Yellow Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
     colors: [
       [161, 161, 36],
       [197, 197, 44],
@@ -201,8 +198,7 @@ export const MC_COLOR_MAP = [
     ]
   },
   {
-    info:
-      'Structure,Block, Light Gray Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
+    info: 'Structure,Block, Light Gray Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
     colors: [
       [108, 108, 108],
       [132, 132, 132],
@@ -211,8 +207,7 @@ export const MC_COLOR_MAP = [
     ]
   },
   {
-    info:
-      'Prismarine, Cyan Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
+    info: 'Prismarine, Cyan Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
     colors: [
       [53, 89, 108],
       [65, 109, 132],
@@ -221,8 +216,7 @@ export const MC_COLOR_MAP = [
     ]
   },
   {
-    info:
-      'Repeating,Command,Block, Mycelium, Purple Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
+    info: 'Repeating,Command,Block, Mycelium, Purple Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
     colors: [
       [89, 44, 125],
       [109, 54, 153],
@@ -250,8 +244,7 @@ export const MC_COLOR_MAP = [
     ]
   },
   {
-    info:
-      'Chain,Command,Block, End Portal, Green Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
+    info: 'Chain,Command,Block, End Portal, Green Wool/Carpet/Glass/Concrete/Glazed Terracotta/Bed foot',
     colors: [
       [72, 89, 36],
       [88, 109, 44],

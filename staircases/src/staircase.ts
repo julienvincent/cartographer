@@ -1,9 +1,6 @@
 import * as _ from 'lodash';
 
-export const bruteForceStaircase = <T>(
-  pixelStrip: T[],
-  getShade: (p: T) => number
-): number[] => {
+export const bruteForceStaircase = <T>(pixelStrip: T[], getShade: (p: T) => number): number[] => {
   const staircase: number[] = new Array(pixelStrip.length + 1);
   staircase[0] = 0;
 
@@ -11,25 +8,28 @@ export const bruteForceStaircase = <T>(
     switch (getShade(pixelStrip[i])) {
       case 0:
         staircase[i + 1] = staircase[i] - 1;
+        break;
       case 1:
         staircase[i + 1] = staircase[i];
+        break;
       case 2:
         staircase[i + 1] = staircase[i] + 1;
+        break;
     }
   }
 
-  const min = Math.min.apply(null, staircase);
+  const min = Math.min.apply(null, staircase); //performance
   return staircase.map((s) => s - min);
 };
 
 export const optimiseStaircase = (staircase: number[]): number[] => {
-  type Stair = { n: number; s: number };
+  type Stair = { north: number; south: number };
   const heightMap: Stair[][] = [];
 
   for (let i = 0; i < staircase.length; i++) {
-    const stair: Stair = { n: i, s: i };
+    const stair: Stair = { north: i, south: i };
     while (i + 1 < staircase.length && staircase[i + 1] == staircase[i]) {
-      stair.s = ++i;
+      stair.south = ++i;
     }
 
     const group = heightMap[staircase[i]] || [];
@@ -40,17 +40,15 @@ export const optimiseStaircase = (staircase: number[]): number[] => {
   for (const group of heightMap) {
     if (group == null) continue;
     for (const stair of group) {
+      const n = stair.north;
+      const s = stair.south;
+
       const min = Math.max(
-        stair.n - 1 >= 0 && staircase[stair.n - 1] < staircase[stair.n]
-          ? staircase[stair.n - 1] + 1
-          : 0,
-        stair.s + 1 < staircase.length &&
-          staircase[stair.s + 1] < staircase[stair.s]
-          ? staircase[stair.s + 1] + 1
-          : 0
+        n - 1 >= 0 && staircase[n - 1] < staircase[n] ? staircase[n - 1] + 1 : 0,
+        s + 1 < staircase.length && staircase[s + 1] < staircase[s] ? staircase[s + 1] + 1 : 0
       );
 
-      for (const i of _.range(stair.n, stair.s + 1)) {
+      for (const i of _.range(n, s + 1)) {
         staircase[i] = min;
       }
     }

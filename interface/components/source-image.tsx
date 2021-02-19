@@ -41,10 +41,7 @@ type MoveDragEvent = {
   mouse_coords: Coords;
 };
 
-const calculateMouseDiff = (
-  drag_event: MoveDragEvent | ResizeDragEvent,
-  mouse_event: React.MouseEvent
-) => {
+const calculateMouseDiff = (drag_event: MoveDragEvent | ResizeDragEvent, mouse_event: React.MouseEvent) => {
   const [init_x, init_y] = drag_event.mouse_coords;
 
   const diff_x = init_x - mouse_event.pageX;
@@ -62,17 +59,12 @@ type OverlayProps = {
   onBoundsChange: (bounds: Bounds) => void;
 };
 export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
-  const [drag_event, setDragEvent] = React.useState<
-    ResizeDragEvent | MoveDragEvent | null
-  >();
+  const [drag_event, setDragEvent] = React.useState<ResizeDragEvent | MoveDragEvent | null>();
 
   const [x, y, w, h] = props.bounds;
   const [handle_x, handle_y] = [x + w, y + h];
 
-  const handleResizeDragEvent = (
-    mouse_event: React.MouseEvent,
-    drag_event: ResizeDragEvent
-  ) => {
+  const handleResizeDragEvent = (mouse_event: React.MouseEvent, drag_event: ResizeDragEvent) => {
     const [diff_x, diff_y] = calculateMouseDiff(drag_event, mouse_event);
     const [init_w, init_h] = drag_event.selection_dimensions;
 
@@ -82,10 +74,7 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
     props.onBoundsChange([x, y, w, h]);
   };
 
-  const handleMoveDragEvent = (
-    mouse_event: React.MouseEvent,
-    drag_event: MoveDragEvent
-  ) => {
+  const handleMoveDragEvent = (mouse_event: React.MouseEvent, drag_event: MoveDragEvent) => {
     const [diff_x, diff_y] = calculateMouseDiff(drag_event, mouse_event);
     const [init_x, init_y] = drag_event.selection_coords;
 
@@ -189,9 +178,7 @@ export const SourceImage: React.FC<Props> = (props) => {
     <Container>
       <canvas ref={canvas} />
 
-      {bounds ? (
-        <SelectionOverlay bounds={bounds} onBoundsChange={setBounds} />
-      ) : null}
+      {bounds ? <SelectionOverlay bounds={bounds} onBoundsChange={setBounds} /> : null}
     </Container>
   );
 };

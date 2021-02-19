@@ -20,15 +20,13 @@ function average<T>(datums: T[], getter: (datum: T) => number) {
  *
  * This makes working with the data in later steps much easier
  */
-export const convertImageDataToPixelGrid = (
-  image_data: ImageData
-): defs.PixelGrid => {
+export const convertImageDataToPixelGrid = (image_data: ImageData): defs.PixelGrid => {
   const pixels = _.chunk(image_data.data, 4).map((pixel) => {
     const [r, g, b] = pixel;
     return {
       r,
       g,
-      b,
+      b
     };
   });
 
@@ -56,11 +54,7 @@ export const convertPixelGridToImageData = (pixel_grid: defs.PixelGrid) => {
  * Attempt to scale a given pixel grid down to a given target width/height. This works by creating
  * quadrants in the source pixel grid and averaging the pixels in each quadrant together
  */
-export const scaleDownPixelGrid = (
-  pixel_grid: defs.PixelGrid,
-  width: number,
-  height: number
-) => {
+export const scaleDownPixelGrid = (pixel_grid: defs.PixelGrid, width: number, height: number) => {
   const source_width = pixel_grid[0].length;
   const source_height = pixel_grid.length;
   const width_pixel_scale = Math.ceil(source_width / width);
@@ -82,17 +76,13 @@ export const scaleDownPixelGrid = (
       return {
         r: average(pixels, (pixel) => pixel.r),
         g: average(pixels, (pixel) => pixel.g),
-        b: average(pixels, (pixel) => pixel.b),
+        b: average(pixels, (pixel) => pixel.b)
       };
     });
   });
 };
 
-export const scaleUpPixelGrid = (
-  pixel_grid: defs.PixelGrid,
-  width: number,
-  height: number
-) => {
+export const scaleUpPixelGrid = (pixel_grid: defs.PixelGrid, width: number, height: number) => {
   const source_width = pixel_grid[0].length;
   const source_height = pixel_grid.length;
   const width_pixel_scale = width / source_width;
