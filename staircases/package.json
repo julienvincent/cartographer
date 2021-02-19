@@ -1,0 +1,28 @@
+{
+  "name": "@cartographer/staircases",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index",
+  "types": "dist/index",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest --verbose"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "lodash": "^4.17.20",
+    "ts-jest": "^26.5.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "typescript": "^4.1.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "watchPathIgnorePatterns": [
+      "tests/test-drafts"
+    ]
+  }
+}

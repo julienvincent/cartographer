@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`optimiseStaircase it should correctly scale a PixelGrid down 1`] = `
+Array [
+  1,
+  2,
+]
+`;
+
+exports[`pixel conversions it should correctly scale a PixelGrid down 1`] = `
+Array [
+  1,
+  2,
+]
+`;
