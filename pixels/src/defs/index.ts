@@ -1,3 +1,5 @@
+export type RGBColor = [number, number, number];
+
 export type Pixel = {
   r: number;
   g: number;
@@ -5,3 +7,10 @@ export type Pixel = {
 };
 
 export type PixelGrid = Pixel[][];
+
+export type MCBlockVariant = {
+  block_id: string;
+  height_variant: number;
+};
+
+export type MCBlockGrid = MCBlockVariant[][];

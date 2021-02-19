@@ -7,9 +7,10 @@
     "skipLibCheck": true,
     "strict": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "module": "CommonJS",
     "moduleResolution": "node",
     "composite": true
   },
-  "include": ["src"]
+  "include": ["src", "src/**/*.json"]
 }

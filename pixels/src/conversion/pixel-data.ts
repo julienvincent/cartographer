@@ -57,19 +57,34 @@ export const convertPixelGridToImageData = (pixel_grid: defs.PixelGrid) => {
 export const scaleDownPixelGrid = (pixel_grid: defs.PixelGrid, width: number, height: number) => {
   const source_width = pixel_grid[0].length;
   const source_height = pixel_grid.length;
-  const width_pixel_scale = Math.ceil(source_width / width);
-  const height_pixel_scale = Math.ceil(source_height / height);
 
-  return _.range(height).map((target_height) => {
-    return _.range(width).map((target_width) => {
+  const x_scale = source_width / width;
+  const y_scale = source_height / height;
+
+  return _.range(height).map((target_y) => {
+    return _.range(width).map((target_x) => {
       const pixels: defs.Pixel[] = [];
 
-      for (let diff_h = 0; diff_h < height_pixel_scale; diff_h++) {
-        for (let diff_w = 0; diff_w < width_pixel_scale; diff_w++) {
-          const pixel_h = target_height * height_pixel_scale + diff_h;
-          const pixel_w = target_width * width_pixel_scale + diff_w;
-          const pixel = pixel_grid[pixel_h][pixel_w];
-          pixels.push(pixel);
+      const source_y_origin = target_y === 0 ? y_scale : target_y * y_scale;
+      const source_x_origin = target_x === 0 ? x_scale : target_x * x_scale;
+
+      const range_min_y = Math.round(source_y_origin - y_scale / 2);
+      const range_max_y = Math.round(source_y_origin + y_scale / 2);
+
+      const range_min_x = Math.round(source_x_origin - x_scale / 2);
+      const range_max_x = Math.round(source_x_origin + x_scale / 2);
+
+      for (let source_y = range_min_y; source_y < range_max_y; source_y++) {
+        for (let source_x = range_min_x; source_x < range_max_x; source_x++) {
+          const y_diff_factor = 1 - Math.max(0, Math.abs(source_y - source_y_origin) - range_max_y);
+          const x_diff_factor = 1 - Math.max(0, Math.abs(source_x - source_x_origin) - range_max_x);
+
+          const { r, g, b } = pixel_grid[source_y][source_x];
+          pixels.push({
+            r: r * y_diff_factor * x_diff_factor,
+            g: g * y_diff_factor * x_diff_factor,
+            b: b * y_diff_factor * x_diff_factor
+          });
         }
       }
 

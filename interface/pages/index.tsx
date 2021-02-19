@@ -3,7 +3,8 @@ import * as React from 'react';
 import Head from 'next/head';
 
 export default function Root() {
-  const [file, setFile] = React.useState<File | undefined>();
+  const [file, setFile] = React.useState<File>();
+  const [image_data, setImageData] = React.useState<ImageData>();
 
   return (
     <div>
@@ -18,7 +19,10 @@ export default function Root() {
         }}
       />
 
-      {file ? <Components.SourceImage file={file} /> : null}
+      {file ? <Components.SourceImage file={file} onImageDataChange={setImageData} /> : null}
+
+      {image_data ? <Components.ImagePreview image_data={image_data} scale={Components.MAP_SCALE.X1} /> : null}
+
       <Components.ImageProcessor />
     </div>
   );
