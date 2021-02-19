@@ -19,16 +19,9 @@ export default function Root() {
         }}
       />
 
-      {file ? (
-        <Components.SourceImage file={file} onImageDataChange={setImageData} />
-      ) : null}
+      {file ? <Components.SourceImage file={file} onImageDataChange={setImageData} /> : null}
 
-      {image_data ? (
-        <Components.ImagePreview
-          image_data={image_data}
-          scale={Components.MAP_SCALE.X1}
-        />
-      ) : null}
+      {image_data ? <Components.ImagePreview image_data={image_data} scale={Components.MAP_SCALE.X1} /> : null}
 
       <Components.ImageProcessor />
     </div>

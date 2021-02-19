@@ -14,9 +14,7 @@ type Props = {
 };
 
 export const SourceImage: React.FC<Props> = (props) => {
-  const [canvas_dimensions, setCanvasDimensions] = React.useState<
-    [number, number]
-  >([0, 0]);
+  const [canvas_dimensions, setCanvasDimensions] = React.useState<[number, number]>([0, 0]);
   const [bounds, setBounds] = React.useState<overlay.Bounds>();
   const canvas = React.useRef<HTMLCanvasElement>(null);
 

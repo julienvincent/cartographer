@@ -41,12 +41,7 @@ export const ImageSelector: React.FC<Props> = (props) => {
         select one
       </SelectButton>
 
-      <input
-        type="file"
-        id="file-selector"
-        style={{ visibility: 'hidden' }}
-        onChange={handleFileSelected}
-      />
+      <input type="file" id="file-selector" style={{ visibility: 'hidden' }} onChange={handleFileSelected} />
     </Container>
   );
 };

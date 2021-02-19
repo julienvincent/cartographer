@@ -8,9 +8,7 @@ const findColorIndex = (colors: defs.RGBColor[], pixel: defs.Pixel) => {
   });
 };
 
-export const convertPixelGridToMCBlocks = (
-  pixel_grid: defs.PixelGrid
-): defs.MCBlockGrid => {
+export const convertPixelGridToMCBlocks = (pixel_grid: defs.PixelGrid): defs.MCBlockGrid => {
   return pixel_grid.map((pixels) => {
     return pixels.map((pixel) => {
       const matching = MC_BLOCK_COLORS.find((mapping) => {

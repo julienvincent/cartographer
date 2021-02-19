@@ -7,8 +7,8 @@ describe('pixel conversions', () => {
   test('it should correctly scale a PixelGrid down', () => {
     console.log('done!');
 
-    const arr = [1,2]
+    const arr = [1, 2];
 
-    expect(arr).toMatchSnapshot()
+    expect(arr).toMatchSnapshot();
   });
 });
