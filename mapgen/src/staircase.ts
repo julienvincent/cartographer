@@ -1,5 +1,11 @@
 import * as _ from 'lodash';
 
+export const generateOptimizedStaircase = <T>(pixelStrip: T[], getShade: (p: T) => number): number[] => {
+  const staircase: number[] = bruteForceStaircase(pixelStrip, getShade);
+  optimiseStaircase(staircase);
+  return staircase;
+};
+
 export const bruteForceStaircase = <T>(pixelStrip: T[], getShade: (p: T) => number): number[] => {
   const staircase: number[] = new Array(pixelStrip.length + 1);
   staircase[0] = 0;

@@ -1,3 +1,5 @@
+import { identity } from 'lodash';
+
 export type RGBColor = [number, number, number];
 
 export type Pixel = {
