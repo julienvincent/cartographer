@@ -1,26 +1,17 @@
 import styled from 'styled-components';
 import * as React from 'react';
 
-const a = 1;
-console.log(`asdasdasd ${a + 1} asdasd`);
-
 type Coords = [x: number, y: number];
-export type Bounds = [x: number, y: number, w: number, h: number];
+export type Bounds = [x: number, y: number, d: number];
 
-type ResizeDragEvent = {
-  type: 'resize';
-  selection_dimensions: [w: number, h: number];
+type SelectionBoxOperation = {
+  type: 'resize' | 'move';
+  initial_bounds: Bounds;
   mouse_coords: Coords;
 };
 
-type MoveDragEvent = {
-  type: 'move';
-  selection_coords: Coords;
-  mouse_coords: Coords;
-};
-
-const calculateMouseDiff = (drag_event: MoveDragEvent | ResizeDragEvent, mouse_event: React.MouseEvent) => {
-  const [init_x, init_y] = drag_event.mouse_coords;
+const calculateMouseDiff = (op: SelectionBoxOperation, mouse_event: React.MouseEvent) => {
+  const [init_x, init_y] = op.mouse_coords;
 
   const diff_x = init_x - mouse_event.pageX;
   const diff_y = init_y - mouse_event.pageY;
@@ -53,29 +44,36 @@ type OverlayProps = {
   canvas_dimensions: [number, number];
 };
 export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
-  const [drag_event, setDragEvent] = React.useState<ResizeDragEvent | MoveDragEvent | null>();
+  const [drag_event, setDragEvent] = React.useState<SelectionBoxOperation | null>();
 
-  const [x, y, w, h] = props.bounds;
-  const [handle_x, handle_y] = [x + w, y + h];
+  const [x, y, d] = props.bounds;
+  const [handle_x, handle_y] = [x + d, y + d];
 
-  const handleResizeDragEvent = (mouse_event: React.MouseEvent, drag_event: ResizeDragEvent) => {
-    const [diff_x, diff_y] = calculateMouseDiff(drag_event, mouse_event);
-    const [init_w, init_h] = drag_event.selection_dimensions;
+  const handleResizeDragEvent = (mouse_event: React.MouseEvent, op: SelectionBoxOperation) => {
+    const [diff_x, diff_y] = calculateMouseDiff(op, mouse_event);
+    const [init_x, init_y, init_d] = op.initial_bounds;
 
     let leader = diff_x;
     if (diff_y * -1 > diff_x * -1) {
       leader = diff_y;
     }
 
-    const w = init_w - leader;
-    const h = init_h - leader;
+    let d = init_d - leader;
 
-    props.onBoundsChange([x, y, w, h]);
+    const [max_x, max_y] = props.canvas_dimensions;
+    if (init_x + d > max_x) {
+      d = max_x - init_x;
+    }
+    if (init_y + d > max_y) {
+      d = max_y - init_y;
+    }
+
+    props.onBoundsChange([x, y, d]);
   };
 
-  const handleMoveDragEvent = (mouse_event: React.MouseEvent, drag_event: MoveDragEvent) => {
-    const [diff_x, diff_y] = calculateMouseDiff(drag_event, mouse_event);
-    const [init_x, init_y] = drag_event.selection_coords;
+  const handleMoveDragEvent = (mouse_event: React.MouseEvent, op: SelectionBoxOperation) => {
+    const [diff_x, diff_y] = calculateMouseDiff(op, mouse_event);
+    const [init_x, init_y] = op.initial_bounds;
 
     let x = init_x - diff_x;
     let y = init_y - diff_y;
@@ -88,14 +86,14 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
     }
 
     const [max_x, max_y] = props.canvas_dimensions;
-    if (x + w > max_x) {
-      x = max_x - w;
+    if (x + d > max_x) {
+      x = max_x - d;
     }
-    if (y + h > max_y) {
-      y = max_y - h;
+    if (y + d > max_y) {
+      y = max_y - d;
     }
 
-    props.onBoundsChange([x, y, w, h]);
+    props.onBoundsChange([x, y, d]);
   };
 
   return (
@@ -121,12 +119,12 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
       <SelectionBox
         x={x}
         y={y}
-        width={w}
-        height={h}
+        width={d}
+        height={d}
         onMouseDown={(e) => {
           setDragEvent({
             type: 'move',
-            selection_coords: [x, y],
+            initial_bounds: props.bounds,
             mouse_coords: [e.pageX, e.pageY]
           });
         }}
@@ -140,7 +138,7 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
           e.stopPropagation();
           setDragEvent({
             type: 'resize',
-            selection_dimensions: [w, h],
+            initial_bounds: props.bounds,
             mouse_coords: [e.pageX, e.pageY]
           });
         }}

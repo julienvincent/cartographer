@@ -21,9 +21,9 @@ export const SourceImage: React.FC<Props> = (props) => {
   const read = React.useRef(
     _.debounce(
       (bounds: overlay.Bounds) => {
-        console.log('invoking', bounds);
         const context = canvas.current!.getContext('2d')!;
-        props.onImageDataChange(context.getImageData(...bounds));
+        const [x, y, d] = bounds;
+        props.onImageDataChange(context.getImageData(x, y, d, d));
       },
       250,
       { maxWait: 500 }
@@ -48,14 +48,14 @@ export const SourceImage: React.FC<Props> = (props) => {
       const width = 512;
       const height = Math.floor(width / scale);
 
-      canvas.current!.setAttribute('width', width.toString());
-      canvas.current!.setAttribute('height', width.toString());
+      canvas.current!.setAttribute('width', (width * 1.2).toString());
+      canvas.current!.setAttribute('height', (height * 1.2).toString());
 
       context.drawImage(image, 0, 0, width, height);
       setCanvasDimensions([width, height]);
 
       const dimension = Math.min(width, height);
-      updateBoundsAndRead([0, 0, dimension, dimension]);
+      updateBoundsAndRead([0, 0, dimension]);
     };
 
     image.src = URL.createObjectURL(props.file);
