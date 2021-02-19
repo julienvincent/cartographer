@@ -1,5 +1,5 @@
 {
-  "name": "@cartographer/staircases",
+  "name": "@cartographer/mapgen",
   "version": "0.0.1",
   "private": true,
   "main": "dist/index",
@@ -13,7 +13,8 @@
     "jest": "^26.6.3",
     "lodash": "^4.17.20",
     "prettier": "^2.2.1",
-    "ts-jest": "^26.5.1"
+    "ts-jest": "^26.5.1",
+    "@cartographer/pixels": "^0.0.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
