@@ -9,7 +9,7 @@
     "build:packages": "tsc -b",
     "build:interface": "cd interface && yarn build",
     "build": "yarn build:packages && yarn build:interface",
-    "postinstall": "cp ./scripts/pre-commit.sh ./.git/hooks/post-commit",
+    "postinstall": "cp ./scripts/pre-commit.sh ./.git/hooks/pre-commit",
     "start": "yarn build:packages && cd interface && yarn dev"
   },
   "dependencies": {

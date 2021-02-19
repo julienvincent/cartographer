@@ -33,7 +33,7 @@ const SVGContainer = styled.svg`
   width: 100%;
   height: 100%;
   
-  width: 512px;
+  width: 512px
   
 `;
 
