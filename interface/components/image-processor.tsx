@@ -43,38 +43,22 @@ export const ImageProcessor = () => {
       context.drawImage(image, 0, 0, width, height);
 
       const source_image_data = context.getImageData(0, 0, width, height);
-      const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(
-        source_image_data
-      );
+      const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(source_image_data);
 
-      const scaled_pixel_grid = pixels.conversion.scaleDownPixelGrid(
-        pixel_grid,
-        MAP_SCALE.X1,
-        MAP_SCALE.X1
-      );
+      const scaled_pixel_grid = pixels.conversion.scaleDownPixelGrid(pixel_grid, MAP_SCALE.X1, MAP_SCALE.X1);
 
-      const color_converted = pixels.conversion.convertPixelGridColorsForMC(
-        scaled_pixel_grid
-      );
+      const color_converted = pixels.conversion.convertPixelGridColorsForMC(scaled_pixel_grid);
 
       const gray_scale = pixels.conversion.applyGrayScale(scaled_pixel_grid);
 
-      const gray_scale_color_converted = pixels.conversion.convertPixelGridColorsForMC(
-        gray_scale
-      );
+      const gray_scale_color_converted = pixels.conversion.convertPixelGridColorsForMC(gray_scale);
 
       const target_canvas = getCanvas(CANVAS.TARGET);
       const tctx = target_canvas.getContext('2d')!;
 
-      const scaled_up_pixel_grid = pixels.conversion.scaleUpPixelGrid(
-        color_converted,
-        620,
-        620
-      );
+      const scaled_up_pixel_grid = pixels.conversion.scaleUpPixelGrid(color_converted, 620, 620);
 
-      const target_image_data = pixels.conversion.convertPixelGridToImageData(
-        scaled_up_pixel_grid
-      );
+      const target_image_data = pixels.conversion.convertPixelGridToImageData(scaled_up_pixel_grid);
 
       target_canvas.setAttribute('width', '1024');
       target_canvas.setAttribute('height', '1024');
@@ -91,12 +75,7 @@ export const ImageProcessor = () => {
         style={{ background: 'red', height: 20 }}
         onClick={openFileSelector}
       >
-        <input
-          type="file"
-          id="file"
-          style={{ visibility: 'hidden' }}
-          onChange={handleFile}
-        />
+        <input type="file" id="file" style={{ visibility: 'hidden' }} onChange={handleFile} />
       </div>
 
       <canvas id={CANVAS.SOURCE} />
