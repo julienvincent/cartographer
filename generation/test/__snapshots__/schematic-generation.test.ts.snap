@@ -2,15 +2,446 @@
 
 exports[`schematic-generation it should generate a schematic file 1`] = `
 Object {
-  "Schematic": Object {
-    "Height": Short {
-      "value": 4,
+  "name": "",
+  "value": Object {
+    "Metadata": Object {
+      "type": "compound",
+      "value": Object {
+        "Author": Object {
+          "type": "string",
+          "value": "Shmebbles",
+        },
+        "Description": Object {
+          "type": "string",
+          "value": "",
+        },
+        "EnclosingSize": Object {
+          "type": "compound",
+          "value": Object {
+            "x": Object {
+              "type": "int",
+              "value": 2,
+            },
+            "y": Object {
+              "type": "int",
+              "value": 2,
+            },
+            "z": Object {
+              "type": "int",
+              "value": 2,
+            },
+          },
+        },
+        "Name": Object {
+          "type": "string",
+          "value": "simple",
+        },
+        "RegionCount": Object {
+          "type": "int",
+          "value": 1,
+        },
+        "TimeCreated": Object {
+          "type": "long",
+          "value": Array [
+            375,
+            2023476248,
+          ],
+        },
+        "TimeModified": Object {
+          "type": "long",
+          "value": Array [
+            375,
+            2023476248,
+          ],
+        },
+        "TotalBlocks": Object {
+          "type": "int",
+          "value": 4,
+        },
+        "TotalVolume": Object {
+          "type": "int",
+          "value": 8,
+        },
+      },
     },
-    "Length": Short {
-      "value": 1,
+    "MinecraftDataVersion": Object {
+      "type": "int",
+      "value": 2584,
     },
-    "Width": Short {
-      "value": 2,
+    "Regions": Object {
+      "type": "compound",
+      "value": Object {
+        "simple": Object {
+          "type": "compound",
+          "value": Object {
+            "BlockStatePalette": Object {
+              "type": "list",
+              "value": Object {
+                "type": "compound",
+                "value": Array [
+                  Object {
+                    "Name": Object {
+                      "type": "string",
+                      "value": "minecraft:air",
+                    },
+                  },
+                  Object {
+                    "Name": Object {
+                      "type": "string",
+                      "value": "minecraft:stone",
+                    },
+                  },
+                  Object {
+                    "Name": Object {
+                      "type": "string",
+                      "value": "minecraft:oak_planks",
+                    },
+                  },
+                  Object {
+                    "Name": Object {
+                      "type": "string",
+                      "value": "minecraft:white_wool",
+                    },
+                  },
+                  Object {
+                    "Name": Object {
+                      "type": "string",
+                      "value": "minecraft:cobblestone",
+                    },
+                  },
+                ],
+              },
+            },
+            "BlockStates": Object {
+              "type": "longArray",
+              "value": Array [
+                Array [
+                  1,
+                  10433,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+                Array [
+                  0,
+                  0,
+                ],
+              ],
+            },
+            "Entities": Object {
+              "type": "list",
+              "value": Object {
+                "type": "end",
+                "value": Array [],
+              },
+            },
+            "PendingBlockTicks": Object {
+              "type": "list",
+              "value": Object {
+                "type": "end",
+                "value": Array [],
+              },
+            },
+            "PendingFluidTicks": Object {
+              "type": "list",
+              "value": Object {
+                "type": "end",
+                "value": Array [],
+              },
+            },
+            "Position": Object {
+              "type": "compound",
+              "value": Object {
+                "x": Object {
+                  "type": "int",
+                  "value": 1,
+                },
+                "y": Object {
+                  "type": "int",
+                  "value": 0,
+                },
+                "z": Object {
+                  "type": "int",
+                  "value": 1,
+                },
+              },
+            },
+            "Size": Object {
+              "type": "compound",
+              "value": Object {
+                "x": Object {
+                  "type": "int",
+                  "value": 2,
+                },
+                "y": Object {
+                  "type": "int",
+                  "value": 2,
+                },
+                "z": Object {
+                  "type": "int",
+                  "value": 2,
+                },
+              },
+            },
+            "TileEntities": Object {
+              "type": "list",
+              "value": Object {
+                "type": "end",
+                "value": Array [],
+              },
+            },
+          },
+        },
+      },
+    },
+    "Version": Object {
+      "type": "int",
+      "value": 5,
     },
   },
 }

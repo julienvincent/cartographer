@@ -1,4 +1,4 @@
-import * as schematic_generation from '../src/nbt-generation';
+import * as schematic_generation from '../src/schema-generation';
 import * as zlib from 'zlib';
 import * as fs from 'fs';
 import nbt from 'nbt';
@@ -6,7 +6,7 @@ import 'jest';
 
 describe('schematic-generation', () => {
   test('it should generate a schematic file', () => {
-    const data = schematic_generation.generateSchematicNBT([
+    const data = schematic_generation.litematica.generateSchematicNBT([
       [
         [
           {

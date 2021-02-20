@@ -150,7 +150,7 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
             value: {
               BlockStates: {
                 type: 'longArray',
-                value: storage.arr.map((val) => [0, val])
+                value: storage.arr
               },
               PendingBlockTicks: {
                 type: 'list',
