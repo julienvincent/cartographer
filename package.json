@@ -4,7 +4,7 @@
   "workspaces": [
     "interface",
     "pixels",
-    "staircases"
+    "mapgen"
   ],
   "scripts": {
     "build:packages": "tsc -b",
