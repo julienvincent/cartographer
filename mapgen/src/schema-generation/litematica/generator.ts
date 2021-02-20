@@ -1,5 +1,5 @@
 import * as litematica_bit_array from './litematica-bit-array';
-import { MCBlockSpace } from '../blockgen';
+import { MCBlockSpace } from '../../block-generation';
 
 const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   return block_space.reduce((height, columns) => {

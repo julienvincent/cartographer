@@ -10,17 +10,17 @@ describe('schematic-generation', () => {
       [
         [
           {
-            block_id: 'stone',
+            block_id: 'minecraft:stone',
             height: 0
           },
           {
-            block_id: 'oak_planks',
+            block_id: 'minecraft:oak_planks',
             height: 1
           }
         ],
         [
           {
-            block_id: 'white_wool',
+            block_id: 'minecraft:white_wool',
             height: 0
           }
         ]
@@ -29,13 +29,14 @@ describe('schematic-generation', () => {
         [],
         [
           {
-            block_id: 'cobblestone',
+            block_id: 'minecraft:cobblestone',
             height: 0
           }
         ]
       ]
     ]);
-    console.log(JSON.stringify(data, null, 1));
+
+    expect(data).toMatchSnapshot();
 
     fs.writeFileSync('thing.litematic', zlib.gzipSync(Buffer.from(nbt.writeUncompressed(data))));
   });

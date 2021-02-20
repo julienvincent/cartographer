@@ -11,7 +11,7 @@
   "dependencies": {
     "@cartographer/pixels": "^0.0.1",
     "lodash": "^4.17.20",
-    "nbt-ts": "^1.3.3"
+    "nbt": "^0.8.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168"
