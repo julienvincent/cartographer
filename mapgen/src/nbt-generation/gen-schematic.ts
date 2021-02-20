@@ -1,5 +1,5 @@
+import * as litematica_bit_array from './litematica-bit-array';
 import { MCBlockSpace } from '../blockgen';
-import * as _ from 'lodash';
 
 const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   return block_space.reduce((height, columns) => {
@@ -14,213 +14,68 @@ const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   }, 0);
 };
 
+type PaletteBlock = {
+  Name: {
+    type: 'string';
+    value: string;
+  };
+};
+
 export const generateSchematicNBT = (block_space: MCBlockSpace) => {
   const length = block_space[0].length;
   const height = getBlockSpaceHeight(block_space);
   const width = block_space.length;
 
-  const init: string[] = [];
-  const blocks = _.range(width).reduce((blocks, x) => {
-    return _.range(length).reduce((blocks, z) => {
-      const row = block_space[x][z];
+  const volume = length * width * height;
 
-      return _.range(height).reduce((blocks, y) => {
-        const block = row?.find((block) => block.height === y);
-
-        const i = (y * length + z) * width + x;
-
-        if (!block) {
-          blocks[i] = 'air';
-        } else {
-          blocks[i] = block.block_id;
-        }
-
-        return blocks;
-      }, blocks);
-    }, blocks);
-  }, init);
-
-  return {
-    name: '',
-    value: {
-      MinecraftDataVersion: {
-        type: 'int',
-        value: 2584
-      },
-      Version: {
-        type: 'int',
-        value: 5
-      },
-      Metadata: {
-        type: 'compound',
-        value: {
-          TimeCreated: {
-            type: 'long',
-            value: [375, -1131358791]
-          },
-          TimeModified: {
-            type: 'long',
-            value: [375, -1131358791]
-          },
-          EnclosingSize: {
-            type: 'compound',
-            value: {
-              x: {
-                type: 'int',
-                value: 2
-              },
-              y: {
-                type: 'int',
-                value: 2
-              },
-              z: {
-                type: 'int',
-                value: 2
-              }
-            }
-          },
-          Description: {
-            type: 'string',
-            value: ''
-          },
-          RegionCount: {
-            type: 'int',
-            value: 1
-          },
-          TotalBlocks: {
-            type: 'int',
-            value: 4
-          },
-          Author: {
-            type: 'string',
-            value: 'Shmebbles'
-          },
-          TotalVolume: {
-            type: 'int',
-            value: 8
-          },
-          Name: {
-            type: 'string',
-            value: 'simple'
-          }
-        }
-      },
-      Regions: {
-        type: 'compound',
-        value: {
-          simple: {
-            type: 'compound',
-            value: {
-              BlockStates: {
-                type: 'longArray',
-                value: []
-              },
-              PendingBlockTicks: {
-                type: 'list',
-                value: {
-                  type: 'end',
-                  value: []
-                }
-              },
-              Position: {
-                type: 'compound',
-                value: {
-                  x: {
-                    type: 'int',
-                    value: 1
-                  },
-                  y: {
-                    type: 'int',
-                    value: 0
-                  },
-                  z: {
-                    type: 'int',
-                    value: 1
-                  }
-                }
-              },
-              BlockStatePalette: {
-                type: 'list',
-                value: {
-                  type: 'compound',
-                  value: [
-                    {
-                      Name: {
-                        type: 'string',
-                        value: 'minecraft:air'
-                      }
-                    },
-                    {
-                      Name: {
-                        type: 'string',
-                        value: 'minecraft:stone'
-                      }
-                    },
-                    {
-                      Name: {
-                        type: 'string',
-                        value: 'minecraft:white_wool'
-                      }
-                    },
-                    {
-                      Name: {
-                        type: 'string',
-                        value: 'minecraft:cobblestone'
-                      }
-                    },
-                    {
-                      Name: {
-                        type: 'string',
-                        value: 'minecraft:oak_planks'
-                      }
-                    }
-                  ]
-                }
-              },
-              Size: {
-                type: 'compound',
-                value: {
-                  x: {
-                    type: 'int',
-                    value: -2
-                  },
-                  y: {
-                    type: 'int',
-                    value: 2
-                  },
-                  z: {
-                    type: 'int',
-                    value: -2
-                  }
-                }
-              },
-              PendingFluidTicks: {
-                type: 'list',
-                value: {
-                  type: 'end',
-                  value: []
-                }
-              },
-              TileEntities: {
-                type: 'list',
-                value: {
-                  type: 'end',
-                  value: []
-                }
-              },
-              Entities: {
-                type: 'list',
-                value: {
-                  type: 'end',
-                  value: []
-                }
-              }
-            }
-          }
-        }
+  const init: PaletteBlock[] = [
+    {
+      Name: {
+        type: 'string',
+        value: 'minecraft:air'
       }
     }
-  };
+  ];
+  const palette = block_space.reduce((palette, columns) => {
+    return columns.reduce((palette, rows) => {
+      return rows.reduce((palette, block) => {
+        const exists = palette.find((item) => {
+          return item.Name.value === block.block_id;
+        });
+        if (!exists) {
+          palette.push({
+            Name: {
+              type: 'string',
+              value: block.block_id
+            }
+          });
+        }
+        return palette;
+      }, palette);
+    }, palette);
+  }, init);
+
+  const storage = new litematica_bit_array.BlockStateStorage(
+    volume,
+    litematica_bit_array.getNeededBits(palette.length)
+  );
+  for (let x = 0; x < width; x++) {
+    for (let z = 0; x < length; z++) {
+      for (let y = 0; x < height; y++) {
+        const row = block_space[x][z];
+        const block = row?.find((block) => block.height === y);
+        const index = palette.findIndex((item) => {
+          if (block) {
+            return item.Name.value === block.block_id;
+          }
+          return item.Name.value === `minecraft:air`;
+        });
+
+        const i = (y * length + z) * width + x;
+        storage.setAt(i, index);
+      }
+    }
+  }
 
   return {
     name: '',
@@ -271,7 +126,7 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
           },
           TotalBlocks: {
             type: 'int',
-            value: blocks.filter((block) => block !== 'air').length
+            value: palette.length - 1
           },
           Author: {
             type: 'string',
@@ -279,7 +134,7 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
           },
           TotalVolume: {
             type: 'int',
-            value: blocks.length
+            value: volume
           },
           Name: {
             type: 'string',
@@ -295,8 +150,7 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
             value: {
               BlockStates: {
                 type: 'longArray',
-                value: []
-                // value: blocks.map(() => [0, 0])
+                value: storage.arr.map((val) => [0, val])
               },
               PendingBlockTicks: {
                 type: 'list',
@@ -326,14 +180,7 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
                 type: 'list',
                 value: {
                   type: 'compound',
-                  value: blocks.map((block) => {
-                    return {
-                      Name: {
-                        type: 'string',
-                        value: `minecraft:${block}`
-                      }
-                    };
-                  })
+                  value: palette
                 }
               },
               Size: {
