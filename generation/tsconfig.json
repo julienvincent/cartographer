@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["ES2020"],
     "outDir": "dist",
     "rootDir": "src",
     "skipLibCheck": true,
@@ -11,5 +11,8 @@
     "moduleResolution": "node",
     "composite": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [{
+    "path": "../pixels"
+  }]
 }

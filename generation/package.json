@@ -1,5 +1,5 @@
 {
-  "name": "@cartographer/mapgen",
+  "name": "@cartographer/generation",
   "version": "0.0.1",
   "private": true,
   "main": "dist/index",
@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@cartographer/pixels": "^0.0.1",
+    "@types/pako": "^1.0.1",
     "lodash": "^4.17.20",
-    "nbt-ts": "^1.3.3"
+    "nbt": "^0.8.1",
+    "pako": "^2.0.3"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168"

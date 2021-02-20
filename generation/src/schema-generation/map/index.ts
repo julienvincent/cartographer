@@ -1,7 +1,4 @@
-import nbt from 'nbt';
-import * as fs from 'fs';
-import { MCBlockSpace } from '../blockgen';
-import { getJSDocImplementsTags } from 'typescript';
+import { MCBlockSpace } from '../../block-generation';
 
 const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   return block_space.reduce((height, columns) => {
@@ -68,7 +65,7 @@ export const asNbtObject = (space: MCBlockSpace): object => {
     return arr;
   })();
 
-  const obj = {
+  return {
     name: '',
     value: {
       size: {
@@ -112,6 +109,4 @@ export const asNbtObject = (space: MCBlockSpace): object => {
       }
     }
   };
-
-  return obj;
 };
