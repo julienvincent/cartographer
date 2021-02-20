@@ -2,9 +2,9 @@
   "name": "cartographer",
   "private": true,
   "workspaces": [
+    "generation",
     "interface",
-    "pixels",
-    "mapgen"
+    "pixels"
   ],
   "scripts": {
     "build:packages": "tsc -b",
