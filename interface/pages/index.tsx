@@ -1,3 +1,4 @@
+import * as generation from '@cartographer/generation';
 import * as pixels from '@cartographer/pixels';
 import * as Components from '../components';
 import styled from 'styled-components';
@@ -17,7 +18,17 @@ export default function Root() {
   const [image_data, setImageData] = React.useState<ImageData>();
   const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
 
-  const generate = () => {
+  const downloadURL = (data: string, fileName: string) => {
+    const a = document.createElement('a');
+    a.href = data;
+    a.download = fileName;
+    a.setAttribute('style', 'display: none');
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  const generate = async () => {
     if (!image_data) {
       return;
     }
@@ -25,9 +36,24 @@ export default function Root() {
     const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(image_data);
     const scaled_pixel_grid = pixels.conversion.scaleDownPixelGrid(pixel_grid, scale, scale);
     const color_converted = pixels.conversion.convertPixelGridColorsForMC(scaled_pixel_grid);
+    const blocks = pixels.conversion.convertPixelGridToMCBlocks(color_converted);
 
-    // call gen code
+    console.log('before');
+    const block_space = generation.block_generation.buildBlockSpace(blocks);
+
+    const nbt = generation.schema_generation.litematica.generateSchematicNBT(block_space);
+    console.log('done');
+    const data = await generation.serialization.serializeNBTData(nbt);
+    console.log('done 2');
+
+    const data_url = URL.createObjectURL(
+      new Blob([data] as any, {
+        type: 'application/octet-stream'
+      })
+    );
+    downloadURL(data_url, 'awesome.litematic');
   };
+
   const scale_options = Object.values(defs.MAP_SCALE).filter((value) => {
     return typeof value === 'number';
   });

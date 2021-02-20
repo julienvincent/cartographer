@@ -5,7 +5,7 @@
       "path": "./pixels"
     },
     {
-      "path": "./mapgen"
+      "path": "./generation"
     }
   ]
 }

@@ -60,8 +60,8 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
     litematica_bit_array.getNeededBits(palette.length)
   );
   for (let x = 0; x < width; x++) {
-    for (let z = 0; x < length; z++) {
-      for (let y = 0; x < height; y++) {
+    for (let z = 0; z < length; z++) {
+      for (let y = 0; y < height; y++) {
         const row = block_space[x][z];
         const block = row?.find((block) => block.height === y);
         const index = palette.findIndex((item) => {
