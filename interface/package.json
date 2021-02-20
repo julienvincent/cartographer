@@ -9,19 +9,20 @@
   },
   "dependencies": {
     "@cartographer/pixels": "0.0.1",
-    "@types/styled-components": "^5.1.7",
-    "@types/uuid": "^8.3.0",
+    "immer": "^8.0.1",
     "nearest-color": "^0.4.4",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-select": "^4.1.0",
     "styled-components": "^5.2.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/node": "^14.14.28",
     "@types/react": "^17.0.2",
-    "babel-plugin-styled-components": "^1.12.0",
-    "typescript": "^4.1.5"
+    "@types/react-select": "^4.0.13",
+    "@types/styled-components": "^5.1.7",
+    "@types/uuid": "^8.3.0",
+    "babel-plugin-styled-components": "^1.12.0"
   }
 }

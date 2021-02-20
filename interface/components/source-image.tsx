@@ -48,8 +48,8 @@ export const SourceImage: React.FC<Props> = (props) => {
       const width = 512;
       const height = Math.floor(width / scale);
 
-      canvas.current!.setAttribute('width', (width * 1.2).toString());
-      canvas.current!.setAttribute('height', (height * 1.2).toString());
+      canvas.current!.setAttribute('width', width.toString());
+      canvas.current!.setAttribute('height', height.toString());
 
       context.drawImage(image, 0, 0, width, height);
       setCanvasDimensions([width, height]);
@@ -61,9 +61,11 @@ export const SourceImage: React.FC<Props> = (props) => {
     image.src = URL.createObjectURL(props.file);
   }, [props.file]);
 
+  const [width, height] = canvas_dimensions;
+
   return (
     <Container>
-      <canvas ref={canvas} />
+      <canvas ref={canvas} style={{ width, height }} />
 
       {bounds ? (
         <overlay.SelectionOverlay
