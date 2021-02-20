@@ -3599,6 +3599,21 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
+nbt-js@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nbt-js/-/nbt-js-0.1.0.tgz#92866fc47d885739db56db6f1c587061826bc018"
+  integrity sha1-koZvxH2IVznbVttvHFhwYYJrwBg=
+
+nbt-ts@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/nbt-ts/-/nbt-ts-1.3.3.tgz#1c5c8fa60f4a1de5bfccc481b65436308973185e"
+  integrity sha512-xmEVWDJzO7YdA2YJHqAkfiOKlKECXe/hfNB10t3W7aDJsCXTjXyRbhP5HYvCwrMefGk8p6arQqeMO2V6djyfxQ==
+
+nbt@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/nbt/-/nbt-0.8.1.tgz#4f1d8ba9ced6ab5fdead82524a1c24932cf9c22e"
+  integrity sha512-jUNuLo/SM8vA7uW3pudnXgCOqd2187Vw9jSeyByKJCyGfxW9VIglKcSlBn8pfb/eS95Suv7eyDxvWGSNOK0dMw==
+
 nearest-color@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/nearest-color/-/nearest-color-0.4.4.tgz#fb812072b511f4f09a0a316903332e09fa5d7f1d"

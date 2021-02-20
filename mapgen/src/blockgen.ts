@@ -2,6 +2,15 @@ import * as pixels from '@cartographer/pixels';
 import { MCBlockVariant } from '@cartographer/pixels/dist/defs';
 import { generateOptimizedStaircase } from './staircase';
 
+export type MCBlock = {
+  block_id: string;
+  height: number;
+};
+
+export type MCBlockSpace = MCBlock[][][];
+
+const defaultNorthBorderBlock: MCBlockVariant = { block_id: 'stone', height_variant: 1 };
+
 export const buildBlockSpace = (mcBlockGrid: pixels.defs.MCBlockGrid): MCBlockSpace => {
   const space: MCBlockSpace = [];
   const width: number = mcBlockGrid[0].length;
@@ -20,12 +29,3 @@ export const buildBlockSpace = (mcBlockGrid: pixels.defs.MCBlockGrid): MCBlockSp
 
   return space;
 };
-
-const defaultNorthBorderBlock: MCBlockVariant = { block_id: 'stone', height_variant: 1 };
-
-export type MCBlock = {
-  block_id: string;
-  height: number;
-};
-
-export type MCBlockSpace = MCBlock[][][];
