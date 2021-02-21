@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as utils from '../utils';
 import * as React from 'react';
 
 const Container = styled.div`
@@ -16,17 +17,18 @@ const SelectButton = styled.p`
 `;
 
 type Props = {
-  onFileSelected: (file: File) => void;
+  onFileSelected: (image_data: ImageData) => void;
 };
 
 export const ImageSelector: React.FC<Props> = (props) => {
-  const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
       return;
     }
 
-    props.onFileSelected(file);
+    const image_data = await utils.extractImageDataFromFile(file);
+    props.onFileSelected(image_data);
   };
 
   const selectFile = () => {
