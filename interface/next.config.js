@@ -1,15 +1,17 @@
 const WorkerPlugin = require('worker-plugin');
 
-module.exports = {
-  target: 'serverless',
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.plugins.push(
-        new WorkerPlugin({
-          globalObject: 'self'
-        })
-      );
+module.exports = (phase, { defaultConfig }) => {
+  return {
+    ...defaultConfig,
+    webpack: (config, { isServer }) => {
+      if (!isServer) {
+        config.plugins.push(
+          new WorkerPlugin({
+            globalObject: 'self'
+          })
+        );
+      }
+      return config;
     }
-    return config;
-  }
+  };
 };
