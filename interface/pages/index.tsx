@@ -1,11 +1,13 @@
 import * as Components from '../components';
 import styled from 'styled-components';
-import Select from 'react-select';
+import dynamic from 'next/dynamic';
 import * as utils from '../utils';
 import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
 import Head from 'next/head';
+
+const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Container = styled.div`
   display: flex;
@@ -73,10 +75,8 @@ export default function Root() {
           label: scale
         }}
         onChange={(selection) => {
-          if (!selection) {
-            return;
-          }
-          setMapScale(selection.value as defs.MAP_SCALE);
+          // @ts-ignore
+          setMapScale(selection.value);
         }}
       />
 

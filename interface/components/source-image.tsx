@@ -26,16 +26,14 @@ export const SourceImage: React.FC<Props> = (props) => {
   const scale_factor = props.image_data.width / 512;
   const min = Math.ceil(props.scale / scale_factor);
 
-  const scaleAndNotify = _.debounce(
-    (bounds: defs.Bounds) => {
-      const scaled_bounds = bounds.map((item) => Math.ceil(item * scale_factor)) as defs.Bounds;
-      props.onBoundsChange(scaled_bounds, bounds);
-    },
-    50,
-    { maxWait: 100 }
-  );
+  const scaleAndNotify = (bounds: defs.Bounds) => {
+    const scaled_bounds = bounds.map((item) => Math.ceil(item * scale_factor)) as defs.Bounds;
+    props.onBoundsChange(scaled_bounds, bounds);
+  };
 
-  const scaleAndNotifyDebounced = React.useCallback(scaleAndNotify, [props.image_data]);
+  const scaleAndNotifyDebounced = React.useCallback(_.debounce(scaleAndNotify, 100, { maxWait: 200 }), [
+    props.image_data
+  ]);
 
   const updateBounds = (bounds: defs.Bounds) => {
     setBounds(bounds);

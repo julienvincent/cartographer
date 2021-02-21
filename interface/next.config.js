@@ -1,9 +1,10 @@
 const WorkerPlugin = require('worker-plugin');
 
-module.exports = (phase, { defaultConfig }) => {
+module.exports = () => {
   return {
-    ...defaultConfig,
+    target: 'serverless',
     webpack: (config, { isServer }) => {
+      config.resolve.mainFields = ['main', 'browser', 'module'];
       if (!isServer) {
         config.plugins.push(
           new WorkerPlugin({
