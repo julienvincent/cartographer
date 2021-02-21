@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@cartographer/pixels": "^0.0.1",
-    "@types/pako": "^1.0.1",
     "lodash": "^4.17.20",
+    "long": "^4.0.0",
     "nbt": "^0.8.1",
     "pako": "^2.0.3"
   },
   "devDependencies": {
+    "@types/long": "^4.0.1",
+    "@types/pako": "^1.0.1",
     "@types/lodash": "^4.14.168"
   },
   "jest": {

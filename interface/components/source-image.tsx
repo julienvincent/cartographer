@@ -1,5 +1,7 @@
 import * as overlay from './selection-overlay';
 import styled from 'styled-components';
+import * as hooks from '../hooks';
+import * as defs from '../defs';
 import * as React from 'react';
 import * as _ from 'lodash';
 
@@ -9,57 +11,72 @@ const Container = styled.div`
 `;
 
 type Props = {
-  file: File;
-  onImageDataChange: (image_data: ImageData) => void;
+  image_data: ImageData;
+  scale: defs.MAP_SCALE;
+  onBoundsChange: (bounds: defs.Bounds, raw_bounds: defs.Bounds) => void;
 };
 
 export const SourceImage: React.FC<Props> = (props) => {
   const [canvas_dimensions, setCanvasDimensions] = React.useState<[number, number]>([0, 0]);
-  const [bounds, setBounds] = React.useState<overlay.Bounds>();
+  const [bounds, setBounds] = React.useState<defs.Bounds>();
   const canvas = React.useRef<HTMLCanvasElement>(null);
+  const api = hooks.withAPIWorker();
 
-  const read = React.useRef(
-    _.debounce(
-      (bounds: overlay.Bounds) => {
-        const context = canvas.current!.getContext('2d')!;
-        const [x, y, d] = bounds;
-        props.onImageDataChange(context.getImageData(x, y, d, d));
-      },
-      250,
-      { maxWait: 500 }
-    )
-  );
+  // this is very wrong - need to scale width and height independently
+  const scale_factor = props.image_data.width / 512;
+  const min = Math.ceil(props.scale / scale_factor);
 
-  const updateBoundsAndRead = (bounds: overlay.Bounds) => {
+  const scaleAndNotify = (bounds: defs.Bounds) => {
+    const scaled_bounds = bounds.map((item) => Math.ceil(item * scale_factor)) as defs.Bounds;
+    props.onBoundsChange(scaled_bounds, bounds);
+  };
+
+  const scaleAndNotifyDebounced = React.useCallback(_.debounce(scaleAndNotify, 100, { maxWait: 200 }), [
+    props.image_data
+  ]);
+
+  const updateBounds = (bounds: defs.Bounds) => {
     setBounds(bounds);
-    read.current(bounds);
+    scaleAndNotifyDebounced(bounds);
   };
 
   React.useEffect(() => {
-    if (!canvas.current) {
-      return;
-    }
+    (async () => {
+      if (!canvas.current || !api.current) {
+        return;
+      }
 
-    const context = canvas.current.getContext('2d')!;
-    const image = new Image();
-
-    image.onload = () => {
-      const scale = image.naturalWidth / image.naturalHeight;
+      const scale = props.image_data.width / props.image_data.height;
       const width = 512;
       const height = Math.floor(width / scale);
 
-      canvas.current!.setAttribute('width', width.toString());
-      canvas.current!.setAttribute('height', height.toString());
+      const scale_canvas = new OffscreenCanvas(props.image_data.height, props.image_data.height);
+      const scale_context = scale_canvas.getContext('2d')!;
 
-      context.drawImage(image, 0, 0, width, height);
+      scale_context.putImageData(props.image_data, 0, 0);
+
+      canvas.current.setAttribute('width', width.toString());
+      canvas.current.setAttribute('height', height.toString());
+
+      const context = canvas.current.getContext('2d')!;
+      context.drawImage(scale_canvas, 0, 0, width, height);
       setCanvasDimensions([width, height]);
 
       const dimension = Math.min(width, height);
-      updateBoundsAndRead([0, 0, dimension]);
-    };
+      updateBounds([0, 0, dimension]);
+    })();
+  }, [props.image_data, api.current]);
 
-    image.src = URL.createObjectURL(props.file);
-  }, [props.file]);
+  React.useEffect(() => {
+    if (bounds) {
+      const [, , d] = bounds;
+      if (d < min) {
+        const next_bounds: defs.Bounds = [0, 0, min];
+        setBounds(next_bounds);
+        scaleAndNotify(next_bounds);
+      }
+    }
+  }, [min]);
 
   const [width, height] = canvas_dimensions;
 
@@ -70,7 +87,8 @@ export const SourceImage: React.FC<Props> = (props) => {
       {bounds ? (
         <overlay.SelectionOverlay
           bounds={bounds}
-          onBoundsChange={updateBoundsAndRead}
+          min={min}
+          onBoundsChange={updateBounds}
           canvas_dimensions={canvas_dimensions}
         />
       ) : null}

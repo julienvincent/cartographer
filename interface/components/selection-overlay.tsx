@@ -1,12 +1,12 @@
 import styled from 'styled-components';
+import * as defs from '../defs';
 import * as React from 'react';
 
 type Coords = [x: number, y: number];
-export type Bounds = [x: number, y: number, d: number];
 
 type SelectionBoxOperation = {
   type: 'resize' | 'move';
-  initial_bounds: Bounds;
+  initial_bounds: defs.Bounds;
   mouse_coords: Coords;
 };
 
@@ -39,9 +39,10 @@ const ResizeHandle = styled.circle`
 `;
 
 type OverlayProps = {
-  bounds: Bounds;
-  onBoundsChange: (bounds: Bounds) => void;
-  canvas_dimensions: [number, number];
+  bounds: defs.Bounds;
+  onBoundsChange: (bounds: defs.Bounds) => void;
+  canvas_dimensions: Coords;
+  min: number;
 };
 export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
   const [drag_event, setDragEvent] = React.useState<SelectionBoxOperation | null>();
@@ -66,6 +67,10 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
     }
     if (init_y + d > max_y) {
       d = max_y - init_y;
+    }
+
+    if (d <= props.min) {
+      d = props.min;
     }
 
     props.onBoundsChange([x, y, d]);

@@ -10,9 +10,9 @@
   "dependencies": {
     "@cartographer/generation": "0.0.1",
     "@cartographer/pixels": "0.0.1",
+    "comlink": "^4.3.0",
     "immer": "^8.0.1",
-    "nearest-color": "^0.4.4",
-    "next": "10.0.7",
+    "next": "10.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-select": "^4.1.0",
@@ -24,6 +24,7 @@
     "@types/react-select": "^4.0.13",
     "@types/styled-components": "^5.1.7",
     "@types/uuid": "^8.3.0",
-    "babel-plugin-styled-components": "^1.12.0"
+    "babel-plugin-styled-components": "^1.12.0",
+    "worker-plugin": "^4.0.3"
   }
 }

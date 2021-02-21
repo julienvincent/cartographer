@@ -1,11 +1,13 @@
-import * as generation from '@cartographer/generation';
-import * as pixels from '@cartographer/pixels';
 import * as Components from '../components';
 import styled from 'styled-components';
-import Select from 'react-select';
+import dynamic from 'next/dynamic';
+import * as utils from '../utils';
+import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
 import Head from 'next/head';
+
+const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Container = styled.div`
   display: flex;
@@ -14,44 +16,18 @@ const Container = styled.div`
 `;
 
 export default function Root() {
-  const [file, setFile] = React.useState<File>();
   const [image_data, setImageData] = React.useState<ImageData>();
+  const [bounds, setBounds] = React.useState<defs.Bounds>();
   const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
-
-  const downloadURL = (data: string, fileName: string) => {
-    const a = document.createElement('a');
-    a.href = data;
-    a.download = fileName;
-    a.setAttribute('style', 'display: none');
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  };
+  const api = hooks.withAPIWorker();
 
   const generate = async () => {
-    if (!image_data) {
+    if (!image_data || !api.current) {
       return;
     }
 
-    const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(image_data);
-    const scaled_pixel_grid = pixels.conversion.scaleDownPixelGrid(pixel_grid, scale, scale);
-    const color_converted = pixels.conversion.convertPixelGridColorsForMC(scaled_pixel_grid);
-    const blocks = pixels.conversion.convertPixelGridToMCBlocks(color_converted);
-
-    console.log('before');
-    const block_space = generation.block_generation.buildBlockSpace(blocks);
-
-    const nbt = generation.schema_generation.litematica.generateSchematicNBT(block_space);
-    console.log('done');
-    const data = await generation.serialization.serializeNBTData(nbt);
-    console.log('done 2');
-
-    const data_url = URL.createObjectURL(
-      new Blob([data] as any, {
-        type: 'application/octet-stream'
-      })
-    );
-    downloadURL(data_url, 'awesome.litematic');
+    const schema_nbt = await api.current.generateLitematicaSchema(image_data, scale);
+    utils.download(schema_nbt, 'map.litematic');
   };
 
   const scale_options = Object.values(defs.MAP_SCALE).filter((value) => {
@@ -66,15 +42,24 @@ export default function Root() {
       </Head>
 
       <Components.ImageSelector
-        onFileSelected={(file) => {
-          setFile(file);
+        onFileSelected={async (image_data) => {
+          setImageData(image_data);
         }}
       />
 
       <Container>
-        {file ? <Components.SourceImage file={file} onImageDataChange={setImageData} /> : null}
         {image_data ? (
-          <Components.ImagePreview style={{ marginLeft: 20 }} image_data={image_data} scale={scale} />
+          <Components.SourceImage
+            image_data={image_data}
+            scale={scale}
+            onBoundsChange={async (bounds) => {
+              setBounds(bounds);
+            }}
+          />
+        ) : null}
+
+        {image_data && bounds ? (
+          <Components.ImagePreview bounds={bounds} style={{ marginLeft: 20 }} image_data={image_data} scale={scale} />
         ) : null}
       </Container>
 
@@ -90,10 +75,8 @@ export default function Root() {
           label: scale
         }}
         onChange={(selection) => {
-          if (!selection) {
-            return;
-          }
-          setMapScale(selection.value as defs.MAP_SCALE);
+          // @ts-ignore
+          setMapScale(selection.value);
         }}
       />
 
