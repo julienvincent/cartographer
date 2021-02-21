@@ -12,15 +12,18 @@ export const bruteForceStaircase = <T>(pixelStrip: T[], getShade: (p: T) => numb
 
   for (let i = 0; i < pixelStrip.length; i++) {
     switch (getShade(pixelStrip[i])) {
-      case 0:
+      case 0: {
         staircase[i + 1] = staircase[i] - 1;
         break;
-      case 1:
+      }
+      case 1: {
         staircase[i + 1] = staircase[i];
         break;
-      case 2:
+      }
+      case 2: {
         staircase[i + 1] = staircase[i] + 1;
         break;
+      }
     }
   }
 

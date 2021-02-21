@@ -1,177 +1,116 @@
+/**
+ * This is a reimplementation of the LitematicaBitArray which accounts for the fact that Java 64bit longs
+ * cannot be used in JavaScript. The block coordinates are instead bit-packed into a tuple representation
+ * of a Long
+ *
+ * For the original representation, see:
+ * https://github.com/maruohon/litematica/blob/master/src/main/java/fi/dy/masa/litematica/schematic/container/LitematicaBitArray.java
+ */
+
+import * as long from './long';
 import * as _ from 'lodash';
-import { createLogicalNot } from 'typescript';
 
 export const getNeededBits = (size: number) => {
   return Math.max(Math.ceil(Math.log2(size)), 2);
 };
 
-export type Long = [number, number];
-const intMask = 0xffffffff; //4294967295;
-
-export const longAnd = (a: Long, b: Long): Long => {
-  return [a[0] & b[0], a[1] & b[1]];
+export type BitArray = {
+  array: long.Long[];
+  num_bits: number;
+  mask: number;
+  volume: number;
 };
-
-export const longOr = (a: Long, b: Long): Long => {
-  return [a[0] | b[0], a[1] | b[1]];
-};
-
-export const longCompliment = (a: Long): Long => {
-  return [~a[0] & intMask, ~a[1] & intMask];
-};
-
-export const longLeftShift = (a: Long, shift: number): Long => {
-  if (shift < 32) {
-    const carryOver = (a[1] & (intMask << (32 - shift)) & intMask) >>> (32 - shift);
-
-    return [((a[0] << shift) | carryOver) & intMask, (a[1] << shift) & intMask];
-  } else {
-    return [a[1] << (shift - 32), 0];
-  }
-};
-
-export const longRightShift = (a: Long, shift: number): Long => {
-  if (shift < 32) {
-    const carryOver = (a[0] & (intMask >>> (32 - shift))) << (32 - shift);
-
-    return [a[0] >>> shift, (a[1] >>> shift) | carryOver];
-  } else {
-    return [0, a[0] >>> shift];
-  }
-};
-
-export class BlockStateStorage {
-  size: number;
-  maxEntryValue: number;
-  arr: Long[];
-
-  bitsPerEntry: number;
-
-  constructor(size: number, nbits: number) {
-    this.bitsPerEntry = nbits;
-    this.size = size;
-
-    this.arr = _.range(this.roundUp(size * nbits, 64)).map(() => [0, 0]);
-    this.maxEntryValue = (1 << nbits) - 1;
-  }
-
-  roundUp(num: number, interval: number) {
-    if (interval == 0) {
-      return 0;
-    } else if (num == 0) {
-      return interval;
-    } else {
-      if (num < 0) {
-        interval *= -1;
-      }
-
-      const i = num % interval;
-      return i == 0 ? num : num + interval - i;
-    }
-  }
-
-  setAt(index: number, value: number) {
-    const startOffset = index * this.bitsPerEntry;
-    const startArrIndex = startOffset >> 6;
-    const endArrIndex = ((index + 1) * this.bitsPerEntry - 1) >> 6;
-    const startBitOffset = startOffset & 0x3f;
-
-    const maxEntryMask: Long = [0, this.maxEntryValue];
-
-    /*  
-    this.arr[startArrIndex] =
-      (this.arr[startArrIndex] & ~(this.maxEntryValue << startBitOffset)) |
-      ((value & this.maxEntryValue) << startBitOffset);
-    */
-
-    this.arr[startArrIndex] = longOr(
-      longAnd(this.arr[startArrIndex], longCompliment(longLeftShift([0, this.maxEntryValue], startBitOffset))),
-      longLeftShift([0, value & this.maxEntryValue], startBitOffset)
-    );
-
-    if (startArrIndex !== endArrIndex) {
-      const endOffset = 64 - startBitOffset;
-      const j1 = this.bitsPerEntry - endOffset;
-
-      this.arr[endArrIndex] = longOr(
-        longRightShift(longLeftShift(this.arr[endArrIndex], j1), j1),
-        longRightShift([0, value & this.maxEntryValue], endOffset)
-      );
-    }
-  }
-}
 
 /**
- * This is a reimplementation of the LitematicaBitArray
+ * Initialize a new BitArray data structure from a given map volume and
+ * block palette length
  *
- * https://github.com/maruohon/litematica/blob/master/src/main/java/fi/dy/masa/litematica/schematic/container/LitematicaBitArray.java
+ * This will also initialize some internal values used for bit-packing
  */
-export class BlockStateStorage2 {
-  size: number;
-  maxEntryValue: number;
-  arr: number[] = [];
+export const createBitArray = (volume: number, palette_length: number): BitArray => {
+  const num_bits = getNeededBits(palette_length);
 
-  bitsPerEntry: number;
+  const array: long.Long[] = _.range(Math.ceil(volume * num_bits)).map(() => [0, 0]);
+  const mask = (1 << num_bits) - 1;
+  return {
+    volume,
+    mask,
+    array,
+    num_bits
+  };
+};
 
-  roundUp(num: number, interval: number) {
-    if (interval == 0) {
-      return 0;
-    } else if (num == 0) {
-      return interval;
-    } else {
-      if (num < 0) {
-        interval *= -1;
+/**
+ * Set the block palette index used for a specified `index`. This will bit-pack the
+ * value into the next available long
+ */
+export const set = (bit_array: BitArray, index: number, value: number) => {
+  const startOffset = index * bit_array.num_bits;
+  const startArrIndex = startOffset >> 6;
+  const endArrIndex = ((index + 1) * bit_array.num_bits - 1) >> 6;
+  const startBitOffset = startOffset & 0x3f;
+
+  bit_array.array[startArrIndex] = long.or(
+    long.and(bit_array.array[startArrIndex], long.not(long.shiftLeft([0, bit_array.mask], startBitOffset))),
+    long.shiftLeft([0, value & bit_array.mask], startBitOffset)
+  );
+
+  if (startArrIndex !== endArrIndex) {
+    const endOffset = 64 - startBitOffset;
+    const j1 = bit_array.num_bits - endOffset;
+
+    bit_array.array[endArrIndex] = long.or(
+      long.shiftRight(long.shiftLeft(bit_array.array[endArrIndex], j1), j1),
+      long.shiftRight([0, value & bit_array.mask], endOffset)
+    );
+  }
+
+  return bit_array;
+};
+
+/**
+ * Get the block material index for a specified coordinate.
+ *
+ * Unimplemented
+ */
+export const get = (bit_array: BitArray, index: number) => {
+  // const startOffset = index * this.bitsPerEntry;
+  // const startArrIndex = startOffset >> 6;
+  // const endArrIndex = ((index + 1) * (this.bitsPerEntry - 1)) >> 6;
+  // const startBitOffset = startOffset & 0x3f;
+  //
+  // if (startArrIndex === endArrIndex) {
+  //   return (this.arr[startArrIndex] >>> startBitOffset) & this.maxEntryValue;
+  // } else {
+  //   const endOffset = 64 - startBitOffset;
+  //   return ((this.arr[startArrIndex] >>> startBitOffset) | (this.arr[endArrIndex] << endOffset)) & this.maxEntryValue;
+  // }
+};
+
+/**
+ * Extract only the necessary longs from the internal storage array. This will effectively drop all trailing longs
+ * that are '0' or has had no operations performed against it
+ *
+ * [[0, 1234], [0, 4321], [0, 0], [0, 0], [0, 0] ...]
+ * ->
+ * [[0, 1234], [0, 0]]
+ */
+export const drain = (bit_array: BitArray) => {
+  const last_relevant_index = bit_array.array.reduce((last, long, i) => {
+    const [low, high] = long;
+    if (low === 0 && high === 0) {
+      if (last !== -1) {
+        return last;
+      } else {
+        return i;
       }
-
-      const i = num % interval;
-      return i == 0 ? num : num + interval - i;
     }
+    return -1;
+  }, -1);
+
+  if (last_relevant_index === -1) {
+    return bit_array.array;
   }
 
-  constructor(size: number, nbits: number) {
-    this.bitsPerEntry = nbits;
-    this.size = size;
-
-    this.arr = _.range(this.roundUp(size * nbits, 64)).map(() => 0);
-    this.maxEntryValue = (1 << nbits) - 1;
-  }
-
-  setAt(index: number, value: number) {
-    const startOffset = index * this.bitsPerEntry;
-    const startArrIndex = startOffset >> 6;
-    const endArrIndex = ((index + 1) * this.bitsPerEntry - 1) >> 6;
-    const startBitOffset = startOffset & 0x3f;
-    this.arr[startArrIndex] =
-      (this.arr[startArrIndex] & ~(this.maxEntryValue << startBitOffset)) |
-      ((value & this.maxEntryValue) << startBitOffset);
-
-    if (startArrIndex !== endArrIndex) {
-      const endOffset = 64 - startBitOffset;
-      const j1 = this.bitsPerEntry - endOffset;
-      this.arr[endArrIndex] = ((this.arr[endArrIndex] >>> j1) << j1) | ((value & this.maxEntryValue) >> endOffset);
-    }
-  }
-
-  getAt(index: number) {
-    const startOffset = index * this.bitsPerEntry;
-    const startArrIndex = startOffset >> 6;
-    const endArrIndex = ((index + 1) * (this.bitsPerEntry - 1)) >> 6;
-    const startBitOffset = startOffset & 0x3f;
-
-    if (startArrIndex === endArrIndex) {
-      return (this.arr[startArrIndex] >>> startBitOffset) & this.maxEntryValue;
-    } else {
-      const endOffset = 64 - startBitOffset;
-      return ((this.arr[startArrIndex] >>> startBitOffset) | (this.arr[endArrIndex] << endOffset)) & this.maxEntryValue;
-    }
-  }
-
-  getCounts() {
-    const counts: number[] = [];
-    for (let i = 0; i < this.size; i++) {
-      const value = this.getAt(i);
-      counts[value] = (counts[value] || 0) + 1;
-    }
-    return counts;
-  }
-}
+  return bit_array.array.slice(0, last_relevant_index + 1);
+};
