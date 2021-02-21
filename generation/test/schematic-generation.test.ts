@@ -37,7 +37,5 @@ describe('schematic-generation', () => {
     ]);
 
     expect(data).toMatchSnapshot();
-
-    fs.writeFileSync('thing.litematic', zlib.gzipSync(Buffer.from(nbt.writeUncompressed(data))));
   });
 });

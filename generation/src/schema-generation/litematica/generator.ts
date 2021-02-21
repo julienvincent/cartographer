@@ -1,5 +1,6 @@
 import * as litematica_bit_array from './litematica-bit-array';
 import { MCBlockSpace } from '../../block-generation';
+import * as _ from 'lodash';
 
 const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   return block_space.reduce((height, columns) => {
@@ -55,27 +56,23 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
     }, palette);
   }, init);
 
-  const storage = new litematica_bit_array.BlockStateStorage(
-    volume,
-    litematica_bit_array.getNeededBits(palette.length)
-  );
-  for (let x = 0; x < width; x++) {
-    for (let z = 0; z < length; z++) {
-      for (let y = 0; y < height; y++) {
+  const bit_array = _.range(width).reduce((bit_array, x) => {
+    return _.range(length).reduce((bit_array, z) => {
+      return _.range(height).reduce((bit_array, y) => {
         const row = block_space[x][z];
         const block = row?.find((block) => block.height === y);
-        const index = palette.findIndex((item) => {
+        const palette_index = palette.findIndex((item) => {
           if (block) {
             return item.Name.value === block.block_id;
           }
           return item.Name.value === `minecraft:air`;
         });
 
-        const i = (y * length + z) * width + x;
-        storage.setAt(i, index);
-      }
-    }
-  }
+        const block_coords = (y * length + z) * width + x;
+        return litematica_bit_array.set(bit_array, block_coords, palette_index);
+      }, bit_array);
+    }, bit_array);
+  }, litematica_bit_array.createBitArray(volume, palette.length));
 
   return {
     name: '',
@@ -93,11 +90,11 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
         value: {
           TimeCreated: {
             type: 'long',
-            value: [375, 2023476248]
+            value: [375, 2023476248] // TODO: Use correct time
           },
           TimeModified: {
             type: 'long',
-            value: [375, 2023476248]
+            value: [375, 2023476248] // TODO: Use correct time
           },
           EnclosingSize: {
             type: 'compound',
@@ -130,7 +127,7 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
           },
           Author: {
             type: 'string',
-            value: 'Shmebbles'
+            value: 'cartographer'
           },
           TotalVolume: {
             type: 'int',
@@ -138,19 +135,19 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
           },
           Name: {
             type: 'string',
-            value: 'simple'
+            value: 'map'
           }
         }
       },
       Regions: {
         type: 'compound',
         value: {
-          simple: {
+          map: {
             type: 'compound',
             value: {
               BlockStates: {
                 type: 'longArray',
-                value: storage.arr
+                value: litematica_bit_array.drain(bit_array)
               },
               PendingBlockTicks: {
                 type: 'list',

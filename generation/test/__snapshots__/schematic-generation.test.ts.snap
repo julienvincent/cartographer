@@ -9,7 +9,7 @@ Object {
       "value": Object {
         "Author": Object {
           "type": "string",
-          "value": "Shmebbles",
+          "value": "cartographer",
         },
         "Description": Object {
           "type": "string",
@@ -34,7 +34,7 @@ Object {
         },
         "Name": Object {
           "type": "string",
-          "value": "simple",
+          "value": "map",
         },
         "RegionCount": Object {
           "type": "int",
@@ -71,7 +71,7 @@ Object {
     "Regions": Object {
       "type": "compound",
       "value": Object {
-        "simple": Object {
+        "map": Object {
           "type": "compound",
           "value": Object {
             "BlockStatePalette": Object {
@@ -118,254 +118,6 @@ Object {
                 Array [
                   1,
                   10433,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
-                ],
-                Array [
-                  0,
-                  0,
                 ],
                 Array [
                   0,
