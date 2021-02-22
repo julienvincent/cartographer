@@ -96,6 +96,10 @@ export const get = (bit_array: BitArray, index: number) => {
  * [[0, 1234], [0, 0]]
  */
 export const drain = (bit_array: BitArray) => {
+  // Return early due to suspected issue with the approach
+  // TODO: Investigate the viability of this
+  return bit_array.array;
+
   const last_relevant_index = bit_array.array.reduce((last, long, i) => {
     const [low, high] = long;
     if (low === 0 && high === 0) {
