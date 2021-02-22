@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as comlink from 'comlink';
 import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
@@ -26,7 +27,7 @@ export const ImagePreview: React.FC<Props> = (props) => {
       }
 
       const image_data = await api.current.generatePreview({
-        image_data: props.image_data,
+        image_data: comlink.transfer(props.image_data, [props.image_data.data.buffer]),
         bounds: props.bounds,
         map_scale: props.scale
       });

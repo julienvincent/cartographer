@@ -1,6 +1,7 @@
 import * as Components from '../components';
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
+import * as comlink from 'comlink';
 import * as utils from '../utils';
 import * as hooks from '../hooks';
 import * as defs from '../defs';
@@ -26,7 +27,10 @@ export default function Root() {
       return;
     }
 
-    const schema_nbt = await api.current.generateLitematicaSchema(image_data, scale);
+    const schema_nbt = await api.current.generateLitematicaSchema(
+      comlink.transfer(image_data, [image_data.data.buffer]),
+      scale
+    );
     utils.download(schema_nbt, 'map.litematic');
   };
 
