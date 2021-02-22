@@ -74,15 +74,22 @@ export const set = (bit_array: BitArray, index: number, value: number) => {
  * Unimplemented
  */
 export const get = (bit_array: BitArray, index: number) => {
-  // const startOffset = index * this.bitsPerEntry;
-  // const startArrIndex = startOffset >> 6;
-  // const endArrIndex = ((index + 1) * (this.bitsPerEntry - 1)) >> 6;
-  // const startBitOffset = startOffset & 0x3f;
-  //
-  // if (startArrIndex === endArrIndex) {
-  //   return (this.arr[startArrIndex] >>> startBitOffset) & this.maxEntryValue;
-  // } else {
-  //   const endOffset = 64 - startBitOffset;
-  //   return ((this.arr[startArrIndex] >>> startBitOffset) | (this.arr[endArrIndex] << endOffset)) & this.maxEntryValue;
-  // }
+  const startOffset = index * bit_array.num_bits;
+  const startArrIndex = startOffset >> 6;
+  const endArrIndex = ((index + 1) * (bit_array.num_bits - 1)) >> 6;
+  const startBitOffset = startOffset & 0x3f;
+
+  if (startArrIndex === endArrIndex) {
+    return long.and(long.shiftRight(bit_array.array[startArrIndex], startBitOffset), [0, bit_array.mask]);
+  } else {
+    const endOffset = 64 - startBitOffset;
+
+    return long.and(
+      long.or(
+        long.shiftRight(bit_array.array[startArrIndex], startBitOffset),
+        long.shiftLeft(bit_array.array[endArrIndex], endOffset)
+      ),
+      [0, bit_array.mask]
+    );
+  }
 };
