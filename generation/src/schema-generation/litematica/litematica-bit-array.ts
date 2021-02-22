@@ -30,7 +30,7 @@ export type BitArray = {
 export const createBitArray = (volume: number, palette_length: number): BitArray => {
   const num_bits = getNeededBits(palette_length);
 
-  const array: long.Long[] = _.range(Math.ceil(volume * num_bits)).map(() => [0, 0]);
+  const array: long.Long[] = _.range(Math.ceil(volume * num_bits) / 64).map(() => [0, 0]);
   const mask = (1 << num_bits) - 1;
   return {
     volume,
@@ -85,36 +85,4 @@ export const get = (bit_array: BitArray, index: number) => {
   //   const endOffset = 64 - startBitOffset;
   //   return ((this.arr[startArrIndex] >>> startBitOffset) | (this.arr[endArrIndex] << endOffset)) & this.maxEntryValue;
   // }
-};
-
-/**
- * Extract only the necessary longs from the internal storage array. This will effectively drop all trailing longs
- * that are '0' or has had no operations performed against it
- *
- * [[0, 1234], [0, 4321], [0, 0], [0, 0], [0, 0] ...]
- * ->
- * [[0, 1234], [0, 0]]
- */
-export const drain = (bit_array: BitArray) => {
-  // Return early due to suspected issue with the approach
-  // TODO: Investigate the viability of this
-  return bit_array.array;
-
-  const last_relevant_index = bit_array.array.reduce((last, long, i) => {
-    const [low, high] = long;
-    if (low === 0 && high === 0) {
-      if (last !== -1) {
-        return last;
-      } else {
-        return i;
-      }
-    }
-    return -1;
-  }, -1);
-
-  if (last_relevant_index === -1) {
-    return bit_array.array;
-  }
-
-  return bit_array.array.slice(0, last_relevant_index + 1);
 };

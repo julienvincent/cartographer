@@ -199,7 +199,7 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
             value: {
               BlockStates: {
                 type: 'longArray',
-                value: litematica_bit_array.drain(bit_array)
+                value: bit_array.array
               },
               PendingBlockTicks: {
                 type: 'list',
