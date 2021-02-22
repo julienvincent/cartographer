@@ -1,5 +1,3 @@
-import { identity } from 'lodash';
-
 export type RGBColor = [number, number, number];
 
 export type Pixel = {
@@ -10,9 +8,13 @@ export type Pixel = {
 
 export type PixelGrid = Pixel[][];
 
-export type MCBlockVariant = {
-  block_id: string;
-  height_variant: number;
+export type MCBlockDefinition = {
+  id: string;
+  properties?: Record<string, string>;
 };
 
-export type MCBlockGrid = MCBlockVariant[][];
+export type MCBlockWithOffset = MCBlockDefinition & {
+  y_offset: number;
+};
+
+export type MCBlockGrid = MCBlockWithOffset[][];

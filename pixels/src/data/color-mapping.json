@@ -1,726 +1,1424 @@
 [
   {
-    "block_ids": ["minecraft:grass_block", "minecraft:slime_block"],
     "colors": [
       [89, 125, 39],
       [109, 153, 48],
-      [127, 178, 56],
-      [67, 94, 29]
+      [127, 178, 56]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:grass_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:slime_block",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:sand",
-      "minecraft:sandstone",
-      "minecraft:sandstone_slab",
-      "minecraft:birch_log",
-      "minecraft:birch_planks",
-      "minecraft:birch_slab",
-      "minecraft:glowstone",
-      "minecraft:end_stone"
-    ],
     "colors": [
       [174, 164, 115],
       [213, 201, 140],
-      [247, 233, 163],
-      [130, 123, 86]
+      [247, 233, 163]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:sand",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sandstone",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sandstone_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:birch_log",
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:birch_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:birch_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:glowstone",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:end_stone",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:cobweb"],
     "colors": [
       [140, 140, 140],
       [171, 171, 171],
-      [199, 199, 199],
-      [105, 105, 105]
+      [199, 199, 199]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cobweb",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:tnt", "minecraft:redstone_block"],
     "colors": [
       [180, 0, 0],
       [220, 0, 0],
-      [255, 0, 0],
-      [135, 0, 0]
+      [255, 0, 0]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:tnt",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:redstone_block",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:ice", "minecraft:packed_ice"],
     "colors": [
       [112, 112, 180],
       [138, 138, 220],
-      [160, 160, 255],
-      [84, 84, 135]
+      [160, 160, 255]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:ice",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:packed_ice",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:iron_block", "minecraft:iron_trapdoor", "minecraft:heavy_weighted_pressure_plate"],
     "colors": [
       [117, 117, 117],
       [144, 144, 144],
-      [167, 167, 167],
-      [88, 88, 88]
+      [167, 167, 167]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:iron_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:iron_trapdoor",
+        "properties": {
+          "half": "bottom"
+        }
+      },
+      {
+        "id": "minecraft:heavy_weighted_pressure_plate",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:oak_leaves",
-      "minecraft:spruce_leaves",
-      "minecraft:birch_leaves",
-      "minecraft:jungle_leaves",
-      "minecraft:acacia_leaves",
-      "minecraft:dark_oak_leaves"
-    ],
     "colors": [
       [0, 87, 0],
       [0, 106, 0],
-      [0, 124, 0],
-      [0, 65, 0]
+      [0, 124, 0]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:oak_leaves",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:spruce_leaves",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:birch_leaves",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:jungle_leaves",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_leaves",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_oak_leaves",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:clay"],
     "colors": [
       [115, 118, 129],
       [141, 144, 158],
-      [164, 168, 184],
-      [86, 88, 97]
+      [164, 168, 184]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:clay",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:jungle_log",
-      "minecraft:jungle_planks",
-      "minecraft:jungle_slab",
-      "minecraft:dirt",
-      "minecraft:coarse_dirt",
-      "minecraft:jukebox",
-      "minecraft:granite"
-    ],
     "colors": [
       [106, 76, 54],
       [130, 94, 66],
-      [151, 109, 77],
-      [79, 57, 40]
+      [151, 109, 77]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:jungle_log",
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:jungle_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:jungle_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dirt",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:coarse_dirt",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:jukebox",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:granite",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:cobblestone",
-      "minecraft:stone",
-      "minecraft:stone_slab",
-      "minecraft:cobblestone_slab",
-      "minecraft:andesite",
-      "minecraft:bedrock",
-      "minecraft:acacia_log",
-      "minecraft:gravel"
-    ],
     "colors": [
       [79, 79, 79],
       [96, 96, 96],
-      [112, 112, 112],
-      [59, 59, 59]
+      [112, 112, 112]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cobblestone",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stone",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stone_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cobblestone_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:andesite",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bedrock",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_log",
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:gravel",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:water"],
     "colors": [
       [45, 45, 180],
       [55, 55, 220],
-      [64, 64, 255],
-      [33, 33, 135]
+      [64, 64, 255]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:water",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:oak_log", "minecraft:oak_planks", "minecraft:oak_slab", "minecraft:crafting_table"],
     "colors": [
       [100, 84, 50],
       [123, 102, 62],
-      [143, 119, 72],
-      [75, 63, 38]
+      [143, 119, 72]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:oak_log",
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:oak_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:oak_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crafting_table",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:birch_log",
-      "minecraft:diorite",
-      "minecraft:quartz_block",
-      "minecraft:quartz_slab",
-      "minecraft:sea_lantern"
-    ],
     "colors": [
       [180, 177, 172],
       [220, 217, 211],
-      [255, 252, 245],
-      [135, 133, 129]
+      [255, 252, 245]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:birch_log",
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:diorite",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:quartz_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:quartz_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sea_lantern",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:white_wool",
-      "minecraft:white_carpet",
-      "minecraft:white_stained_glass",
-      "minecraft:white_concrete",
-      "minecraft:white_concrete_powder",
-      "minecraft:white_glazed_terracotta",
-      "minecraft:snow_block",
-      "minecraft:snow"
-    ],
     "colors": [
       [180, 180, 180],
       [220, 220, 220],
-      [255, 255, 255],
-      [135, 135, 135]
+      [255, 255, 255]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:white_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:snow_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:snow",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:orange_wool",
-      "minecraft:orange_carpet",
-      "minecraft:orange_stained_glass",
-      "minecraft:orange_concrete",
-      "minecraft:orange_concrete_powder",
-      "minecraft:orange_glazed_terracotta",
-      "minecraft:acacia_log",
-      "minecraft:acacia_planks",
-      "minecraft:acacia_slab",
-      "minecraft:red_sand",
-      "minecraft:red_sandstone",
-      "minecraft:terracotta"
-    ],
     "colors": [
       [152, 89, 36],
       [186, 109, 44],
-      [216, 127, 51],
-      [114, 67, 27]
+      [216, 127, 51]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:orange_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_log",
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:acacia_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_sand",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_sandstone",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:magenta_wool",
-      "minecraft:magenta_carpet",
-      "minecraft:magenta_stained_glass",
-      "minecraft:magenta_concrete",
-      "minecraft:magenta_concrete_powder",
-      "minecraft:magenta_glazed_terracotta",
-      "minecraft:purpur_block",
-      "minecraft:purpur_slab"
-    ],
     "colors": [
       [125, 53, 152],
       [153, 65, 186],
-      [178, 76, 216],
-      [94, 40, 114]
+      [178, 76, 216]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:magenta_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purpur_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purpur_slab",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:light_blue_wool",
-      "minecraft:light_blue_carpet",
-      "minecraft:light_blue_stained_glass",
-      "minecraft:light_blue_concrete",
-      "minecraft:light_blue_concrete_powder",
-      "minecraft:light_blue_glazed_terracotta"
-    ],
     "colors": [
       [72, 108, 152],
       [88, 132, 186],
-      [102, 153, 216],
-      [54, 81, 114]
+      [102, 153, 216]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_blue_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_glazed_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:yellow_wool",
-      "minecraft:yellow_carpet",
-      "minecraft:yellow_stained_glass",
-      "minecraft:yellow_concrete",
-      "minecraft:yellow_concrete_powder",
-      "minecraft:yellow_glazed_terracotta",
-      "minecraft:hay_block",
-      "minecraft:sponge"
-    ],
     "colors": [
       [161, 161, 36],
       [197, 197, 44],
-      [229, 229, 51],
-      [121, 121, 27]
+      [229, 229, 51]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:yellow_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:hay_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sponge",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:lime_wool",
-      "minecraft:lime_carpet",
-      "minecraft:lime_stained_glass",
-      "minecraft:lime_concrete",
-      "minecraft:lime_concrete_powder",
-      "minecraft:lime_glazed_terracotta",
-      "minecraft:melon"
-    ],
     "colors": [
       [89, 144, 17],
       [109, 176, 21],
-      [127, 204, 25],
-      [67, 108, 13]
+      [127, 204, 25]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:lime_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:melon",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:pink_wool",
-      "minecraft:pink_carpet",
-      "minecraft:pink_stained_glass",
-      "minecraft:pink_concrete",
-      "minecraft:pink_concrete_powder",
-      "minecraft:pink_glazed_terracotta"
-    ],
     "colors": [
       [170, 89, 116],
       [208, 109, 142],
-      [242, 127, 165],
-      [128, 67, 87]
+      [242, 127, 165]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:pink_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_glazed_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:gray_wool",
-      "minecraft:gray_carpet",
-      "minecraft:gray_stained_glass",
-      "minecraft:gray_concrete",
-      "minecraft:gray_concrete_powder",
-      "minecraft:gray_glazed_terracotta"
-    ],
     "colors": [
       [53, 53, 53],
       [65, 65, 65],
-      [76, 76, 76],
-      [40, 40, 40]
+      [76, 76, 76]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:gray_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_glazed_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:light_gray_wool",
-      "minecraft:light_gray_carpet",
-      "minecraft:light_gray_stained_glass",
-      "minecraft:light_gray_concrete",
-      "minecraft:light_gray_concrete_powder",
-      "minecraft:light_gray_glazed_terracotta"
-    ],
     "colors": [
       [108, 108, 108],
       [132, 132, 132],
-      [153, 153, 153],
-      [81, 81, 81]
+      [153, 153, 153]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_gray_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_glazed_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:cyan_wool",
-      "minecraft:cyan_carpet",
-      "minecraft:cyan_stained_glass",
-      "minecraft:cyan_concrete",
-      "minecraft:cyan_concrete_powder",
-      "minecraft:cyan_glazed_terracotta",
-      "minecraft:prismarine"
-    ],
     "colors": [
       [53, 89, 108],
       [65, 109, 132],
-      [76, 127, 153],
-      [40, 67, 81]
+      [76, 127, 153]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cyan_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:prismarine",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:purple_wool",
-      "minecraft:purple_carpet",
-      "minecraft:purple_stained_glass",
-      "minecraft:purple_concrete",
-      "minecraft:purple_concrete_powder",
-      "minecraft:purple_glazed_terracotta",
-      "minecraft:mycelium"
-    ],
     "colors": [
       [89, 44, 125],
       [109, 54, 153],
-      [127, 63, 178],
-      [67, 33, 94]
+      [127, 63, 178]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:purple_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mycelium",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:blue_wool",
-      "minecraft:blue_carpet",
-      "minecraft:blue_stained_glass",
-      "minecraft:blue_concrete",
-      "minecraft:blue_concrete_powder",
-      "minecraft:blue_glazed_terracotta"
-    ],
     "colors": [
       [36, 53, 125],
       [44, 65, 153],
-      [51, 76, 178],
-      [27, 40, 94]
+      [51, 76, 178]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:blue_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_glazed_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:brown_wool",
-      "minecraft:brown_carpet",
-      "minecraft:brown_stained_glass",
-      "minecraft:brown_concrete",
-      "minecraft:brown_concrete_powder",
-      "minecraft:brown_glazed_terracotta",
-      "minecraft:dark_oak_log",
-      "minecraft:dark_oak_planks",
-      "minecraft:dark_oak_slab",
-      "minecraft:spruce_log",
-      "minecraft:soul_sand"
-    ],
     "colors": [
       [72, 53, 36],
       [88, 65, 44],
-      [102, 76, 51],
-      [54, 40, 27]
+      [102, 76, 51]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:brown_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_oak_log",
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:dark_oak_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_oak_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:spruce_log",
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:soul_sand",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:green_wool",
-      "minecraft:green_carpet",
-      "minecraft:green_stained_glass",
-      "minecraft:green_concrete",
-      "minecraft:green_concrete_powder",
-      "minecraft:green_glazed_terracotta"
-    ],
     "colors": [
       [72, 89, 36],
       [88, 109, 44],
-      [102, 127, 51],
-      [54, 67, 27]
+      [102, 127, 51]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:green_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_glazed_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:red_wool",
-      "minecraft:red_carpet",
-      "minecraft:red_stained_glass",
-      "minecraft:red_concrete",
-      "minecraft:red_concrete_powder",
-      "minecraft:red_glazed_terracotta",
-      "minecraft:bricks",
-      "minecraft:nether_wart_block"
-    ],
     "colors": [
       [108, 36, 36],
       [132, 44, 44],
-      [153, 51, 51],
-      [81, 27, 27]
+      [153, 51, 51]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:red_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bricks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:nether_wart_block",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:black_wool",
-      "minecraft:black_carpet",
-      "minecraft:black_stained_glass",
-      "minecraft:black_concrete",
-      "minecraft:black_concrete_powder",
-      "minecraft:black_glazed_terracotta",
-      "minecraft:coal_block",
-      "minecraft:obsidian"
-    ],
     "colors": [
       [17, 17, 17],
       [21, 21, 21],
-      [25, 25, 25],
-      [13, 13, 13]
+      [25, 25, 25]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:black_wool",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_carpet",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_stained_glass",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_concrete",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_concrete_powder",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_glazed_terracotta",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:coal_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:obsidian",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:gold_block", "minecraft:light_weighted_pressure_plate"],
     "colors": [
       [176, 168, 54],
       [215, 205, 66],
-      [250, 238, 77],
-      [132, 126, 40]
+      [250, 238, 77]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:gold_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_weighted_pressure_plate",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:diamond_block",
-      "minecraft:prismarine_bricks",
-      "minecraft:dark_prismarine",
-      "minecraft:beacon"
-    ],
     "colors": [
       [64, 154, 150],
       [79, 188, 183],
-      [92, 219, 213],
-      [48, 115, 112]
+      [92, 219, 213]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:diamond_block",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:prismarine_bricks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_prismarine",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:beacon",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:lapis_block"],
     "colors": [
       [52, 90, 180],
       [63, 110, 220],
-      [74, 128, 255],
-      [39, 67, 135]
+      [74, 128, 255]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:lapis_block",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:emerald_block"],
     "colors": [
       [0, 153, 40],
       [0, 187, 50],
-      [0, 217, 58],
-      [0, 114, 30]
+      [0, 217, 58]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:emerald_block",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:spruce_log",
-      "minecraft:spruce_planks",
-      "minecraft:spruce_slab",
-      "minecraft:oak_log",
-      "minecraft:jungle_log",
-      "minecraft:podzol"
-    ],
     "colors": [
       [91, 60, 34],
       [111, 74, 42],
-      [129, 86, 49],
-      [68, 45, 25]
+      [129, 86, 49]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:spruce_log",
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:spruce_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:spruce_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:oak_log",
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:jungle_log",
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:podzol",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:netherrack",
-      "minecraft:nether_bricks",
-      "minecraft:nether_brick_slab",
-      "minecraft:magma_block"
-    ],
     "colors": [
       [79, 1, 0],
       [96, 1, 0],
-      [112, 2, 0],
-      [59, 1, 0]
+      [112, 2, 0]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:netherrack",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:nether_bricks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:nether_brick_slab",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magma_block",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:white_terracotta"],
     "colors": [
       [147, 124, 113],
       [180, 152, 138],
-      [209, 177, 161],
-      [110, 93, 85]
+      [209, 177, 161]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:white_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:orange_terracotta"],
     "colors": [
       [112, 57, 25],
       [137, 70, 31],
-      [159, 82, 36],
-      [84, 43, 19]
+      [159, 82, 36]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:orange_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:magenta_terracotta"],
     "colors": [
       [105, 61, 76],
       [128, 75, 93],
-      [149, 87, 108],
-      [78, 46, 57]
+      [149, 87, 108]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:magenta_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:light_blue_terracotta"],
     "colors": [
       [79, 76, 97],
       [96, 93, 119],
-      [112, 108, 138],
-      [59, 57, 73]
+      [112, 108, 138]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_blue_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:yellow_terracotta"],
     "colors": [
       [131, 93, 25],
       [160, 114, 31],
-      [186, 133, 36],
-      [98, 70, 19]
+      [186, 133, 36]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:yellow_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:lime_terracotta"],
     "colors": [
       [72, 82, 37],
       [88, 100, 45],
-      [103, 117, 53],
-      [54, 61, 28]
+      [103, 117, 53]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:lime_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:pink_terracotta"],
     "colors": [
       [112, 54, 55],
       [138, 66, 67],
-      [160, 77, 78],
-      [84, 40, 41]
+      [160, 77, 78]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:pink_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:gray_terracotta"],
     "colors": [
       [40, 28, 24],
       [49, 35, 30],
-      [57, 41, 35],
-      [30, 21, 18]
+      [57, 41, 35]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:gray_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:light_gray_terracotta"],
     "colors": [
       [95, 75, 69],
       [116, 92, 84],
-      [135, 107, 98],
-      [71, 56, 51]
+      [135, 107, 98]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_gray_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:cyan_terracotta"],
     "colors": [
       [61, 64, 64],
       [75, 79, 79],
-      [87, 92, 92],
-      [46, 48, 48]
+      [87, 92, 92]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cyan_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:purple_terracotta"],
     "colors": [
       [86, 51, 62],
       [105, 62, 75],
-      [122, 73, 88],
-      [64, 38, 46]
+      [122, 73, 88]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:purple_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:blue_terracotta"],
     "colors": [
       [53, 43, 64],
       [65, 53, 79],
-      [76, 62, 92],
-      [40, 32, 48]
+      [76, 62, 92]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:blue_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:brown_terracotta"],
     "colors": [
       [53, 35, 24],
       [65, 43, 30],
-      [76, 50, 35],
-      [40, 26, 18]
+      [76, 50, 35]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:brown_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:green_terracotta"],
     "colors": [
       [53, 57, 29],
       [65, 70, 36],
-      [76, 82, 42],
-      [40, 43, 22]
+      [76, 82, 42]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:green_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:red_terracotta"],
     "colors": [
       [100, 42, 32],
       [122, 51, 39],
-      [142, 60, 46],
-      [75, 31, 24]
+      [142, 60, 46]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:red_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:black_terracotta"],
     "colors": [
       [26, 15, 11],
       [31, 18, 13],
-      [37, 22, 16],
-      [19, 11, 8]
+      [37, 22, 16]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:black_terracotta",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:crimson_nylium"],
     "colors": [
       [133, 33, 34],
       [163, 41, 42],
-      [189, 48, 49],
-      [100, 25, 25]
+      [189, 48, 49]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:crimson_nylium",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:crimson_stem",
-      "minecraft:stripped_crimson_stem",
-      "minecraft:crimson_planks",
-      "minecraft:crimson_slab"
-    ],
     "colors": [
       [104, 44, 68],
       [127, 54, 83],
-      [148, 63, 97],
-      [78, 33, 51]
+      [148, 63, 97]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:crimson_stem",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_crimson_stem",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crimson_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crimson_slab",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:crimson_hyphae", "minecraft:stripped_crimson_hyphae"],
     "colors": [
       [64, 17, 20],
       [79, 21, 25],
-      [92, 25, 29],
-      [48, 13, 15]
+      [92, 25, 29]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:crimson_hyphae",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_crimson_hyphae",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:warped_nylium"],
     "colors": [
       [15, 88, 94],
       [18, 108, 115],
-      [22, 126, 134],
-      [11, 66, 70]
+      [22, 126, 134]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_nylium",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": [
-      "minecraft:warped_stem",
-      "minecraft:stripped_warped_stem",
-      "minecraft:warped_planks",
-      "minecraft:warped_slab"
-    ],
     "colors": [
       [40, 100, 98],
       [50, 122, 120],
-      [58, 142, 140],
-      [30, 75, 74]
+      [58, 142, 140]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_stem",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_warped_stem",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:warped_planks",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:warped_slab",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:warped_hyphae", "minecraft:stripped_warped_hyphae"],
     "colors": [
       [60, 31, 43],
       [74, 37, 53],
-      [86, 44, 62],
-      [45, 23, 32]
+      [86, 44, 62]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_hyphae",
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_warped_hyphae",
+        "properties": {}
+      }
     ]
   },
   {
-    "block_ids": ["minecraft:warped_wart_block"],
     "colors": [
       [14, 127, 93],
       [17, 155, 114],
-      [20, 180, 133],
-      [10, 95, 70]
+      [20, 180, 133]
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_wart_block",
+        "properties": {}
+      }
     ]
   }
 ]

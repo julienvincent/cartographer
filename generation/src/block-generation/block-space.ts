@@ -1,15 +1,12 @@
-import * as pixels from '@cartographer/pixels';
-import { MCBlockVariant } from '@cartographer/pixels/dist/defs';
 import { generateOptimizedStaircase } from './staircase';
+import * as pixels from '@cartographer/pixels';
 
-export type MCBlock = {
-  block_id: string;
-  height: number;
+export type MCBlockSpace = pixels.defs.MCBlockWithOffset[][][];
+
+const defaultNorthBorderBlock: pixels.defs.MCBlockWithOffset = {
+  id: 'minecraft:stone',
+  y_offset: 1
 };
-
-export type MCBlockSpace = MCBlock[][][];
-
-const defaultNorthBorderBlock: MCBlockVariant = { block_id: 'stone', height_variant: 1 };
 
 export const buildBlockSpace = (mcBlockGrid: pixels.defs.MCBlockGrid): MCBlockSpace => {
   const space: MCBlockSpace = [];
@@ -17,10 +14,17 @@ export const buildBlockSpace = (mcBlockGrid: pixels.defs.MCBlockGrid): MCBlockSp
   const height: number = mcBlockGrid.length;
 
   for (let x = 0; x < width; x++) {
-    const strip: MCBlockVariant[] = mcBlockGrid.map((a) => a[x]); // to redo
-    const staircase: number[] = generateOptimizedStaircase(strip, (s) => s.height_variant);
+    const strip = mcBlockGrid.map((a) => a[x]); // to redo
+    const staircase: number[] = generateOptimizedStaircase(strip, (s) => s.y_offset);
 
-    space[x] = [defaultNorthBorderBlock].concat(strip).map((v, y) => [{ block_id: v.block_id, height: staircase[y] }]);
+    space[x] = [defaultNorthBorderBlock].concat(strip).map((v, y) => {
+      return [
+        {
+          ...v,
+          y_offset: staircase[y]
+        }
+      ];
+    });
   }
 
   // apply water fixes

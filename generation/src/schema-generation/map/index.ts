@@ -4,8 +4,8 @@ const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   return block_space.reduce((height, columns) => {
     return columns.reduce((height, rows) => {
       return rows.reduce((height, pillar) => {
-        if (pillar.height + 1 > height) {
-          return pillar.height + 1;
+        if (pillar.y_offset + 1 > height) {
+          return pillar.y_offset + 1;
         }
         return height;
       }, height);
@@ -32,8 +32,10 @@ export const asNbtObject = (space: MCBlockSpace): object => {
   const getSid = (x: number, y: number, z: number): string => {
     const pillar = space[x][z];
 
-    for (let b of pillar) {
-      if (b.height === y) return b.block_id;
+    for (const b of pillar) {
+      if (b.y_offset === y) {
+        return b.id;
+      }
     }
 
     return 'air';

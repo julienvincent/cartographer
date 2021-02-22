@@ -105,8 +105,8 @@ export const PalletSelector: React.FC<Props> = (props) => {
     pixels.data.MC_BLOCK_COLORS.map((mapping) => {
       return {
         colors: mapping.colors.slice(0, 3),
-        block_ids: mapping.block_ids,
-        selected_block_id: mapping.block_ids[0],
+        block_ids: mapping.blocks.map((block) => block.id),
+        selected_block_id: mapping.blocks[0].id,
         enabled: true
       };
     })
