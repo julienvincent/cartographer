@@ -20,6 +20,7 @@ export default function Root() {
   const [image_data, setImageData] = React.useState<ImageData>();
   const [bounds, setBounds] = React.useState<defs.Bounds>();
   const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
+  const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette());
   const api = hooks.withAPIWorker();
 
   const generate = async () => {
@@ -29,7 +30,8 @@ export default function Root() {
 
     const schema_nbt = await api.current.generateLitematicaSchema(
       comlink.transfer(image_data, [image_data.data.buffer]),
-      scale
+      scale,
+      utils.normalizeColorPalette(palette)
     );
     utils.download(schema_nbt, 'map.litematic');
   };
@@ -63,7 +65,13 @@ export default function Root() {
         ) : null}
 
         {image_data && bounds ? (
-          <Components.ImagePreview bounds={bounds} style={{ marginLeft: 20 }} image_data={image_data} scale={scale} />
+          <Components.ImagePreview
+            palette={palette}
+            bounds={bounds}
+            style={{ marginLeft: 20 }}
+            image_data={image_data}
+            scale={scale}
+          />
         ) : null}
       </Container>
 
@@ -88,7 +96,7 @@ export default function Root() {
         generate
       </button>
 
-      <Components.PalletSelector />
+      <Components.PalletSelector palette={palette} onPaletteChange={setPalette} />
     </div>
   );
 }

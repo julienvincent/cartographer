@@ -1,3 +1,6 @@
+import * as defs from '../defs';
+import * as pixels from '@cartographer/pixels';
+
 export const extractImageDataFromFile = (file: File) => {
   const image = new Image();
 
@@ -31,4 +34,27 @@ export const download = (data: Uint8Array, file_name: string) => {
 
   a.click();
   a.remove();
+};
+
+export const createDefaultPalette = (): defs.ColorPalette => {
+  return pixels.data.MC_BLOCK_COLORS.map((mapping) => {
+    return {
+      colors: mapping.colors.slice(0, 3),
+      blocks: mapping.blocks,
+      selected_block_id: mapping.blocks[0].id,
+      enabled: mapping.blocks[0].id !== 'minecraft:water'
+    };
+  });
+};
+
+export const normalizeColorPalette = (palette: defs.ColorPalette) => {
+  return palette
+    .filter((item) => item.enabled)
+    .map((item) => {
+      const block = item.blocks.find((block) => block.id === item.selected_block_id);
+      return {
+        ...block!,
+        colors: item.colors
+      };
+    });
 };

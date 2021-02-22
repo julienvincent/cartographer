@@ -1,25 +1,26 @@
-import { MC_BLOCK_COLORS } from '../data';
 import * as nearest from 'nearest-color';
 import * as defs from '../defs';
 
-const flattened_colors = MC_BLOCK_COLORS.map((mapping) => {
-  return mapping.colors.slice(0, 3);
-})
-  .flat()
-  .reduce((acc: Record<string, defs.Pixel>, colors, i) => {
-    const [r, g, b] = colors;
-    acc[i] = {
-      r,
-      g,
-      b
-    };
+export const flattenColors = (palette: defs.BlockPalette) => {
+  return palette
+    .map((block) => {
+      return block.colors;
+    })
+    .flat()
+    .reduce((acc: Record<string, defs.Pixel>, colors, i) => {
+      const [r, g, b] = colors;
+      acc[i] = {
+        r,
+        g,
+        b
+      };
 
-    return acc;
-  }, {});
+      return acc;
+    }, {});
+};
 
-const findClosestMatchingColor = nearest.from(flattened_colors);
-
-export const convertPixelGridColorsForMC = (pixel_grid: defs.PixelGrid) => {
+export const convertPixelGridColorsForMC = (pixel_grid: defs.PixelGrid, palette: defs.BlockPalette) => {
+  const findClosestMatchingColor = nearest.from(flattenColors(palette));
   return pixel_grid.map((pixels) => {
     return pixels.map((pixel) => {
       const { rgb } = findClosestMatchingColor(pixel);
