@@ -8,6 +8,12 @@ const findColorIndex = (colors: defs.RGBColor[], pixel: defs.Pixel) => {
   });
 };
 
+/**
+ * Map each pixel in a PixelGrid to it's associated minecraft block id and variant.
+ *
+ * TODO: Fix MC_BLOCK_COLORS mapping to include the correct orientation of the
+ *  mapped block
+ */
 export const convertPixelGridToMCBlocks = (pixel_grid: defs.PixelGrid): defs.MCBlockGrid => {
   return pixel_grid.map((pixels) => {
     return pixels.map((pixel) => {

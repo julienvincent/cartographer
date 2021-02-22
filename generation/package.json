@@ -15,8 +15,8 @@
     "pako": "^2.0.3"
   },
   "devDependencies": {
-    "@types/pako": "^1.0.1",
-    "@types/lodash": "^4.14.168"
+    "@types/lodash": "^4.14.168",
+    "@types/pako": "^1.0.1"
   },
   "jest": {
     "preset": "ts-jest",
