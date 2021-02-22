@@ -40,7 +40,7 @@ export const createPaletteBlock = (block: pixels.defs.MCBlockDefinition): Palett
     }
   };
 
-  if (block.properties) {
+  if (Object.keys(block.properties || {}).length > 0) {
     palette_block.Properties = {
       type: 'compound',
       value: _.mapValues(block.properties, (value) => {
@@ -61,11 +61,15 @@ const comparePaletteBlocks = (a: PaletteBlock, b: PaletteBlock) => {
   }
 
   if (a.Properties) {
-    return Object.keys(a.Properties.value).reduce((matching, key) => {
+    const keys = Object.keys(a.Properties.value);
+    if (!b.Properties || Object.keys(b.Properties.value).length !== keys.length) {
+      return false;
+    }
+    return keys.reduce((matching, key) => {
       if (!matching) {
         return false;
       }
-      return a.Properties!.value[key].value === b.Properties?.value[key]?.value;
+      return a.Properties!.value[key].value === b.Properties!.value[key]?.value;
     }, true);
   } else {
     if (b.Properties) {
@@ -82,26 +86,27 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
   const width = block_space.length;
 
   const volume = length * width * height;
+  const AIR = createPaletteBlock({
+    id: 'minecraft:air'
+  });
 
-  const init = [
-    createPaletteBlock({
-      id: 'minecraft:air'
-    })
-  ];
-  const palette = block_space.reduce((palette, columns) => {
-    return columns.reduce((palette, rows) => {
-      return rows.reduce((palette, block) => {
-        const palette_block = createPaletteBlock(block);
-        const exists = palette.find((item) => {
-          return comparePaletteBlocks(palette_block, item);
-        });
-        if (!exists) {
-          palette.push(palette_block);
-        }
-        return palette;
+  const palette = block_space.reduce(
+    (palette, columns) => {
+      return columns.reduce((palette, rows) => {
+        return rows.reduce((palette, block) => {
+          const palette_block = createPaletteBlock(block);
+          const exists = palette.find((item) => {
+            return comparePaletteBlocks(palette_block, item);
+          });
+          if (!exists) {
+            palette.push(palette_block);
+          }
+          return palette;
+        }, palette);
       }, palette);
-    }, palette);
-  }, init);
+    },
+    [AIR]
+  );
 
   const bit_array = _.range(width).reduce((bit_array, x) => {
     return _.range(length).reduce((bit_array, z) => {
@@ -110,9 +115,9 @@ export const generateSchematicNBT = (block_space: MCBlockSpace) => {
         const block = row?.find((block) => block.y_offset === y);
         const palette_index = palette.findIndex((item) => {
           if (block) {
-            return comparePaletteBlocks(createPaletteBlock(block), item);
+            return comparePaletteBlocks(item, createPaletteBlock(block));
           }
-          return item.Name.value === `minecraft:air`;
+          return comparePaletteBlocks(item, AIR);
         });
 
         const block_coords = (y * length + z) * width + x;
