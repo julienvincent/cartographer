@@ -21,11 +21,11 @@ export const convertPixelGridToMCBlocks = (pixel_grid: defs.PixelGrid): defs.MCB
         return findColorIndex(mapping.colors, pixel) !== -1;
       });
 
-      const [block_id] = matching!.block_ids;
+      const [block] = matching!.blocks;
 
       return {
-        block_id: block_id,
-        height_variant: findColorIndex(matching!.colors, pixel)
+        ...block,
+        y_offset: findColorIndex(matching!.colors, pixel)
       };
     });
   });

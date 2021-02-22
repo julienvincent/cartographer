@@ -94,7 +94,16 @@ Object {
                   Object {
                     "Name": Object {
                       "type": "string",
-                      "value": "minecraft:oak_planks",
+                      "value": "minecraft:birch_log",
+                    },
+                    "Properties": Object {
+                      "type": "compound",
+                      "value": Object {
+                        "axis": Object {
+                          "type": "string",
+                          "value": "y",
+                        },
+                      },
                     },
                   },
                   Object {
@@ -106,7 +115,16 @@ Object {
                   Object {
                     "Name": Object {
                       "type": "string",
-                      "value": "minecraft:cobblestone",
+                      "value": "minecraft:birch_log",
+                    },
+                    "Properties": Object {
+                      "type": "compound",
+                      "value": Object {
+                        "axis": Object {
+                          "type": "string",
+                          "value": "x",
+                        },
+                      },
                     },
                   },
                 ],
@@ -117,11 +135,7 @@ Object {
               "value": Array [
                 Array [
                   1,
-                  10433,
-                ],
-                Array [
-                  0,
-                  0,
+                  8398017,
                 ],
               ],
             },

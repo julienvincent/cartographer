@@ -1,7 +1,4 @@
 import * as schematic_generation from '../src/schema-generation';
-import * as zlib from 'zlib';
-import * as fs from 'fs';
-import nbt from 'nbt';
 import 'jest';
 
 describe('schematic-generation', () => {
@@ -10,18 +7,21 @@ describe('schematic-generation', () => {
       [
         [
           {
-            block_id: 'minecraft:stone',
-            height: 0
+            id: 'minecraft:stone',
+            y_offset: 0
           },
           {
-            block_id: 'minecraft:oak_planks',
-            height: 1
+            id: 'minecraft:birch_log',
+            properties: {
+              axis: 'y'
+            },
+            y_offset: 1
           }
         ],
         [
           {
-            block_id: 'minecraft:white_wool',
-            height: 0
+            id: 'minecraft:white_wool',
+            y_offset: 0
           }
         ]
       ],
@@ -29,8 +29,18 @@ describe('schematic-generation', () => {
         [],
         [
           {
-            block_id: 'minecraft:cobblestone',
-            height: 0
+            id: 'minecraft:birch_log',
+            properties: {
+              axis: 'y'
+            },
+            y_offset: 0
+          },
+          {
+            id: 'minecraft:birch_log',
+            properties: {
+              axis: 'x'
+            },
+            y_offset: 1
           }
         ]
       ]
