@@ -4,8 +4,6 @@ import * as defs from '../defs';
 import * as React from 'react';
 import * as immer from 'immer';
 
-type Props = {};
-
 type MultiColorIconProps = {
   colors: pixels.defs.RGBColor[];
   style?: React.CSSProperties;
@@ -94,38 +92,33 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const PalletItem = styled.div`
+const PalletItem = styled.div<{ enabled: boolean }>`
   display: flex;
   flex-direction: row;
   margin: 2px;
+  opacity: ${(props) => (props.enabled ? '1' : '.4')};
 `;
 
-export const PalletSelector: React.FC<Props> = (props) => {
-  const [palette, setPalette] = React.useState<defs.ColorPalette>(
-    pixels.data.MC_BLOCK_COLORS.map((mapping) => {
-      return {
-        colors: mapping.colors.slice(0, 3),
-        block_ids: mapping.blocks.map((block) => block.id),
-        selected_block_id: mapping.blocks[0].id,
-        enabled: true
-      };
-    })
-  );
+type Props = {
+  palette: defs.ColorPalette;
+  onPaletteChange: (palette: defs.ColorPalette) => void;
+};
 
+export const PalletSelector: React.FC<Props> = (props) => {
   return (
     <Container>
-      {palette.map((mapping, i) => {
+      {props.palette.map((mapping, i) => {
         return (
-          <PalletItem key={i}>
+          <PalletItem key={i} enabled={mapping.enabled}>
             <MultiColorIcon colors={mapping.colors} />
             <BlockSelector.Component
-              block_ids={mapping.block_ids}
+              block_ids={mapping.blocks.map((block) => block.id)}
               selected={mapping.selected_block_id}
               onChange={(block_id) => {
-                const next_palette = immer.produce(palette, (draft) => {
+                const next_palette = immer.produce(props.palette, (draft) => {
                   draft[i].selected_block_id = block_id;
                 });
-                setPalette(next_palette);
+                props.onPaletteChange(next_palette);
               }}
             />
           </PalletItem>

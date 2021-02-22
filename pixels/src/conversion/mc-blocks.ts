@@ -1,4 +1,3 @@
-import { MC_BLOCK_COLORS } from '../data';
 import * as defs from '../defs';
 
 const findColorIndex = (colors: defs.RGBColor[], pixel: defs.Pixel) => {
@@ -10,22 +9,24 @@ const findColorIndex = (colors: defs.RGBColor[], pixel: defs.Pixel) => {
 
 /**
  * Map each pixel in a PixelGrid to it's associated minecraft block id and variant.
- *
- * TODO: Fix MC_BLOCK_COLORS mapping to include the correct orientation of the
- *  mapped block
  */
-export const convertPixelGridToMCBlocks = (pixel_grid: defs.PixelGrid): defs.MCBlockGrid => {
+export const convertPixelGridToMCBlocks = (
+  pixel_grid: defs.PixelGrid,
+  palette: defs.BlockPalette
+): defs.MCBlockGrid => {
   return pixel_grid.map((pixels) => {
     return pixels.map((pixel) => {
-      const matching = MC_BLOCK_COLORS.find((mapping) => {
-        return findColorIndex(mapping.colors, pixel) !== -1;
+      const block = palette.find((block) => {
+        return findColorIndex(block.colors, pixel) !== -1;
       });
 
-      const [block] = matching!.blocks;
+      if (!block) {
+        throw new Error('could not find matching block');
+      }
 
       return {
         ...block,
-        y_offset: findColorIndex(matching!.colors, pixel)
+        y_offset: findColorIndex(block.colors, pixel)
       };
     });
   });

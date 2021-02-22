@@ -18,3 +18,8 @@ export type MCBlockWithOffset = MCBlockDefinition & {
 };
 
 export type MCBlockGrid = MCBlockWithOffset[][];
+
+export type BlockPaletteItem = MCBlockDefinition & {
+  colors: RGBColor[];
+};
+export type BlockPalette = BlockPaletteItem[];

@@ -1,5 +1,8 @@
+import * as palette_selector from './pallete-selector';
 import styled from 'styled-components';
+import * as comlink from 'comlink';
 import * as hooks from '../hooks';
+import * as utils from '../utils';
 import * as defs from '../defs';
 import * as React from 'react';
 
@@ -7,6 +10,9 @@ type Props = {
   image_data: ImageData;
   scale: defs.MAP_SCALE;
   bounds: defs.Bounds;
+
+  palette: defs.ColorPalette;
+
   className?: string;
   style?: React.CSSProperties;
 };
@@ -26,16 +32,17 @@ export const ImagePreview: React.FC<Props> = (props) => {
       }
 
       const image_data = await api.current.generatePreview({
-        image_data: props.image_data,
+        image_data: comlink.transfer(props.image_data, [props.image_data.data.buffer]),
         bounds: props.bounds,
-        map_scale: props.scale
+        map_scale: props.scale,
+        palette: utils.normalizeColorPalette(props.palette)
       });
 
       canvas.current.setAttribute('width', image_data.width.toString());
       canvas.current.setAttribute('height', image_data.height.toString());
       canvas.current.getContext('2d')!.putImageData(image_data, 0, 0);
     })();
-  }, [props.image_data, canvas.current, api.current, props.bounds]);
+  }, [props.image_data, canvas.current, api.current, props.bounds, props.palette]);
 
   return (
     <Container className={props.className} style={props.style}>
