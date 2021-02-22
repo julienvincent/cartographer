@@ -22,12 +22,11 @@ export const SourceImage: React.FC<Props> = (props) => {
   const canvas = React.useRef<HTMLCanvasElement>(null);
   const api = hooks.withAPIWorker();
 
-  // this is very wrong - need to scale width and height independently
   const scale_factor = props.image_data.width / 512;
   const min = Math.ceil(props.scale / scale_factor);
 
   const scaleAndNotify = (bounds: defs.Bounds) => {
-    const scaled_bounds = bounds.map((item) => Math.ceil(item * scale_factor)) as defs.Bounds;
+    const scaled_bounds = bounds.map((item) => Math.floor(item * scale_factor)) as defs.Bounds;
     props.onBoundsChange(scaled_bounds, bounds);
   };
 
@@ -46,11 +45,10 @@ export const SourceImage: React.FC<Props> = (props) => {
         return;
       }
 
-      const scale = props.image_data.width / props.image_data.height;
       const width = 512;
-      const height = Math.floor(width / scale);
+      const height = Math.floor(props.image_data.height / scale_factor);
 
-      const scale_canvas = new OffscreenCanvas(props.image_data.height, props.image_data.height);
+      const scale_canvas = new OffscreenCanvas(props.image_data.width, props.image_data.height);
       const scale_context = scale_canvas.getContext('2d')!;
 
       scale_context.putImageData(props.image_data, 0, 0);
