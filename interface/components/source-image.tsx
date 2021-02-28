@@ -4,10 +4,23 @@ import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
 import * as _ from 'lodash';
+import { Card } from './card';
 
-const Container = styled.div`
-  position: relative;
+const Container = styled(Card)`
+  background-image: linear-gradient(to bottom right, rgb(114, 133, 222), rgb(52, 78, 215));
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const CanvasContainer = styled.div`
   display: flex;
+  flex-grow: 1;
+  position: relative;
+`;
+
+const Canvas = styled.canvas`
+  border-radius: 10px;
 `;
 
 type Props = {
@@ -22,7 +35,7 @@ export const SourceImage: React.FC<Props> = (props) => {
   const canvas = React.useRef<HTMLCanvasElement>(null);
   const api = hooks.withAPIWorker();
 
-  const scale_factor = props.image_data.width / 512;
+  const scale_factor = props.image_data.width / 640;
   const min = Math.ceil(props.scale / scale_factor);
 
   const scaleAndNotify = (bounds: defs.Bounds) => {
@@ -31,7 +44,8 @@ export const SourceImage: React.FC<Props> = (props) => {
   };
 
   const scaleAndNotifyDebounced = React.useCallback(_.debounce(scaleAndNotify, 100, { maxWait: 200 }), [
-    props.image_data
+    props.image_data,
+    props.scale
   ]);
 
   const updateBounds = (bounds: defs.Bounds) => {
@@ -45,7 +59,7 @@ export const SourceImage: React.FC<Props> = (props) => {
         return;
       }
 
-      const width = 512;
+      const width = 640;
       const height = Math.floor(props.image_data.height / scale_factor);
 
       const scale_canvas = new OffscreenCanvas(props.image_data.width, props.image_data.height);
@@ -80,16 +94,18 @@ export const SourceImage: React.FC<Props> = (props) => {
 
   return (
     <Container>
-      <canvas ref={canvas} style={{ width, height }} />
+      <CanvasContainer>
+        <Canvas ref={canvas} style={{ width, height }} />
 
-      {bounds ? (
-        <overlay.SelectionOverlay
-          bounds={bounds}
-          min={min}
-          onBoundsChange={updateBounds}
-          canvas_dimensions={canvas_dimensions}
-        />
-      ) : null}
+        {bounds ? (
+          <overlay.SelectionOverlay
+            bounds={bounds}
+            min={min}
+            onBoundsChange={updateBounds}
+            canvas_dimensions={canvas_dimensions}
+          />
+        ) : null}
+      </CanvasContainer>
     </Container>
   );
 };

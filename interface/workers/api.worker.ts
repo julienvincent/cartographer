@@ -25,8 +25,7 @@ const generatePreview = (params: GeneratePreviewParams) => {
   const color_converted = pixels.conversion.convertPixelGridColorsForMC(scaled_pixel_grid, params.palette);
   const scaled_up_pixel_grid = pixels.conversion.scaleUpPixelGrid(color_converted, preview_scale, preview_scale);
 
-  const data = pixels.conversion.convertPixelGridToImageData(scaled_up_pixel_grid);
-  return comlink.transfer(data, [data.data.buffer]);
+  return pixels.conversion.convertPixelGridToImageData(scaled_up_pixel_grid);
 };
 
 const generateBlockSpaceFromImageData = (
@@ -49,8 +48,7 @@ export const generateLightmaticaSchema = async (
 ) => {
   const block_space = generateBlockSpaceFromImageData(image_data, scale, palette);
   const schema = generation.schema_generation.litematica.generateSchematicNBT(block_space);
-  const data = await generation.serialization.serializeNBTData(schema);
-  return comlink.transfer(data, [data.buffer]);
+  return await generation.serialization.serializeNBTData(schema);
 };
 
 export const generateMapNBT = async (
@@ -60,8 +58,7 @@ export const generateMapNBT = async (
 ) => {
   const block_space = generateBlockSpaceFromImageData(image_data, scale, palette);
   const map = generation.schema_generation.map.asNbtObject(block_space);
-  const data = await generation.serialization.serializeNBTData(map);
-  return comlink.transfer(data, [data.buffer]);
+  return await generation.serialization.serializeNBTData(map);
 };
 
 const API = {

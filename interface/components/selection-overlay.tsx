@@ -23,18 +23,18 @@ const SVGContainer = styled.svg`
   position: absolute;
   width: 100%;
   height: 100%;
-  width: 512px;
 `;
 
 const SelectionBox = styled.rect`
-  stroke-width: 1px;
-  stroke: ${(props) => props.theme.light_blue};
-  fill: rgba(0, 0, 0, 0);
+  stroke-width: 2px;
+  stroke: ${(props) => props.theme.red};
+  fill: rgba(255, 255, 255, 0.4);
   cursor: pointer;
 `;
 
 const ResizeHandle = styled.circle`
-  fill: ${(props) => props.theme.light_blue};
+  fill: white;
+  transform: translate(-15px, -15px);
   cursor: pointer;
 `;
 
@@ -124,6 +124,7 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
       <SelectionBox
         x={x}
         y={y}
+        rx={10}
         width={d}
         height={d}
         onMouseDown={(e) => {
