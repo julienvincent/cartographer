@@ -1,4 +1,3 @@
-import { animated } from 'react-spring';
 import styled from 'styled-components';
 import * as utils from '../utils';
 import * as React from 'react';

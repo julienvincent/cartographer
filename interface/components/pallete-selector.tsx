@@ -56,7 +56,7 @@ namespace BlockSelector {
     flex-grow: 1;
     height: 2px;
     margin-top: 2px;
-    background: ${(props) => props.theme.light_blue};
+    background: ${(props) => props.theme.blue};
   `;
 
   type BlockSelectorProps = {
