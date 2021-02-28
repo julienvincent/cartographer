@@ -14,6 +14,7 @@ const Container = styled.div<{ disabled?: boolean }>`
   padding: 5px 10px;
   font-weight: bold;
   cursor: pointer;
+  user-select: none;
   color: ${(props) => props.theme.light_grey};
   transition: all 0.2s ease;
 

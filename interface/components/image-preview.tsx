@@ -63,7 +63,7 @@ export const ImagePreview: React.FC<Props> = (props) => {
       canvas.current!.setAttribute('height', image_data.height.toString());
       canvas.current!.getContext('2d')!.putImageData(image_data, 0, 0);
     });
-  }, [props.image_data, canvas.current, api.current, props.bounds, props.palette]);
+  }, [props.image_data, canvas.current, api.current, props.bounds, props.palette, props.scale]);
 
   return (
     <Container

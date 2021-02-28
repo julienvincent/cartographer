@@ -10,11 +10,12 @@ const Container = styled.div`
 type Props = {
   style?: React.CSSProperties;
   className?: string;
+  onClick?: (e: React.MouseEvent) => void;
 };
 
 export const Card: React.FC<Props> = (props) => {
   return (
-    <Container className={props.className} style={props.style}>
+    <Container className={props.className} style={props.style} onClick={props.onClick}>
       {props.children}
     </Container>
   );

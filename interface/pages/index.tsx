@@ -86,6 +86,14 @@ export default function Root() {
 
       <Container>
         <Header>
+          <Components.Selector
+            style={{ marginRight: 10 }}
+            label="Map Scale"
+            selected={scale}
+            options={scale_options}
+            onSelect={(option) => setMapScale(option as any)}
+          />
+
           <Components.Button onClick={generate} disabled={!image_data} loading={generating}>
             Generate
           </Components.Button>
