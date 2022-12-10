@@ -15,7 +15,7 @@ const generatePreview = (params: GeneratePreviewParams) => {
   const [x, y, d] = params.bounds;
 
   const canvas = new OffscreenCanvas(params.image_data.width, params.image_data.height);
-  const context = canvas.getContext('2d')!;
+  const context = canvas.getContext('2d') as OffscreenCanvasRenderingContext2D;
   context.putImageData(params.image_data, 0, 0);
 
   const image_data = context.getImageData(x, y, d, d);

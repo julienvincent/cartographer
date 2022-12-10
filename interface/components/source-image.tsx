@@ -63,7 +63,7 @@ export const SourceImage: React.FC<Props> = (props) => {
       const height = Math.floor(props.image_data.height / scale_factor);
 
       const scale_canvas = new OffscreenCanvas(props.image_data.width, props.image_data.height);
-      const scale_context = scale_canvas.getContext('2d')!;
+      const scale_context = scale_canvas.getContext('2d') as OffscreenCanvasRenderingContext2D;
 
       scale_context.putImageData(props.image_data, 0, 0);
 

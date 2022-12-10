@@ -8,7 +8,7 @@ export const withAPIWorker = () => {
   const ref = React.useRef<WorkerAPI>();
 
   React.useEffect(() => {
-    const worker = new Worker('../workers/api.worker', {
+    const worker = new Worker(new URL('../workers/api.worker', import.meta.url), {
       type: 'module'
     });
     ref.current = comlink.wrap(worker);

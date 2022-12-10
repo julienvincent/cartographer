@@ -52,6 +52,7 @@ const Loader = styled.div`
 type Props = {
   style?: React.CSSProperties;
   className?: string;
+  children: React.ReactNode;
 
   onClick?: (e: React.MouseEvent) => void;
 

@@ -11,6 +11,7 @@ type Props = {
   style?: React.CSSProperties;
   className?: string;
   onClick?: (e: React.MouseEvent) => void;
+  children: React.ReactNode;
 };
 
 export const Card: React.FC<Props> = (props) => {

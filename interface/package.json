@@ -1,36 +1,37 @@
 {
-  "name": "@cartographer/interface",
-  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "watch": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "@cartographer/generation": "0.0.1",
-    "@cartographer/pixels": "0.0.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "async": "^3.2.0",
-    "comlink": "^4.3.0",
-    "immer": "^8.0.1",
-    "next": "10.0.5",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-select": "^4.1.0",
-    "react-spring": "^8.0.27",
-    "styled-components": "^5.2.1",
-    "uuid": "^8.3.2"
+    "@cartographer/generation": "workspace:",
+    "@cartographer/pixels": "workspace:",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "async": "^3.2.4",
+    "comlink": "^4.3.1",
+    "immer": "^9.0.16",
+    "lodash": "^4.17.21",
+    "next": "13.0.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-select": "^5.7.0",
+    "react-spring": "^9.5.5",
+    "styled-components": "^5.3.6",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/async": "^3.2.5",
-    "@types/react": "^17.0.2",
-    "@types/react-select": "^4.0.13",
-    "@types/styled-components": "^5.1.7",
-    "@types/uuid": "^8.3.0",
-    "babel-plugin-styled-components": "^1.12.0",
-    "worker-plugin": "^4.0.3"
+    "@babel/core": "^7.20.5",
+    "@types/async": "^3.2.16",
+    "@types/lodash": "^4.14.191",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "18.0.9",
+    "@types/react-select": "^5.0.0",
+    "@types/styled-components": "^5.1.26",
+    "@types/uuid": "^9.0.0",
+    "babel-plugin-styled-components": "^2.0.7"
   }
 }

@@ -9,7 +9,7 @@ export const extractImageDataFromFile = (file: File) => {
       const width = image.naturalWidth;
       const height = image.naturalHeight;
       const canvas = new OffscreenCanvas(width, height);
-      const context = canvas.getContext('2d')!;
+      const context = canvas.getContext('2d') as OffscreenCanvasRenderingContext2D;
       context.drawImage(image, 0, 0, width, height);
       resolve(context.getImageData(0, 0, width, height));
     };
