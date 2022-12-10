@@ -27,7 +27,7 @@ const SVGContainer = styled.svg`
 
 const SelectionBox = styled.rect`
   stroke-width: 2px;
-  stroke: ${(props) => props.theme.red};
+  stroke: ${(props) => props.theme['dark-red']};
   fill: rgba(255, 255, 255, 0.4);
   cursor: pointer;
 `;

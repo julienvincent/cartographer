@@ -15,7 +15,7 @@ const Container = styled.div<{ disabled?: boolean }>`
   font-weight: bold;
   cursor: pointer;
   user-select: none;
-  color: ${(props) => props.theme.light_grey};
+  color: ${(props) => props.theme['light-gray']};
   transition: all 0.2s ease;
 
   :hover {
@@ -42,7 +42,7 @@ const Loader = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${(props) => props.theme.light_grey};
+  background: ${(props) => props.theme.bg0};
   box-shadow: 0 0 12px 1px rgba(135, 135, 135, 1);
   margin-left: 8px;
 

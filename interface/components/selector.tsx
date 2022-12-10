@@ -14,7 +14,7 @@ const Container = styled.div<{ disabled?: boolean }>`
 `;
 
 const Icon = styled(FontAwesomeIcon)`
-  color: ${(props) => props.theme.light_grey};
+  color: ${(props) => props.theme.bg0};
   margin-left: 8px;
   font-size: 14px;
 `;

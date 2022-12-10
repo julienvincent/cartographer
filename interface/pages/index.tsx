@@ -22,7 +22,7 @@ const Container = styled(Components.Card)`
   flex-grow: 1;
   margin: 30px;
   padding: 20px;
-  background: ${(props) => props.theme.light_grey};
+  background: ${(props) => props.theme.bg0};
 `;
 
 const Header = styled.div`

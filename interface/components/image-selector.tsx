@@ -11,7 +11,7 @@ const Container = styled(Card)`
 `;
 
 const Text = styled.p`
-  color: ${(props) => props.theme.light_grey};
+  color: ${(props) => props.theme.bg0};
   font-weight: bold;
 `;
 
@@ -22,7 +22,7 @@ const SelectButton = styled.div`
   box-shadow: 0 5px 20px 1px rgb(19, 42, 165, 0.6);
   padding: 5px;
   cursor: pointer;
-  color: ${(props) => props.theme.light_grey};
+  color: ${(props) => props.theme['light-gray']};
   transition: all 0.1s ease;
 
   :hover {
