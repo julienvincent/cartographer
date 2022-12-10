@@ -1,16 +1,20 @@
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import * as theme from '../theme/theme';
 import type * as next from 'next/app';
-import { createGlobalStyle, ThemeProvider, DefaultTheme } from 'styled-components';
+
+import { config, dom } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
+${dom.css()}
+
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
       'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #282828;
-    color: #ebdbb2;
   }
   
   p {
@@ -24,19 +28,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const theme: DefaultTheme = {
-  blue: '#458588',
-  light_blue: '#83a598',
-
-  background: '#282828',
-  foreground: '#ebdbb2'
-};
-
 export default function MyApp(props: next.AppProps) {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.THEME}>
         <props.Component {...props.pageProps} />
       </ThemeProvider>
     </>
