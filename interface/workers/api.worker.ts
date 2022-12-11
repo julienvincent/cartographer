@@ -61,10 +61,20 @@ export const generateMapNBT = async (
   return await generation.serialization.serializeNBTData(map);
 };
 
+export const generateMapJSON = async (
+  image_data: ImageData,
+  scale: defs.MAP_SCALE,
+  palette: pixels.defs.BlockPalette
+) => {
+  const block_space = generateBlockSpaceFromImageData(image_data, scale, palette);
+  return Buffer.from(JSON.stringify(block_space));
+};
+
 const API = {
   generatePreview: generatePreview,
   generateLitematicaSchema: generateLightmaticaSchema,
-  generateMapNBT: generateMapNBT
+  generateMapNBT: generateMapNBT,
+  generateMapJSON: generateMapJSON
 };
 
 export type API = typeof API;

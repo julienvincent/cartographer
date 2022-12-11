@@ -81,18 +81,33 @@ export default function Root() {
 
   const [generating, isGenerating] = React.useState(false);
 
-  const generate = async () => {
+  const generate = async (type: 'litematic' | 'nbt' | 'json') => {
     if (!image_data || !api.current) {
       return;
     }
 
     isGenerating(true);
-    const schema_nbt = await api.current.generateLitematicaSchema(
-      image_data,
-      scale,
-      utils.normalizeColorPalette(palette)
-    );
-    utils.download(schema_nbt, 'map.litematic');
+    switch (type) {
+      case 'litematic': {
+        const schema_nbt = await api.current.generateLitematicaSchema(
+          image_data,
+          scale,
+          utils.normalizeColorPalette(palette)
+        );
+        utils.download(schema_nbt, 'map.litematic');
+        break;
+      }
+      case 'nbt': {
+        const nbt = await api.current.generateMapNBT(image_data, scale, utils.normalizeColorPalette(palette));
+        utils.download(nbt, 'map.nbt');
+        break;
+      }
+      case 'json': {
+        const json = await api.current.generateMapJSON(image_data, scale, utils.normalizeColorPalette(palette));
+        utils.download(json, 'map.json');
+        break;
+      }
+    }
     isGenerating(false);
   };
 
@@ -169,11 +184,15 @@ export default function Root() {
                   actions={[
                     {
                       name: 'Generate Litematic',
-                      fn: generate
+                      fn: () => generate('litematic')
+                    },
+                    {
+                      name: 'Generate NBT',
+                      fn: () => generate('nbt')
                     },
                     {
                       name: 'Generate JSON',
-                      fn: generate
+                      fn: () => generate('json')
                     }
                   ]}
                 />
