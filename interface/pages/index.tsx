@@ -69,7 +69,7 @@ const PreviewContainer = styled.div`
 const Icon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme['light-purple']};
   border: 1px dashed ${(props) => props.theme['dark-purple']};
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
 `;
 

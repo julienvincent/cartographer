@@ -1,4 +1,5 @@
 import { MCBlockSpace } from '../../block-generation';
+import * as _ from 'lodash';
 
 const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   return block_space.reduce((height, columns) => {
@@ -18,9 +19,9 @@ export const asNbtObject = (space: MCBlockSpace): object => {
   const length = space[0].length;
   const height = getBlockSpaceHeight(space);
 
-  const palette: string[] = ['air'];
+  const palette: string[] = ['minecraft:air'];
 
-  const getPaletteId = (sid: string): number => {
+  const addToPalette = (sid: string): number => {
     let id: number = palette.indexOf(sid);
     if (id === -1) {
       id = palette.length;
@@ -38,34 +39,29 @@ export const asNbtObject = (space: MCBlockSpace): object => {
       }
     }
 
-    return 'air';
+    return 'minecraft:air';
   };
 
-  const blocks: object[] = (() => {
-    const arr: object[] = [];
-
-    for (let y = 0; y < width; y++) {
-      for (let z = 0; z < length; z++) {
-        for (let x = 0; x < width; x++) {
-          arr.push({
-            pos: {
-              type: 'list',
-              value: {
-                type: 'int',
-                value: [x, y, z]
-              }
-            },
-            state: {
+  const blocks = _.range(width).reduce((blocks, x) => {
+    return _.range(length).reduce((blocks, z) => {
+      return _.range(height).reduce((blocks, y) => {
+        blocks.push({
+          pos: {
+            type: 'list',
+            value: {
               type: 'int',
-              value: getPaletteId(getSid(x, y, z))
+              value: [x, y, z]
             }
-          });
-        }
-      }
-    }
-
-    return arr;
-  })();
+          },
+          state: {
+            type: 'int',
+            value: addToPalette(getSid(x, y, z))
+          }
+        });
+        return blocks;
+      }, blocks);
+    }, blocks);
+  }, [] as object[]);
 
   return {
     name: '',
@@ -99,7 +95,7 @@ export const asNbtObject = (space: MCBlockSpace): object => {
             return {
               Name: {
                 type: 'string',
-                value: 'minecraft:' + s
+                value: s
               }
             };
           })
