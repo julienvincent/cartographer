@@ -1,32 +1,29 @@
 import styled from 'styled-components';
 import * as utils from '../utils';
 import * as React from 'react';
-import { Card } from './card';
 
-const Container = styled(Card)`
-  background-image: linear-gradient(to bottom right, rgb(100, 118, 214), rgb(35, 61, 203));
+const Container = styled.div`
+  display: flex;
+  border: 2px dashed ${(props) => props.theme['dark-purple']};
   align-items: center;
   justify-content: center;
   padding: 20px;
 `;
 
 const Text = styled.p`
-  color: ${(props) => props.theme.bg0};
+  color: ${(props) => props.theme.fg2};
   font-weight: bold;
 `;
 
 const SelectButton = styled.div`
-  background-image: linear-gradient(to bottom right, rgb(135, 149, 233), rgba(71, 94, 218, 1));
   display: flex;
-  border-radius: 5px;
-  box-shadow: 0 5px 20px 1px rgb(19, 42, 165, 0.6);
   padding: 5px;
   cursor: pointer;
-  color: ${(props) => props.theme['light-gray']};
+  color: ${(props) => props.theme['light-yellow']};
+  background-color: ${(props) => props.theme.bg4};
   transition: all 0.1s ease;
 
   :hover {
-    box-shadow: 0 5px 30px 2px rgb(19, 42, 165, 0.6);
     opacity: 0.8;
   }
 `;
@@ -62,3 +59,5 @@ export const ImageSelector: React.FC<Props> = (props) => {
     </Container>
   );
 };
+
+export default ImageSelector;

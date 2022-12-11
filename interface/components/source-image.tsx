@@ -4,19 +4,20 @@ import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Card } from './card';
 
-const Container = styled(Card)`
-  background-image: linear-gradient(to bottom right, rgb(114, 133, 222), rgb(52, 78, 215));
+const Container = styled.div`
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
+  border: 2px dashed ${(props) => props.theme.bg4};
 `;
 
 const CanvasContainer = styled.div`
   display: flex;
   flex-grow: 1;
   position: relative;
+  border: 1px solid ${(props) => props.theme.bg2};
 `;
 
 const Canvas = styled.canvas`
@@ -109,3 +110,5 @@ export const SourceImage: React.FC<Props> = (props) => {
     </Container>
   );
 };
+
+export default SourceImage;

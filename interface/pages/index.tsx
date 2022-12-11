@@ -1,3 +1,6 @@
+import ImageSelector from '../components/image-selector';
+import SourceImage from '../components/source-image';
+import BlockList from '../components/block-list';
 import * as Components from '../components';
 import styled from 'styled-components';
 import * as comlink from 'comlink';
@@ -10,34 +13,50 @@ import Head from 'next/head';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as icons from '@fortawesome/free-solid-svg-icons';
 
-const Body = styled.div`
+const Container = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(135, 135, 135, 0.3), rgba(135, 135, 135, 0.5));
-`;
-
-const Container = styled(Components.Card)`
-  flex-direction: column;
-  flex-grow: 1;
-  margin: 30px;
-  padding: 20px;
   background: ${(props) => props.theme.bg0};
 `;
 
-const Header = styled.div`
+const Header = styled.div<{ border_left?: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 2px dashed ${(props) => props.theme['dark-yellow']};
+  border-left: ${(props) => (props.border_left ? `2px dashed ${props.theme['dark-yellow']}` : 'none')};
+  margin-bottom: 5px;
+`;
+
+const Title = styled.p`
+  color: ${(props) => props.theme['light-yellow']};
 `;
 
 const Content = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   flex-grow: 1;
+  overflow: hidden;
+`;
+
+const Workspace = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-grow: 1;
+`;
+
+const Border = styled.div`
+  flex-direction: column;
+  border-left: 2px dashed ${(props) => props.theme['dark-orange']};
+  opacity: 0.5;
+  height: 100%;
 `;
 
 const Icon = styled(FontAwesomeIcon)`
@@ -77,16 +96,16 @@ export default function Root() {
   });
 
   return (
-    <Body>
+    <Container>
       <Head>
         <title>Cartographer</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono" />
       </Head>
 
-      <Container>
-        <Header>
-          <Components.Selector
+      <Header>
+        <Title>Cartographer</Title>
+        {/* <Components.Selector
             style={{ marginRight: 10 }}
             label="Map Scale"
             selected={scale}
@@ -96,12 +115,13 @@ export default function Root() {
 
           <Components.Button onClick={generate} disabled={!image_data} loading={generating}>
             Generate
-          </Components.Button>
-        </Header>
+          </Components.Button> */}
+      </Header>
 
-        <Content>
+      <Content>
+        <Workspace>
           {image_data ? (
-            <Components.SourceImage
+            <SourceImage
               image_data={image_data}
               scale={scale}
               onBoundsChange={async (bounds) => {
@@ -109,7 +129,7 @@ export default function Root() {
               }}
             />
           ) : (
-            <Components.ImageSelector
+            <ImageSelector
               onFileSelected={async (image_data) => {
                 setImageData(image_data);
               }}
@@ -118,35 +138,35 @@ export default function Root() {
 
           {image_data && bounds ? (
             <>
-              <Icon icon={icons.faSync} style={{ width: 30, height: 30 }} />
+              <Border />
               <Components.ImagePreview palette={palette} bounds={bounds} image_data={image_data} scale={scale} />
             </>
           ) : null}
+        </Workspace>
 
-          {/*<Select*/}
-          {/*  options={scale_options.map((scale) => {*/}
-          {/*    return {*/}
-          {/*      value: scale as defs.MAP_SCALE,*/}
-          {/*      label: scale as defs.MAP_SCALE*/}
-          {/*    };*/}
-          {/*  })}*/}
-          {/*  value={{*/}
-          {/*    value: scale,*/}
-          {/*    label: scale*/}
-          {/*  }}*/}
-          {/*  onChange={(selection) => {*/}
-          {/*    // @ts-ignore*/}
-          {/*    setMapScale(selection.value);*/}
-          {/*  }}*/}
-          {/*/>*/}
+        {/*<Select*/}
+        {/*  options={scale_options.map((scale) => {*/}
+        {/*    return {*/}
+        {/*      value: scale as defs.MAP_SCALE,*/}
+        {/*      label: scale as defs.MAP_SCALE*/}
+        {/*    };*/}
+        {/*  })}*/}
+        {/*  value={{*/}
+        {/*    value: scale,*/}
+        {/*    label: scale*/}
+        {/*  }}*/}
+        {/*  onChange={(selection) => {*/}
+        {/*    // @ts-ignore*/}
+        {/*    setMapScale(selection.value);*/}
+        {/*  }}*/}
+        {/*/>*/}
+        {/*<button disabled={!image_data} onClick={generate}>*/}
+        {/*  generate*/}
+        {/*</button>*/}
+        {/*<Components.PalletSelector palette={palette} onPaletteChange={setPalette} />*/}
 
-          {/*<button disabled={!image_data} onClick={generate}>*/}
-          {/*  generate*/}
-          {/*</button>*/}
-
-          {/*<Components.PalletSelector palette={palette} onPaletteChange={setPalette} />*/}
-        </Content>
-      </Container>
-    </Body>
+        <BlockList palette={palette} onChange={setPalette} />
+      </Content>
+    </Container>
   );
 }

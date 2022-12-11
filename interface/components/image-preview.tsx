@@ -1,13 +1,9 @@
-import * as palette_selector from './pallete-selector';
-import * as api_worker from '../workers/api.worker';
 import styled from 'styled-components';
-import * as comlink from 'comlink';
 import * as hooks from '../hooks';
 import * as utils from '../utils';
 import * as defs from '../defs';
 import * as React from 'react';
 import * as async from 'async';
-import { Card } from './card';
 
 type Props = {
   image_data: ImageData;
@@ -20,15 +16,16 @@ type Props = {
   style?: React.CSSProperties;
 };
 
-const Container = styled(Card)`
-  background-image: linear-gradient(to bottom right, rgb(114, 133, 222), rgb(128, 210, 171));
+const Container = styled.div`
+  display: flex;
+  padding: 10px;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  border: 2px dashed ${(props) => props.theme['dark-green']};
 `;
 
 const Canvas = styled.canvas`
-  border-radius: 10px;
+  border: 1px solid ${(props) => props.theme.bg2};
 `;
 
 const createPreviewQueue = () => {

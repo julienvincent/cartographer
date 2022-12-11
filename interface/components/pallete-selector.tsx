@@ -7,9 +7,10 @@ import * as immer from 'immer';
 type MultiColorIconProps = {
   colors: pixels.defs.RGBColor[];
   style?: React.CSSProperties;
+  enabled: boolean;
 };
 
-const MultiColorContainer = styled.div`
+const MultiColorContainer = styled.div<{ enabled: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -17,6 +18,8 @@ const MultiColorContainer = styled.div`
   justify-items: stretch;
   width: 30px;
   height: 30px;
+  flex-shrink: 0;
+  opacity: ${(props) => (props.enabled ? '1' : '.4')};
 `;
 
 const MultiColorSlice = styled.div<{ c: string }>`
@@ -27,7 +30,7 @@ const MultiColorSlice = styled.div<{ c: string }>`
 
 export const MultiColorIcon: React.FC<MultiColorIconProps> = (props) => {
   return (
-    <MultiColorContainer style={props.style}>
+    <MultiColorContainer style={props.style} enabled={props.enabled}>
       {props.colors.map(([r, g, b], i) => {
         return <MultiColorSlice key={i} c={`rgb(${r}, ${g}, ${b})`} />;
       })}
@@ -35,11 +38,36 @@ export const MultiColorIcon: React.FC<MultiColorIconProps> = (props) => {
   );
 };
 
+const EnabledSelectorContainer = styled.div<{ enabled: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: auto;
+  cursor: pointer;
+  color: ${(props) => (!props.enabled ? props.theme['dark-green'] : props.theme['dark-red'])};
+  user-select: none;
+`;
+
+type EnabledSelectorProps = {
+  enabled: boolean;
+  onChange: (enabled: boolean) => void;
+};
+export const EnabledSelector: React.FC<EnabledSelectorProps> = (props) => {
+  return (
+    <EnabledSelectorContainer enabled={props.enabled} onClick={() => props.onChange(!props.enabled)}>
+      <p style={{ fontWeight: 'bold' }}>[{props.enabled ? '-' : '+'}]</p>
+    </EnabledSelectorContainer>
+  );
+};
+
 namespace BlockSelector {
-  const Container = styled.div`
+  const Container = styled.div<{ enabled: boolean }>`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
+    opacity: ${(props) => (props.enabled ? '1' : '.4')};
   `;
 
   const BlockContainer = styled.div`
@@ -49,36 +77,33 @@ namespace BlockSelector {
     cursor: pointer;
   `;
 
-  const Text = styled.p``;
-
-  const SelectionLine = styled.div`
-    display: flex;
-    flex-grow: 1;
-    height: 2px;
-    margin-top: 2px;
-    background: ${(props) => props.theme['dark-blue']};
+  const Text = styled.p<{ selected: boolean }>`
+    color: ${(props) => (props.selected ? props.theme['light-green'] : props.theme['light-gray'])};
+    font-weight: ${(props) => (props.selected ? 'bold' : 'medium')};
+    text-decoration: ${(props) => (props.selected ? 'underline dashed' : '')};
   `;
 
   type BlockSelectorProps = {
     block_ids: string[];
     selected: string;
     onChange: (block_id: string) => void;
+    enabled: boolean;
   };
   export const Component: React.FC<BlockSelectorProps> = (props) => {
     return (
-      <Container>
+      <Container enabled={props.enabled}>
         {props.block_ids.map((block_id) => {
           const is_selected = block_id === props.selected;
           return (
             <BlockContainer key={block_id}>
               <Text
+                selected={is_selected}
                 onClick={() => {
                   props.onChange(block_id);
                 }}
               >
-                {block_id}
+                {block_id.replace('minecraft:', '')}
               </Text>
-              {is_selected ? <SelectionLine /> : null}
             </BlockContainer>
           );
         })}
@@ -90,18 +115,20 @@ namespace BlockSelector {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  overflow-y: scroll;
 `;
 
-const PalletItem = styled.div<{ enabled: boolean }>`
+const PalletItem = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 2px;
-  opacity: ${(props) => (props.enabled ? '1' : '.4')};
+  padding: 5px;
+  border-bottom: 1px dashed ${(props) => props.theme['dark-gray']};
 `;
 
 type Props = {
   palette: defs.ColorPalette;
-  onPaletteChange: (palette: defs.ColorPalette) => void;
+  onChange: (palette: defs.ColorPalette) => void;
 };
 
 export const PalletSelector: React.FC<Props> = (props) => {
@@ -109,16 +136,27 @@ export const PalletSelector: React.FC<Props> = (props) => {
     <Container>
       {props.palette.map((mapping, i) => {
         return (
-          <PalletItem key={i} enabled={mapping.enabled}>
-            <MultiColorIcon colors={mapping.colors} />
+          <PalletItem key={i}>
+            <MultiColorIcon colors={mapping.colors} enabled={mapping.enabled} />
             <BlockSelector.Component
+              enabled={mapping.enabled}
               block_ids={mapping.blocks.map((block) => block.id)}
               selected={mapping.selected_block_id}
               onChange={(block_id) => {
                 const next_palette = immer.produce(props.palette, (draft) => {
                   draft[i].selected_block_id = block_id;
                 });
-                props.onPaletteChange(next_palette);
+                props.onChange(next_palette);
+              }}
+            />
+
+            <EnabledSelector
+              enabled={mapping.enabled}
+              onChange={(enabled) => {
+                const next_palette = immer.produce(props.palette, (draft) => {
+                  draft[i].enabled = enabled;
+                });
+                props.onChange(next_palette);
               }}
             />
           </PalletItem>
@@ -127,3 +165,5 @@ export const PalletSelector: React.FC<Props> = (props) => {
     </Container>
   );
 };
+
+export default PalletSelector;
