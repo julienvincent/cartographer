@@ -53,6 +53,7 @@ importers:
       async: ^3.2.4
       babel-plugin-styled-components: ^2.0.7
       comlink: ^4.3.1
+      fuse.js: ^6.6.2
       immer: ^9.0.16
       lodash: ^4.17.21
       next: 13.0.6
@@ -70,6 +71,7 @@ importers:
       '@fortawesome/react-fontawesome': 0.2.0_z27bm67dtmuyyvss23ckjdrcuy
       async: 3.2.4
       comlink: 4.3.1
+      fuse.js: 6.6.2
       immer: 9.0.16
       lodash: 4.17.21
       next: 13.0.6_672uxklweod7ene3nqtsh262ca
@@ -1738,6 +1740,11 @@ packages:
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
