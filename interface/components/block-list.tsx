@@ -36,7 +36,7 @@ export const BlockList: React.FC<Props> = (props) => {
 
   const blocks = props.palette.map((item) => item.blocks.map((block) => block.id)).flat();
   const fuse = new Fuse(blocks, {
-    threshold: 0.2
+    threshold: 0.5
   });
 
   let palette = props.palette;
