@@ -21,9 +21,9 @@ There are some alternatives to this tool out in the wild, most notably being [ma
 
 ## JSON output format
 
-Internally the generation algorithm generates a simple data-structure which represents all blocks in their appropriate positions. This intermediate data structure is then converted into whatever target output format is requested. The tool accepts exporting this data structure as standard JSON which allows you to build your own tools and translation algorithms for target formats not natively supported by cartographer.
+Internally the generation algorithm produces a relatively simple data-structure which represents all blocks in their appropriate positions in 3D space. This intermediate data structure is then converted into whatever target output format is requested. The tool accepts exporting this data structure as standard JSON which allows you to build your own tools and translation algorithms for target formats not natively supported by Cartographer.
 
-This data structure is structured as follows:
+This data structure looks as follows:
 
 ```json
 [
@@ -45,3 +45,8 @@ This data structure is structured as follows:
 ## Acknowledgements
 
 The block palette data was taken directly from [rebane2001/mapartcraft](https://github.com/rebane2001/mapartcraft) and converted to the format used internally by cartographer. This conversion was done using [this script](./scripts/parse.ts). Thanks to rebane2001 for doing the hard work to extract all that useful block information.
+
+## Authors
+
+- [@julienvincent](https://github.com/julienvincent)
+- [@nicholaswrobinson](https://github.com/nicholaswrobinson)
