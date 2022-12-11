@@ -16,7 +16,7 @@ There are some alternatives to this tool out in the wild, most notably being [ma
 
 ## Components
 
-- [@cartographer/litematica](./generation) - A set of utilities for generating Litematica compatible schema NBT data
+- [@cartographer/litematica](./litematica) - A set of utilities for generating Litematica compatible schema NBT data
 - [@cartographer/generation](./generation) - Contains the core block generation algorithm as well as transformers to convert the generated map to other formats like `litematica` and `nbt`.
 - [@cartographer/pixels](./pixels) - Contains block palette data and tools for working with image data. Essentially conversion tools for 'pixels' where a pixel could be an image pixel or a MC block
 
