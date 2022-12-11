@@ -39,6 +39,7 @@ export const download = (data: Uint8Array, file_name: string) => {
 export const createDefaultPalette = (): defs.ColorPalette => {
   return pixels.data.MC_BLOCK_COLORS.map((mapping) => {
     return {
+      id: mapping.id,
       colors: mapping.colors.slice(0, 3),
       blocks: mapping.blocks,
       selected_block_id: mapping.blocks[0].id,

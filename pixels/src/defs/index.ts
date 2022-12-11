@@ -27,3 +27,10 @@ export type BlockPaletteItem = MCBlockDefinition & {
   colors: RGBColor[];
 };
 export type BlockPalette = BlockPaletteItem[];
+
+export type ColorPaletteItem = {
+  id: string;
+  colors: RGBColor[];
+  blocks: MCBlockDefinition[];
+};
+export type ColorPalette = ColorPaletteItem[];

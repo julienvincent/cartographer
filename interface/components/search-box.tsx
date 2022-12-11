@@ -9,12 +9,12 @@ const Input = styled.input`
   padding: 10px;
   margin: 0;
   background-color: ${(props) => props.theme['bg0-soft']};
-  border: 2px dashed ${(props) => props.theme.fg1};
+  border: 2px dashed ${(props) => props.theme['light-blue']};
 
   color: ${(props) => props.theme.fg0};
 
   :focus {
-    border: 2px dashed ${(props) => props.theme['light-blue']};
+    border: 2px dashed ${(props) => props.theme.fg1};
     outline: none !important;
   }
 `;

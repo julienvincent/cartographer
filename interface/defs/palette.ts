@@ -1,8 +1,6 @@
 import * as pixels from '@cartographer/pixels';
 
-export type ColorPaletteItem = {
-  blocks: pixels.defs.MCBlockDefinition[];
-  colors: pixels.defs.RGBColor[];
+export type ColorPaletteItem = pixels.defs.ColorPaletteItem & {
   selected_block_id: string;
   enabled: boolean;
 };

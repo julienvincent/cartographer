@@ -55,7 +55,19 @@ export const BlockList: React.FC<Props> = (props) => {
         <SearchBox value={search} onChange={setSearch} />
       </Header>
 
-      <PaletteSelector palette={palette} onChange={props.onChange} />
+      <PaletteSelector
+        palette={palette}
+        onChange={(item) => {
+          props.onChange(
+            props.palette.map((original) => {
+              if (original.id !== item.id) {
+                return original;
+              }
+              return item;
+            })
+          );
+        }}
+      />
     </Container>
   );
 };

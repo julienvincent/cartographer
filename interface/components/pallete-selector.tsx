@@ -128,7 +128,7 @@ const PalletItem = styled.div`
 
 type Props = {
   palette: defs.ColorPalette;
-  onChange: (palette: defs.ColorPalette) => void;
+  onChange: (item: defs.ColorPaletteItem) => void;
 };
 
 export const PalletSelector: React.FC<Props> = (props) => {
@@ -143,20 +143,20 @@ export const PalletSelector: React.FC<Props> = (props) => {
               block_ids={mapping.blocks.map((block) => block.id)}
               selected={mapping.selected_block_id}
               onChange={(block_id) => {
-                const next_palette = immer.produce(props.palette, (draft) => {
-                  draft[i].selected_block_id = block_id;
+                props.onChange({
+                  ...props.palette[i],
+                  selected_block_id: block_id
                 });
-                props.onChange(next_palette);
               }}
             />
 
             <EnabledSelector
               enabled={mapping.enabled}
               onChange={(enabled) => {
-                const next_palette = immer.produce(props.palette, (draft) => {
-                  draft[i].enabled = enabled;
+                props.onChange({
+                  ...props.palette[i],
+                  enabled
                 });
-                props.onChange(next_palette);
               }}
             />
           </PalletItem>
