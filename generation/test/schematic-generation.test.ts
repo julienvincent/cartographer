@@ -1,8 +1,9 @@
+import { describe, it, expect } from 'vitest';
+
 import * as schematic_generation from '../src/schema-generation';
-import 'jest';
 
 describe('schematic-generation', () => {
-  test('it should generate a schematic file', () => {
+  it('should generate a schematic file', () => {
     const data = schematic_generation.litematica.generateSchematicNBT([
       [
         [

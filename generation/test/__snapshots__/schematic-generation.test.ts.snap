@@ -1,126 +1,126 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`schematic-generation it should generate a schematic file 1`] = `
-Object {
+exports[`schematic-generation > should generate a schematic file 1`] = `
+{
   "name": "",
-  "value": Object {
-    "Metadata": Object {
+  "value": {
+    "Metadata": {
       "type": "compound",
-      "value": Object {
-        "Author": Object {
+      "value": {
+        "Author": {
           "type": "string",
           "value": "cartographer",
         },
-        "Description": Object {
+        "Description": {
           "type": "string",
           "value": "",
         },
-        "EnclosingSize": Object {
+        "EnclosingSize": {
           "type": "compound",
-          "value": Object {
-            "x": Object {
+          "value": {
+            "x": {
               "type": "int",
               "value": 2,
             },
-            "y": Object {
+            "y": {
               "type": "int",
               "value": 2,
             },
-            "z": Object {
+            "z": {
               "type": "int",
               "value": 2,
             },
           },
         },
-        "Name": Object {
+        "Name": {
           "type": "string",
           "value": "map",
         },
-        "RegionCount": Object {
+        "RegionCount": {
           "type": "int",
           "value": 1,
         },
-        "TimeCreated": Object {
+        "TimeCreated": {
           "type": "long",
-          "value": Array [
+          "value": [
             375,
             2023476248,
           ],
         },
-        "TimeModified": Object {
+        "TimeModified": {
           "type": "long",
-          "value": Array [
+          "value": [
             375,
             2023476248,
           ],
         },
-        "TotalBlocks": Object {
+        "TotalBlocks": {
           "type": "int",
           "value": 4,
         },
-        "TotalVolume": Object {
+        "TotalVolume": {
           "type": "int",
           "value": 8,
         },
       },
     },
-    "MinecraftDataVersion": Object {
+    "MinecraftDataVersion": {
       "type": "int",
       "value": 2584,
     },
-    "Regions": Object {
+    "Regions": {
       "type": "compound",
-      "value": Object {
-        "map": Object {
+      "value": {
+        "map": {
           "type": "compound",
-          "value": Object {
-            "BlockStatePalette": Object {
+          "value": {
+            "BlockStatePalette": {
               "type": "list",
-              "value": Object {
+              "value": {
                 "type": "compound",
-                "value": Array [
-                  Object {
-                    "Name": Object {
+                "value": [
+                  {
+                    "Name": {
                       "type": "string",
                       "value": "minecraft:air",
                     },
                   },
-                  Object {
-                    "Name": Object {
+                  {
+                    "Name": {
                       "type": "string",
                       "value": "minecraft:stone",
                     },
                   },
-                  Object {
-                    "Name": Object {
+                  {
+                    "Name": {
                       "type": "string",
                       "value": "minecraft:birch_log",
                     },
-                    "Properties": Object {
+                    "Properties": {
                       "type": "compound",
-                      "value": Object {
-                        "axis": Object {
+                      "value": {
+                        "axis": {
                           "type": "string",
                           "value": "y",
                         },
                       },
                     },
                   },
-                  Object {
-                    "Name": Object {
+                  {
+                    "Name": {
                       "type": "string",
                       "value": "minecraft:white_wool",
                     },
                   },
-                  Object {
-                    "Name": Object {
+                  {
+                    "Name": {
                       "type": "string",
                       "value": "minecraft:birch_log",
                     },
-                    "Properties": Object {
+                    "Properties": {
                       "type": "compound",
-                      "value": Object {
-                        "axis": Object {
+                      "value": {
+                        "axis": {
                           "type": "string",
                           "value": "x",
                         },
@@ -130,82 +130,82 @@ Object {
                 ],
               },
             },
-            "BlockStates": Object {
+            "BlockStates": {
               "type": "longArray",
-              "value": Array [
-                Array [
+              "value": [
+                [
                   1,
                   8398017,
                 ],
               ],
             },
-            "Entities": Object {
+            "Entities": {
               "type": "list",
-              "value": Object {
+              "value": {
                 "type": "end",
-                "value": Array [],
+                "value": [],
               },
             },
-            "PendingBlockTicks": Object {
+            "PendingBlockTicks": {
               "type": "list",
-              "value": Object {
+              "value": {
                 "type": "end",
-                "value": Array [],
+                "value": [],
               },
             },
-            "PendingFluidTicks": Object {
+            "PendingFluidTicks": {
               "type": "list",
-              "value": Object {
+              "value": {
                 "type": "end",
-                "value": Array [],
+                "value": [],
               },
             },
-            "Position": Object {
+            "Position": {
               "type": "compound",
-              "value": Object {
-                "x": Object {
+              "value": {
+                "x": {
                   "type": "int",
                   "value": 1,
                 },
-                "y": Object {
+                "y": {
                   "type": "int",
                   "value": 0,
                 },
-                "z": Object {
+                "z": {
                   "type": "int",
                   "value": 1,
                 },
               },
             },
-            "Size": Object {
+            "Size": {
               "type": "compound",
-              "value": Object {
-                "x": Object {
+              "value": {
+                "x": {
                   "type": "int",
                   "value": 2,
                 },
-                "y": Object {
+                "y": {
                   "type": "int",
                   "value": 2,
                 },
-                "z": Object {
+                "z": {
                   "type": "int",
                   "value": 2,
                 },
               },
             },
-            "TileEntities": Object {
+            "TileEntities": {
               "type": "list",
-              "value": Object {
+              "value": {
                 "type": "end",
-                "value": Array [],
+                "value": [],
               },
             },
           },
         },
       },
     },
-    "Version": Object {
+    "Version": {
       "type": "int",
       "value": 5,
     },
