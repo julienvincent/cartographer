@@ -1,11 +1,10 @@
 import ImageSelector from '../components/image-selector';
+import ImagePreview from '../components/image-preview';
 import SourceImage from '../components/source-image';
 import MultiButton from '../components/multi-button';
 import BlockList from '../components/block-list';
 
-import * as Components from '../components';
 import styled from 'styled-components';
-import * as comlink from 'comlink';
 import * as utils from '../utils';
 import * as hooks from '../hooks';
 import * as defs from '../defs';
@@ -161,7 +160,7 @@ export default function Root() {
             <>
               <Border />
               <PreviewContainer>
-                <Components.ImagePreview palette={palette} bounds={bounds} image_data={image_data} scale={scale} />
+                <ImagePreview palette={palette} bounds={bounds} image_data={image_data} scale={scale} />
 
                 <MultiButton
                   style={{ marginTop: 15 }}

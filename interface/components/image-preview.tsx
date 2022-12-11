@@ -75,3 +75,5 @@ export const ImagePreview: React.FC<Props> = (props) => {
     </Container>
   );
 };
+
+export default ImagePreview;
