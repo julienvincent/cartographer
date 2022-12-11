@@ -17,17 +17,18 @@ const Container = styled.div<{ disabled?: boolean }>`
   background-color: ${(props) => props.theme['bg0-soft']};
   transition: all 0.2s ease;
 
-  ${(props) => (props.disabled ? 'opacity: 0.2;' : '')};
   ${(props) => (props.disabled ? 'pointer-events: none;' : '')}
 `;
 
-const Button = styled.div`
+const Button = styled.div<{ disabled: boolean }>`
   :hover {
     opacity: 0.8;
   }
+
+  ${(props) => (props.disabled ? 'opacity: 0.2;' : '')};
 `;
 
-const Selector = styled.div`
+const Selector = styled.div<{ disabled: boolean }>`
   margin-left: 10px;
   border-left: 1px dashed ${(props) => props.theme.fg4};
   padding-left: 10px;
@@ -35,6 +36,8 @@ const Selector = styled.div`
   :hover {
     opacity: 0.8;
   }
+
+  ${(props) => (props.disabled ? 'opacity: 0.2;' : '')};
 `;
 
 const Picker = styled.div`
@@ -72,8 +75,7 @@ const Loader = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${(props) => props.theme.bg0};
-  box-shadow: 0 0 12px 1px rgba(135, 135, 135, 1);
+  background: ${(props) => props.theme['light-orange']};
   margin-left: 8px;
 
   animation: ${scale} 2s ease-in-out infinite;
@@ -105,10 +107,12 @@ export const MultiButton: React.FC<Props> = (props) => {
   const [_action, setAction] = React.useState(props.actions[0]);
 
   const action = props.selection || _action;
+  const disabled = props.disabled || props.loading || false;
 
   return (
-    <Container disabled={props.disabled || props.loading} className={props.className} style={props.style}>
+    <Container disabled={disabled} className={props.className} style={props.style}>
       <Button
+        disabled={disabled}
         onClick={() => {
           if (props.action_opens_picker) {
             setPickerShowing(!picker_showing);
@@ -122,7 +126,14 @@ export const MultiButton: React.FC<Props> = (props) => {
         {action.name}
       </Button>
 
-      <Selector onClick={() => setPickerShowing(!picker_showing)}>{props.loading ? <Loader /> : <p>▼</p>}</Selector>
+      {props.loading ? (
+        <Loader />
+      ) : (
+        <Selector disabled={disabled} onClick={() => setPickerShowing(!picker_showing)}>
+          {' '}
+          <p>▼</p>
+        </Selector>
+      )}
 
       {picker_showing && (
         <Picker>
