@@ -36,14 +36,16 @@ export const download = (data: Uint8Array, file_name: string) => {
   a.remove();
 };
 
-export const createDefaultPalette = (): defs.ColorPalette => {
+export const createDefaultPalette = (patch: defs.PalettePatch): defs.ColorPalette => {
+  const indexed = Object.fromEntries(patch.map((patch) => [patch.id, patch]));
   return pixels.data.MC_BLOCK_COLORS.map((mapping) => {
+    const block_patch = indexed[mapping.id];
     return {
       id: mapping.id,
       colors: mapping.colors.slice(0, 3),
       blocks: mapping.blocks,
-      selected_block_id: mapping.blocks[0].id,
-      enabled: mapping.blocks[0].id !== 'minecraft:water'
+      selected_block_id: block_patch?.selected_block_id ?? mapping.blocks[0].id,
+      enabled: block_patch?.enabled ?? true
     };
   });
 };

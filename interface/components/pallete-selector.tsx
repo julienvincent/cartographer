@@ -37,25 +37,48 @@ export const MultiColorIcon: React.FC<MultiColorIconProps> = (props) => {
   );
 };
 
-const EnabledSelectorContainer = styled.div<{ enabled: boolean }>`
+const EnabledSelectorContainer = styled.div<{ enabled: boolean | -1 }>`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   margin-left: auto;
   cursor: pointer;
-  color: ${(props) => (!props.enabled ? props.theme['dark-green'] : props.theme['dark-red'])};
+  color: ${(props) => {
+    if (props.enabled === -1) {
+      return props.theme['dark-yellow'];
+    }
+    return !props.enabled ? props.theme['dark-green'] : props.theme['dark-red'];
+  }};
   user-select: none;
 `;
 
 type EnabledSelectorProps = {
-  enabled: boolean;
+  enabled: boolean | -1;
   onChange: (enabled: boolean) => void;
 };
 export const EnabledSelector: React.FC<EnabledSelectorProps> = (props) => {
+  let char = '';
+  if (props.enabled === -1) {
+    char = '~';
+  } else if (props.enabled) {
+    char = '-';
+  } else {
+    char = '+';
+  }
+
   return (
-    <EnabledSelectorContainer enabled={props.enabled} onClick={() => props.onChange(!props.enabled)}>
-      <p style={{ fontWeight: 'bold' }}>[{props.enabled ? '-' : '+'}]</p>
+    <EnabledSelectorContainer
+      enabled={props.enabled}
+      onClick={() => {
+        if (!props.enabled || props.enabled === -1) {
+          props.onChange(true);
+        } else {
+          props.onChange(false);
+        }
+      }}
+    >
+      <p style={{ fontWeight: 'bold' }}>[{char}]</p>
     </EnabledSelectorContainer>
   );
 };

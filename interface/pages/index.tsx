@@ -5,6 +5,7 @@ import MultiButton from '../components/multi-button';
 import BlockList from '../components/block-list';
 
 import styled from 'styled-components';
+import patches from '../patches';
 import * as utils from '../utils';
 import * as hooks from '../hooks';
 import * as defs from '../defs';
@@ -76,7 +77,7 @@ export default function Root() {
   const [image_data, setImageData] = React.useState<ImageData>();
   const [bounds, setBounds] = React.useState<defs.Bounds>();
   const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
-  const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette());
+  const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette(patches[0].patch));
   const api = hooks.withAPIWorker();
 
   const [generating, isGenerating] = React.useState(false);

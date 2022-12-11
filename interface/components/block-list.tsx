@@ -1,9 +1,13 @@
-import PaletteSelector from '../components/pallete-selector';
+import PaletteSelector, { EnabledSelector } from '../components/pallete-selector';
 import SearchBox from '../components/search-box';
+import MultiButton from './multi-button';
 import styled from 'styled-components';
 import * as defs from '../defs';
 import * as React from 'react';
 import Fuse from 'fuse.js';
+
+import * as utils from '../utils';
+import patches from '../patches';
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +23,6 @@ const Header = styled.div`
   justify-content: space-between;
   padding: 10px 20px;
   border-bottom: 2px dashed ${(props) => props.theme['dark-yellow']};
-  margin-bottom: 5px;
 `;
 
 const Title = styled.p`
@@ -33,6 +36,7 @@ type Props = {
 
 export const BlockList: React.FC<Props> = (props) => {
   const [search, setSearch] = React.useState('');
+  const [palette_preset, setPalettePreset] = React.useState('Primary');
 
   const blocks = props.palette.map((item) => item.blocks.map((block) => block.id)).flat();
   const fuse = new Fuse(blocks, {
@@ -56,12 +60,74 @@ export const BlockList: React.FC<Props> = (props) => {
     }, []);
   }
 
+  let shared_selector: boolean | -1 = -1;
+  const [all_enabled, all_disabled] = props.palette.reduce(
+    ([enabled, disabled]: [boolean, boolean], item) => {
+      if (item.enabled) {
+        if (disabled) {
+          return [enabled, false];
+        }
+      } else {
+        if (enabled) {
+          return [false, disabled];
+        }
+      }
+      return [enabled, disabled];
+    },
+    [true, true]
+  );
+
+  if (all_enabled) {
+    shared_selector = true;
+  } else if (all_disabled) {
+    shared_selector = false;
+  } else {
+    shared_selector = -1;
+  }
+
   return (
     <Container>
       <Header>
         <Title>Block Palette</Title>
 
         <SearchBox value={search} onChange={setSearch} />
+      </Header>
+
+      <Header style={{ marginBottom: 5 }}>
+        <MultiButton
+          action_opens_picker
+          selection={{
+            name: palette_preset,
+            fn: () => {}
+          }}
+          actions={patches.map((patch) => {
+            return {
+              name: patch.name,
+              fn: () => {}
+            };
+          })}
+          onSelectionChange={(action) => {
+            const patch = patches.find((patch) => patch.name === action.name);
+            if (patch) {
+              props.onChange(utils.createDefaultPalette(patch.patch));
+              setPalettePreset(action.name);
+            }
+          }}
+        />
+
+        <EnabledSelector
+          enabled={shared_selector}
+          onChange={(enabled) => {
+            props.onChange(
+              props.palette.map((item) => {
+                return {
+                  ...item,
+                  enabled
+                };
+              })
+            );
+          }}
+        ></EnabledSelector>
       </Header>
 
       <PaletteSelector
