@@ -9,7 +9,8 @@ export type Pixel = {
 export type PixelGrid = Pixel[][];
 
 export type BlockProperties = Record<string, string> & {
-  falling?: boolean;
+  requires_support?: boolean;
+  flammable?: boolean;
   liquid?: boolean;
 };
 export type MCBlockDefinition = {

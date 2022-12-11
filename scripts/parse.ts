@@ -25,7 +25,7 @@ const final = Object.entries(data as any).reduce((palette: any[], [id, item]: an
             id: `minecraft:${version.NBTName}`,
             properties: {
               flammable: block.flammable,
-              falling: block.supportBlockMandatory
+              requires_support: block.supportBlockMandatory
             }
           }
         ];
