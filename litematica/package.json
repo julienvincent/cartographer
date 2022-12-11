@@ -1,0 +1,17 @@
+{
+  "name": "@cartographer/litematica",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index",
+  "types": "dist/index",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.191"
+  }
+}

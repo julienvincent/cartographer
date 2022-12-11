@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import * as long from '../src/schema-generation/litematica/long';
+import * as long from '../src/long';
 
 describe('long bitwise operations', () => {
   it('should correctly left-shift long numbers', () => {

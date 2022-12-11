@@ -16,6 +16,7 @@ importers:
 
   generation:
     specifiers:
+      '@cartographer/litematica': workspace:^
       '@cartographer/pixels': workspace:^
       '@types/lodash': ^4.14.191
       '@types/pako': ^2.0.0
@@ -23,6 +24,7 @@ importers:
       nbt: ^0.8.1
       pako: ^2.1.0
     dependencies:
+      '@cartographer/litematica': link:../litematica
       '@cartographer/pixels': link:../pixels
       lodash: 4.17.21
       nbt: 0.8.1
@@ -87,6 +89,15 @@ importers:
       '@types/styled-components': 5.1.26
       '@types/uuid': 9.0.0
       babel-plugin-styled-components: 2.0.7_styled-components@5.3.6
+
+  litematica:
+    specifiers:
+      '@types/lodash': ^4.14.191
+      lodash: ^4.17.21
+    dependencies:
+      lodash: 4.17.21
+    devDependencies:
+      '@types/lodash': 4.14.191
 
   pixels:
     specifiers:

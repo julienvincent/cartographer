@@ -6,10 +6,11 @@
   "types": "dist/index",
   "scripts": {
     "build": "tsc -b",
-    "test": "jest --verbose"
+    "test": "vitest"
   },
   "dependencies": {
     "@cartographer/pixels": "workspace:^",
+    "@cartographer/litematica": "workspace:^",
     "lodash": "^4.17.21",
     "nbt": "^0.8.1",
     "pako": "^2.1.0"

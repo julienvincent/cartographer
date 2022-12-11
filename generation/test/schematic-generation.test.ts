@@ -4,7 +4,7 @@ import * as schematic_generation from '../src/schema-generation';
 
 describe('schematic-generation', () => {
   it('should generate a schematic file', () => {
-    const data = schematic_generation.litematica.generateSchematicNBT([
+    const data = schematic_generation.litematica.generateLitematicaSchema([
       [
         [
           {

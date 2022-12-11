@@ -1,4 +1,5 @@
 packages:
 - generation
+- litematica
 - interface
 - pixels

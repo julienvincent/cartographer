@@ -47,7 +47,7 @@ export const generateLightmaticaSchema = async (
   palette: pixels.defs.BlockPalette
 ) => {
   const block_space = generateBlockSpaceFromImageData(image_data, scale, palette);
-  const schema = generation.schema_generation.litematica.generateSchematicNBT(block_space);
+  const schema = generation.schema_generation.litematica.generateLitematicaSchema(block_space);
   return await generation.serialization.serializeNBTData(schema);
 };
 

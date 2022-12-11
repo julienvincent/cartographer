@@ -12,12 +12,7 @@
     "composite": true
   },
   "include": ["src"],
-  "references": [
-    {
-      "path": "../pixels"
-    },
-    {
-      "path": "../litematica"
-    }
-  ]
+  "references": [{
+    "path": "../pixels"
+  }]
 }

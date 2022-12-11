@@ -8,14 +8,15 @@ export type Pixel = {
 
 export type PixelGrid = Pixel[][];
 
-export type BlockProperties = Record<string, string> & {
+export type BlockAttributes = Record<string, string> & {
   requires_support?: boolean;
   flammable?: boolean;
   liquid?: boolean;
 };
 export type MCBlockDefinition = {
   id: string;
-  properties?: BlockProperties;
+  attributes?: BlockAttributes;
+  properties?: Record<string, string>;
 };
 
 export type MCBlockWithOffset = MCBlockDefinition & {
