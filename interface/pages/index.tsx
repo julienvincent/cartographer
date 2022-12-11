@@ -13,7 +13,7 @@ import * as React from 'react';
 import Head from 'next/head';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as icons from '@fortawesome/free-solid-svg-icons';
+import * as icons from '@fortawesome/free-brands-svg-icons';
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +31,6 @@ const Header = styled.div<{ border_left?: boolean }>`
   padding: 10px 20px;
   border-bottom: 2px dashed ${(props) => props.theme['dark-yellow']};
   border-left: ${(props) => (props.border_left ? `2px dashed ${props.theme['dark-yellow']}` : 'none')};
-  margin-bottom: 5px;
 `;
 
 const Title = styled.p`
@@ -68,11 +67,10 @@ const PreviewContainer = styled.div`
 `;
 
 const Icon = styled(FontAwesomeIcon)`
-  background: rgba(194, 194, 194, 0.2);
-  color: #c2c2c2;
-  border-radius: 50%;
+  color: ${(props) => props.theme['light-purple']};
+  border: 1px dashed ${(props) => props.theme['dark-purple']};
   padding: 10px;
-  margin: 0 60px;
+  cursor: pointer;
 `;
 
 export default function Root() {
@@ -113,17 +111,10 @@ export default function Root() {
 
       <Header>
         <Title>Cartographer</Title>
-        {/* <Components.Selector
-            style={{ marginRight: 10 }}
-            label="Map Scale"
-            selected={scale}
-            options={scale_options}
-            onSelect={(option) => setMapScale(option as any)}
-          />
 
-          <Components.Button onClick={generate} disabled={!image_data} loading={generating}>
-            Generate
-          </Components.Button> */}
+        <a target="_blank" href="https://github.com/julienvincent/cartographer">
+          <Icon icon={icons.faGithub} />
+        </a>
       </Header>
 
       <Content>
@@ -175,6 +166,7 @@ export default function Root() {
                 <MultiButton
                   style={{ marginTop: 15 }}
                   disabled={!image_data}
+                  loading={generating}
                   actions={[
                     {
                       name: 'Generate Litematic',
@@ -190,27 +182,6 @@ export default function Root() {
             </>
           ) : null}
         </Workspace>
-
-        {/*<Select*/}
-        {/*  options={scale_options.map((scale) => {*/}
-        {/*    return {*/}
-        {/*      value: scale as defs.MAP_SCALE,*/}
-        {/*      label: scale as defs.MAP_SCALE*/}
-        {/*    };*/}
-        {/*  })}*/}
-        {/*  value={{*/}
-        {/*    value: scale,*/}
-        {/*    label: scale*/}
-        {/*  }}*/}
-        {/*  onChange={(selection) => {*/}
-        {/*    // @ts-ignore*/}
-        {/*    setMapScale(selection.value);*/}
-        {/*  }}*/}
-        {/*/>*/}
-        {/*<button disabled={!image_data} onClick={generate}>*/}
-        {/*  generate*/}
-        {/*</button>*/}
-        {/*<Components.PalletSelector palette={palette} onPaletteChange={setPalette} />*/}
 
         <BlockList palette={palette} onChange={setPalette} />
       </Content>
