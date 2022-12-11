@@ -35,16 +35,25 @@ export const BlockList: React.FC<Props> = (props) => {
   const [search, setSearch] = React.useState('');
 
   const blocks = props.palette.map((item) => item.blocks.map((block) => block.id)).flat();
-  const fuse = new Fuse(blocks);
+  const fuse = new Fuse(blocks, {
+    threshold: 0.2
+  });
 
   let palette = props.palette;
   if (search) {
     const filtered = fuse.search(search);
-    palette = props.palette.filter((item) => {
-      return filtered.find((filtered) => {
+    palette = props.palette.reduce((palette: defs.ColorPalette, item) => {
+      const match = filtered.find((filtered) => {
         return item.blocks.map((block) => block.id).includes(filtered.item);
       });
-    });
+      if (match) {
+        palette.push({
+          ...item,
+          blocks: item.blocks.filter((block) => filtered.map(({ item }) => item).includes(block.id))
+        });
+      }
+      return palette;
+    }, []);
   }
 
   return (
@@ -63,7 +72,11 @@ export const BlockList: React.FC<Props> = (props) => {
               if (original.id !== item.id) {
                 return original;
               }
-              return item;
+              return {
+                ...original,
+                enabled: item.enabled,
+                selected_block_id: item.selected_block_id
+              };
             })
           );
         }}

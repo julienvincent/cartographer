@@ -2,7 +2,6 @@ import * as pixels from '@cartographer/pixels';
 import styled from 'styled-components';
 import * as defs from '../defs';
 import * as React from 'react';
-import * as immer from 'immer';
 
 type MultiColorIconProps = {
   colors: pixels.defs.RGBColor[];
@@ -122,6 +121,7 @@ const Container = styled.div`
 const PalletItem = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: 5px;
   border-bottom: 1px dashed ${(props) => props.theme['dark-gray']};
 `;

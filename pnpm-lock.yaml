@@ -50,7 +50,6 @@ importers:
       babel-plugin-styled-components: ^2.0.7
       comlink: ^4.3.1
       fuse.js: ^6.6.2
-      immer: ^9.0.16
       lodash: ^4.17.21
       next: 13.0.6
       react: 18.2.0
@@ -68,7 +67,6 @@ importers:
       async: 3.2.4
       comlink: 4.3.1
       fuse.js: 6.6.2
-      immer: 9.0.16
       lodash: 4.17.21
       next: 13.0.6_672uxklweod7ene3nqtsh262ca
       react: 18.2.0
@@ -1279,10 +1277,6 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
-
-  /immer/9.0.16:
-    resolution: {integrity: sha512-qenGE7CstVm1NrHQbMh8YaSzTZTFNP3zPqr3YU0S0UY441j4bJTg4A2Hh5KAhwgaiU6ZZ1Ar6y/2f4TblnMReQ==}
-    dev: false
 
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
