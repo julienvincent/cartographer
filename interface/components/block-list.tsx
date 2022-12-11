@@ -8,7 +8,8 @@ import Fuse from 'fuse.js';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 400px;
+  border-left: 2px dashed ${(props) => props.theme['dark-yellow']};
 `;
 
 const Header = styled.div`
@@ -18,7 +19,6 @@ const Header = styled.div`
   justify-content: space-between;
   padding: 10px 20px;
   border-bottom: 2px dashed ${(props) => props.theme['dark-yellow']};
-  border-left: 2px dashed ${(props) => props.theme['dark-yellow']};
   margin-bottom: 5px;
 `;
 
@@ -36,7 +36,7 @@ export const BlockList: React.FC<Props> = (props) => {
 
   const blocks = props.palette.map((item) => item.blocks.map((block) => block.id)).flat();
   const fuse = new Fuse(blocks, {
-    threshold: 0.5
+    threshold: 0.3
   });
 
   let palette = props.palette;

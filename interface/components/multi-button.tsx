@@ -107,7 +107,7 @@ export const MultiButton: React.FC<Props> = (props) => {
   const action = props.selection || _action;
 
   return (
-    <Container disabled={props.disabled} className={props.className} style={props.style}>
+    <Container disabled={props.disabled || props.loading} className={props.className} style={props.style}>
       <Button
         onClick={() => {
           if (props.action_opens_picker) {
