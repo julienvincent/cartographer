@@ -1,6 +1,8 @@
 import ImageSelector from '../components/image-selector';
 import SourceImage from '../components/source-image';
+import MultiButton from '../components/multi-button';
 import BlockList from '../components/block-list';
+
 import * as Components from '../components';
 import styled from 'styled-components';
 import * as comlink from 'comlink';
@@ -57,6 +59,12 @@ const Border = styled.div`
   border-left: 2px dashed ${(props) => props.theme['dark-orange']};
   opacity: 0.5;
   height: 100%;
+`;
+
+const PreviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 const Icon = styled(FontAwesomeIcon)`
@@ -121,13 +129,35 @@ export default function Root() {
       <Content>
         <Workspace>
           {image_data ? (
-            <SourceImage
-              image_data={image_data}
-              scale={scale}
-              onBoundsChange={async (bounds) => {
-                setBounds(bounds);
-              }}
-            />
+            <PreviewContainer>
+              <MultiButton
+                style={{ marginBottom: 15 }}
+                disabled={!image_data}
+                selection={{
+                  fn: () => {},
+                  name: scale as unknown as string
+                }}
+                actions={scale_options.map((option) => {
+                  return {
+                    fn: () => {},
+                    name: option as string
+                  };
+                })}
+                onSelectionChange={(action) => {
+                  setMapScale(action.name as unknown as defs.MAP_SCALE);
+                }}
+                action_opens_picker
+                prefix="Map Scale - "
+              />
+
+              <SourceImage
+                image_data={image_data}
+                scale={scale}
+                onBoundsChange={async (bounds) => {
+                  setBounds(bounds);
+                }}
+              />
+            </PreviewContainer>
           ) : (
             <ImageSelector
               onFileSelected={async (image_data) => {
@@ -139,7 +169,24 @@ export default function Root() {
           {image_data && bounds ? (
             <>
               <Border />
-              <Components.ImagePreview palette={palette} bounds={bounds} image_data={image_data} scale={scale} />
+              <PreviewContainer>
+                <Components.ImagePreview palette={palette} bounds={bounds} image_data={image_data} scale={scale} />
+
+                <MultiButton
+                  style={{ marginTop: 15 }}
+                  disabled={!image_data}
+                  actions={[
+                    {
+                      name: 'Generate Litematic',
+                      fn: generate
+                    },
+                    {
+                      name: 'Generate JSON',
+                      fn: generate
+                    }
+                  ]}
+                />
+              </PreviewContainer>
             </>
           ) : null}
         </Workspace>
