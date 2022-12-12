@@ -10,6 +10,11 @@ type Props = {
   scale: defs.MAP_SCALE;
   bounds: defs.Bounds;
 
+  transformations: {
+    saturation: number;
+    brightness: number;
+  };
+
   palette: defs.ColorPalette;
 
   className?: string;
@@ -53,14 +58,24 @@ export const ImagePreview: React.FC<Props> = (props) => {
         image_data: props.image_data,
         bounds: props.bounds,
         map_scale: props.scale,
-        palette: utils.normalizeColorPalette(props.palette)
+        palette: utils.normalizeColorPalette(props.palette),
+        transformations: props.transformations
       });
 
       canvas.current!.setAttribute('width', image_data.width.toString());
       canvas.current!.setAttribute('height', image_data.height.toString());
       canvas.current!.getContext('2d')!.putImageData(image_data, 0, 0);
     });
-  }, [props.image_data, canvas.current, api.current, props.bounds, props.palette, props.scale]);
+  }, [
+    props.image_data,
+    canvas.current,
+    api.current,
+    props.bounds,
+    props.palette,
+    props.scale,
+    props.transformations.brightness,
+    props.transformations.saturation
+  ]);
 
   return (
     <Container

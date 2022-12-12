@@ -4,30 +4,37 @@ import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
 import * as _ from 'lodash';
+import Slider from './slider';
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border: 2px dashed ${(props) => props.theme.bg4};
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
 `;
 
 const CanvasContainer = styled.div`
   display: flex;
   flex-grow: 1;
   position: relative;
-  border: 1px solid ${(props) => props.theme.bg2};
+  padding: 10px;
+  border: 2px dashed ${(props) => props.theme.bg4};
 `;
 
 const Canvas = styled.canvas`
-  border-radius: 10px;
+  border: 1px solid ${(props) => props.theme.bg2};
 `;
 
 type Props = {
   image_data: ImageData;
   scale: defs.MAP_SCALE;
   onBoundsChange: (bounds: defs.Bounds, raw_bounds: defs.Bounds) => void;
+
+  saturation: number;
+  onSaturationChange: (contrast: number) => void;
+
+  brightness: number;
+  onBrightnessChange: (brightness: number) => void;
 };
 
 export const SourceImage: React.FC<Props> = (props) => {
@@ -107,6 +114,24 @@ export const SourceImage: React.FC<Props> = (props) => {
           />
         ) : null}
       </CanvasContainer>
+
+      <Slider
+        label="Saturation"
+        style={{ marginTop: 10 }}
+        value={props.saturation}
+        onChange={(value) => {
+          props.onSaturationChange(value);
+        }}
+      />
+
+      <Slider
+        label="Brightness"
+        style={{ marginTop: 10 }}
+        value={props.brightness}
+        onChange={(value) => {
+          props.onBrightnessChange(value);
+        }}
+      />
     </Container>
   );
 };

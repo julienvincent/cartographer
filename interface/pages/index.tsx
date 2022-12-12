@@ -83,6 +83,8 @@ export const Description = styled.p`
 export default function Root() {
   const [image_data, setImageData] = React.useState<ImageData>();
   const [bounds, setBounds] = React.useState<defs.Bounds>();
+  const [saturation, setSaturation] = React.useState(0);
+  const [brightness, setBrightness] = React.useState(0);
   const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
   const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette(patches[0].patch));
   const api = hooks.withAPIWorker();
@@ -96,24 +98,30 @@ export default function Root() {
       return;
     }
 
+    const params = {
+      image_data,
+      scale,
+      palette: utils.normalizeColorPalette(palette),
+      transformations: {
+        saturation,
+        brightness
+      }
+    };
+
     isGenerating(true);
     switch (type) {
       case 'litematic': {
-        const schema_nbt = await api.current.generateLitematicaSchema(
-          image_data,
-          scale,
-          utils.normalizeColorPalette(palette)
-        );
+        const schema_nbt = await api.current.generateLitematicaSchema(params);
         utils.download(schema_nbt, 'map.litematic');
         break;
       }
       case 'nbt': {
-        const nbt = await api.current.generateMapNBT(image_data, scale, utils.normalizeColorPalette(palette));
+        const nbt = await api.current.generateMapNBT(params);
         utils.download(nbt, 'map.nbt');
         break;
       }
       case 'json': {
-        const json = await api.current.generateMapJSON(image_data, scale, utils.normalizeColorPalette(palette));
+        const json = await api.current.generateMapJSON(params);
         utils.download(json, 'map.json');
         break;
       }
@@ -170,6 +178,14 @@ export default function Root() {
                 onBoundsChange={async (bounds) => {
                   setBounds(bounds);
                 }}
+                saturation={saturation}
+                onSaturationChange={async (value) => {
+                  setSaturation(value);
+                }}
+                brightness={brightness}
+                onBrightnessChange={async (value) => {
+                  setBrightness(value);
+                }}
               />
             </PreviewContainer>
           ) : (
@@ -185,7 +201,16 @@ export default function Root() {
               <Border small={is_small_screen} />
 
               <PreviewContainer>
-                <ImagePreview palette={palette} bounds={bounds} image_data={image_data} scale={scale} />
+                <ImagePreview
+                  palette={palette}
+                  bounds={bounds}
+                  image_data={image_data}
+                  scale={scale}
+                  transformations={{
+                    saturation,
+                    brightness
+                  }}
+                />
 
                 <Description style={{ marginTop: 10 }}>
                   This is a preview of how the Map itself should look once placed.
