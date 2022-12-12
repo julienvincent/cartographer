@@ -120,8 +120,7 @@ export default function Root() {
     <Container>
       <Head>
         <title>Cartographer</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <Header>

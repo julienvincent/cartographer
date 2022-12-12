@@ -1,9 +1,12 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { config, dom } from '@fortawesome/fontawesome-svg-core';
 import * as theme from '../theme/theme';
 import type * as next from 'next/app';
+import font from '@next/font/local';
 
-import { config, dom } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
+
+const pt_mono = font({ src: '../public/PTMono-Regular.ttf' });
 
 const GlobalStyle = createGlobalStyle`
 ${dom.css()}
@@ -15,9 +18,7 @@ ${dom.css()}
   }
 
   body, input {
-    font-family: 'PT Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
+    font-family: ${pt_mono.style.fontFamily};
   }
 
   p {
