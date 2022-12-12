@@ -4,6 +4,7 @@ import SourceImage from '../components/source-image';
 import MultiButton from '../components/multi-button';
 import BlockList from '../components/block-list';
 
+import * as rr from 'react-responsive';
 import styled from 'styled-components';
 import patches from '../patches';
 import * as utils from '../utils';
@@ -45,19 +46,21 @@ const Content = styled.div`
   overflow: hidden;
 `;
 
-const Workspace = styled.div`
+const Workspace = styled.div<{ small: boolean }>`
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  flex-direction: row;
+  justify-content: ${(props) => (props.small ? 'flex-start' : 'space-around')};
+  flex-direction: ${(props) => (props.small ? 'column' : 'row')};
+  overflow-y: auto;
   flex-grow: 1;
 `;
 
-const Border = styled.div`
+const Border = styled.div<{ small: boolean }>`
   flex-direction: column;
-  border-left: 2px dashed ${(props) => props.theme['dark-orange']};
   opacity: 0.5;
-  height: 100%;
+  ${(props) => `${props.small ? 'border-bottom' : 'border-left'}: 2px dashed ${props.theme['dark-orange']}`};
+  ${(props) => `${props.small ? 'width' : 'height'}: 100%`};
+  ${(props) => `${props.small ? 'margin: 10px 0px' : 'margin: 0px 10px'}`};
 `;
 
 const PreviewContainer = styled.div`
@@ -73,6 +76,10 @@ const Icon = styled(FontAwesomeIcon)`
   cursor: pointer;
 `;
 
+export const Description = styled.p`
+  color: ${(props) => props.theme.fg2};
+`;
+
 export default function Root() {
   const [image_data, setImageData] = React.useState<ImageData>();
   const [bounds, setBounds] = React.useState<defs.Bounds>();
@@ -81,6 +88,8 @@ export default function Root() {
   const api = hooks.withAPIWorker();
 
   const [generating, isGenerating] = React.useState(false);
+
+  const is_small_screen = rr.useMediaQuery({ query: '(max-width: 1750px)' });
 
   const generate = async (type: 'litematic' | 'nbt' | 'json') => {
     if (!image_data || !api.current) {
@@ -132,11 +141,11 @@ export default function Root() {
       </Header>
 
       <Content>
-        <Workspace>
+        <Workspace small={is_small_screen}>
           {image_data ? (
             <PreviewContainer>
               <MultiButton
-                style={{ marginBottom: 15 }}
+                style={{ marginBottom: 10, marginTop: is_small_screen ? 10 : 0 }}
                 disabled={!image_data}
                 selection={{
                   fn: () => {},
@@ -173,12 +182,17 @@ export default function Root() {
 
           {image_data && bounds ? (
             <>
-              <Border />
+              <Border small={is_small_screen} />
+
               <PreviewContainer>
                 <ImagePreview palette={palette} bounds={bounds} image_data={image_data} scale={scale} />
 
+                <Description style={{ marginTop: 10 }}>
+                  This is a preview of how the Map itself should look once placed.
+                </Description>
+
                 <MultiButton
-                  style={{ marginTop: 15 }}
+                  style={{ marginTop: 10, marginBottom: 10 }}
                   disabled={!image_data}
                   loading={generating}
                   actions={[
