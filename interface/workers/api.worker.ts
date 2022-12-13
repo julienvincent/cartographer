@@ -6,7 +6,10 @@ import * as defs from '../defs';
 type BaseImagePipelineParams = {
   pixels: pixels.defs.PixelGrid;
   scale: defs.MAP_SCALE;
+
   palette: pixels.defs.BlockPalette;
+  color_spectrum: pixels.defs.BlockColorSpectrum;
+
   transformations?: {
     grayscale?: boolean;
     invert?: boolean;
@@ -31,20 +34,15 @@ const baseImagePipeline = (params: BaseImagePipelineParams) => {
     }
   }
 
-  return pixels.conversion.convertPixelGridColorsForMC(transformed, params.palette);
+  return pixels.conversion.convertPixelGridColorsForMC(transformed, {
+    palette: params.palette,
+    color_spectrum: params.color_spectrum
+  });
 };
 
-type GeneratePreviewParams = {
+type GeneratePreviewParams = Omit<BaseImagePipelineParams, 'pixels'> & {
   image_data: ImageData;
   bounds: defs.Bounds;
-  map_scale: defs.MAP_SCALE;
-  palette: pixels.defs.BlockPalette;
-  transformations?: {
-    grayscale?: boolean;
-    invert?: boolean;
-    saturation?: number;
-    brightness?: number;
-  };
 };
 const generatePreview = (params: GeneratePreviewParams) => {
   const preview_scale = 640;
@@ -61,7 +59,8 @@ const generatePreview = (params: GeneratePreviewParams) => {
   const color_converted = baseImagePipeline({
     pixels: pixel_grid,
     palette: params.palette,
-    scale: params.map_scale,
+    scale: params.scale,
+    color_spectrum: params.color_spectrum,
     transformations: params.transformations
   });
 
@@ -79,6 +78,7 @@ const generateBlockSpaceFromImageData = (params: GenerateBlockSpaceFromImageData
     pixels: pixel_grid,
     palette: params.palette,
     scale: params.scale,
+    color_spectrum: params.color_spectrum,
     transformations: params.transformations
   });
 

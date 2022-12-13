@@ -49,3 +49,8 @@ export type ColorPaletteItem = {
   blocks: MCBlockDefinition[];
 };
 export type ColorPalette = ColorPaletteItem[];
+
+export enum BlockColorSpectrum {
+  Full = 'full',
+  Flat = 'flat'
+}

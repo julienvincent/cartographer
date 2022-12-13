@@ -1,3 +1,4 @@
+import * as pixels from '@cartographer/pixels';
 import styled from 'styled-components';
 import * as hooks from '../hooks';
 import * as utils from '../utils';
@@ -9,6 +10,7 @@ type Props = {
   image_data: ImageData;
   scale: defs.MAP_SCALE;
   bounds: defs.Bounds;
+  color_spectrum: pixels.defs.BlockColorSpectrum;
 
   transformations: {
     saturation: number;
@@ -57,7 +59,8 @@ export const ImagePreview: React.FC<Props> = (props) => {
       const image_data = await api.current!.generatePreview({
         image_data: props.image_data,
         bounds: props.bounds,
-        map_scale: props.scale,
+        scale: props.scale,
+        color_spectrum: props.color_spectrum,
         palette: utils.normalizeColorPalette(props.palette),
         transformations: props.transformations
       });
@@ -74,7 +77,8 @@ export const ImagePreview: React.FC<Props> = (props) => {
     props.palette,
     props.scale,
     props.transformations.brightness,
-    props.transformations.saturation
+    props.transformations.saturation,
+    props.color_spectrum
   ]);
 
   return (

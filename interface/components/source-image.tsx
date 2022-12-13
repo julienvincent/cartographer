@@ -25,6 +25,12 @@ const Canvas = styled.canvas`
   border: 1px solid ${(props) => props.theme.bg2};
 `;
 
+const Options = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+`;
+
 type Props = {
   image_data: ImageData;
   scale: defs.MAP_SCALE;
@@ -115,23 +121,25 @@ export const SourceImage: React.FC<Props> = (props) => {
         ) : null}
       </CanvasContainer>
 
-      <Slider
-        label="Saturation"
-        style={{ marginTop: 10 }}
-        value={props.saturation}
-        onChange={(value) => {
-          props.onSaturationChange(value);
-        }}
-      />
+      <Options>
+        <Slider
+          label="Saturation"
+          style={{ marginTop: 10, marginRight: 15 }}
+          value={props.saturation}
+          onChange={(value) => {
+            props.onSaturationChange(value);
+          }}
+        />
 
-      <Slider
-        label="Brightness"
-        style={{ marginTop: 10 }}
-        value={props.brightness}
-        onChange={(value) => {
-          props.onBrightnessChange(value);
-        }}
-      />
+        <Slider
+          label="Brightness"
+          style={{ marginTop: 10 }}
+          value={props.brightness}
+          onChange={(value) => {
+            props.onBrightnessChange(value);
+          }}
+        />
+      </Options>
     </Container>
   );
 };

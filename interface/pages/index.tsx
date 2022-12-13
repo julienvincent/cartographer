@@ -3,7 +3,9 @@ import ImagePreview from '../components/image-preview';
 import SourceImage from '../components/source-image';
 import MultiButton from '../components/multi-button';
 import BlockList from '../components/block-list';
+import CheckBox from '../components/check-box';
 
+import * as pixels from '@cartographer/pixels';
 import * as rr from 'react-responsive';
 import styled from 'styled-components';
 import patches from '../patches';
@@ -69,6 +71,13 @@ const PreviewContainer = styled.div`
   align-items: flex-end;
 `;
 
+const MapOptions = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 const Icon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme['light-purple']};
   border: 1px dashed ${(props) => props.theme['dark-purple']};
@@ -85,6 +94,7 @@ export default function Root() {
   const [bounds, setBounds] = React.useState<defs.Bounds>();
   const [saturation, setSaturation] = React.useState(0);
   const [brightness, setBrightness] = React.useState(0);
+  const [color_spectrum, setColorSpectrum] = React.useState(pixels.defs.BlockColorSpectrum.Full);
   const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
   const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette(patches[0].patch));
   const api = hooks.withAPIWorker();
@@ -102,6 +112,7 @@ export default function Root() {
       image_data,
       scale,
       palette: utils.normalizeColorPalette(palette),
+      color_spectrum,
       transformations: {
         saturation,
         brightness
@@ -152,25 +163,44 @@ export default function Root() {
         <Workspace small={is_small_screen}>
           {image_data ? (
             <PreviewContainer>
-              <MultiButton
-                style={{ marginBottom: 10, marginTop: is_small_screen ? 10 : 0 }}
-                disabled={!image_data}
-                selection={{
-                  fn: () => {},
-                  name: scale as unknown as string
-                }}
-                actions={scale_options.map((option) => {
-                  return {
+              <MapOptions style={{ marginTop: is_small_screen ? 10 : 0, marginBottom: 10 }}>
+                <CheckBox
+                  label="Full color spectrum"
+                  label_side="left"
+                  tooltip={[
+                    "Enabling the full color spectrum will add 3x more colors to the available color palette resulting in a more detailed image, however this will also result in 'staircasing' making the map harder to build in survival.",
+                    'Staircasing: The hue of a block in a Minecraft map is determined by the height of the adjacent block which means that blocks need to be placed with varying heights to achieve the full color spectrum.',
+                    'Turn this off if you want a perfectly flat map.'
+                  ]}
+                  style={{ marginRight: 15 }}
+                  value={color_spectrum === pixels.defs.BlockColorSpectrum.Full}
+                  onChange={(value) => {
+                    if (value) {
+                      return setColorSpectrum(pixels.defs.BlockColorSpectrum.Full);
+                    }
+                    setColorSpectrum(pixels.defs.BlockColorSpectrum.Flat);
+                  }}
+                />
+
+                <MultiButton
+                  disabled={!image_data}
+                  selection={{
                     fn: () => {},
-                    name: option as string
-                  };
-                })}
-                onSelectionChange={(action) => {
-                  setMapScale(action.name as unknown as defs.MAP_SCALE);
-                }}
-                action_opens_picker
-                prefix="Map Scale - "
-              />
+                    name: scale as unknown as string
+                  }}
+                  actions={scale_options.map((option) => {
+                    return {
+                      fn: () => {},
+                      name: option as string
+                    };
+                  })}
+                  onSelectionChange={(action) => {
+                    setMapScale(action.name as unknown as defs.MAP_SCALE);
+                  }}
+                  action_opens_picker
+                  prefix="Map Scale - "
+                />
+              </MapOptions>
 
               <SourceImage
                 image_data={image_data}
@@ -206,6 +236,7 @@ export default function Root() {
                   bounds={bounds}
                   image_data={image_data}
                   scale={scale}
+                  color_spectrum={color_spectrum}
                   transformations={{
                     saturation,
                     brightness

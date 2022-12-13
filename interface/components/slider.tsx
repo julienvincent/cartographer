@@ -20,9 +20,9 @@ const StyledSlider = styled(ReactSlider)`
 `;
 
 const Track = styled.div`
-  border-top: 2px dashed ${(props) => props.theme['dark-green']};
+  border-top: 2px dashed ${(props) => props.theme['dark-blue']};
   height: 10px;
-  top: 25%;
+  top: 8px;
 
   left: 0;
   right: 0;
@@ -50,6 +50,7 @@ const Handle = styled.div`
 
 const Label = styled.p`
   color: ${(props) => props.theme.fg2};
+  margin-bottom: 5px;
 `;
 
 type Props = {
