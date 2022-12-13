@@ -45,7 +45,12 @@ This data structure looks as follows:
 
 ## Acknowledgements
 
-The block palette data was taken directly from [rebane2001/mapartcraft](https://github.com/rebane2001/mapartcraft) and converted to the format used internally by cartographer. This conversion was done using [this script](./scripts/parse.ts). Thanks to rebane2001 for doing the hard work to extract all that useful block information.
+The block palette data was taken directly from [rebane2001/mapartcraft](https://github.com/rebane2001/mapartcraft) and converted to the format used internally by cartographer. This conversion was done using [this script](./scripts/parse.ts).
+
+## Roadmap/Features
+
++ Allow selecting multiple blocks in the color palette and balance equally between them when generating the block space. This will allow for a better distribution in accordance with the material quantities available in the users world. For example, if the user has 10 cobblestone and 10 stone, and they need 20 blocks of either, they shouldn't need to mine an additional 10 of one of the block types but rather should be able to use some cobblestone and some stone to complete the map, because they are equivalent.
++ View a block count for the image preview.
 
 ## Authors
 
