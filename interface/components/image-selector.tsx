@@ -29,6 +29,7 @@ const SelectButton = styled.div`
 `;
 
 type Props = {
+  style?: React.CSSProperties;
   onFileSelected: (image_data: ImageData) => void;
 };
 
@@ -48,7 +49,7 @@ export const ImageSelector: React.FC<Props> = (props) => {
   };
 
   return (
-    <Container>
+    <Container style={props.style}>
       <Text>Drop an image or</Text>
 
       <SelectButton style={{ marginLeft: 10 }} onClick={selectFile}>

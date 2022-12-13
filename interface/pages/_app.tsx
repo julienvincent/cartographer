@@ -3,6 +3,7 @@ import { config, dom } from '@fortawesome/fontawesome-svg-core';
 import * as theme from '../theme/theme';
 import type * as next from 'next/app';
 import font from '@next/font/local';
+import dynamic from 'next/dynamic';
 
 config.autoAddCss = false;
 
@@ -32,7 +33,7 @@ ${dom.css()}
   }
 `;
 
-export default function MyApp(props: next.AppProps) {
+export function App(props: next.AppProps) {
   return (
     <>
       <GlobalStyle />
@@ -42,3 +43,7 @@ export default function MyApp(props: next.AppProps) {
     </>
   );
 }
+
+export default dynamic(async () => App, {
+  ssr: false
+});

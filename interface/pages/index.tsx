@@ -40,6 +40,16 @@ const Title = styled.p`
   color: ${(props) => props.theme['light-yellow']};
 `;
 
+const Warning = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 4px dashed ${(props) => props.theme['dark-red']};
+  margin: 5px;
+  color: ${(props) => props.theme['light-red']};
+`;
+
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
@@ -102,6 +112,9 @@ export default function Root() {
   const [generating, isGenerating] = React.useState(false);
 
   const is_small_screen = rr.useMediaQuery({ query: '(max-width: 1750px)' });
+  const is_safari =
+    !globalThis.window?.OffscreenCanvas ||
+    /^((?!chrome|android).)*safari/i.test(globalThis.window?.navigator.userAgent || '');
 
   const generate = async (type: 'litematic' | 'nbt' | 'json') => {
     if (!image_data || !api.current) {
@@ -165,6 +178,16 @@ export default function Root() {
 
       <Content>
         <Workspace small={is_small_screen}>
+          {is_safari ? (
+            <Warning>
+              Unfortunately Cartographer is not supported on Safari [WebKit]. We depend on some browser API's like
+              OffScreenCanvas that are currently missing in Safari WebKit.
+              <br />
+              <br />
+              You will need to switch to a Chrome based browser if you would like to use Cartographer.
+            </Warning>
+          ) : null}
+
           {image_data ? (
             <PreviewContainer>
               <MapOptions style={{ marginTop: is_small_screen ? 10 : 0, marginBottom: 10 }}>
@@ -224,6 +247,7 @@ export default function Root() {
             </PreviewContainer>
           ) : (
             <ImageSelector
+              style={{ margin: 'auto' }}
               onFileSelected={async (image_data) => {
                 setImageData(image_data);
               }}

@@ -143,6 +143,7 @@ export const MultiButton: React.FC<Props> = (props) => {
           {props.actions.map((action) => {
             return (
               <ActionItem
+                key={action.name}
                 onClick={() => {
                   props.onSelectionChange?.(action);
                   setAction(action);
