@@ -17,6 +17,7 @@ import Head from 'next/head';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as icons from '@fortawesome/free-brands-svg-icons';
+import MaterialsList from '../components/materials-list';
 
 const Container = styled.div`
   display: flex;
@@ -107,6 +108,7 @@ export default function Root() {
   const [color_spectrum, setColorSpectrum] = React.useState(pixels.defs.BlockColorSpectrum.Full);
   const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
   const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette(patches[0].patch));
+  const [materials_list_visible, showMaterialsList] = React.useState(false);
   const api = hooks.withAPIWorker();
 
   const [generating, isGenerating] = React.useState(false);
@@ -280,25 +282,39 @@ export default function Root() {
                   This is a preview of how the Map itself should look once placed.
                 </Description>
 
-                <MultiButton
-                  style={{ marginTop: 10, marginBottom: 10 }}
-                  disabled={!image_data}
-                  loading={generating}
-                  actions={[
-                    {
-                      name: 'Generate Litematic',
-                      fn: () => generate('litematic')
-                    },
-                    {
-                      name: 'Generate NBT',
-                      fn: () => generate('nbt')
-                    },
-                    {
-                      name: 'Generate JSON',
-                      fn: () => generate('json')
-                    }
-                  ]}
-                />
+                <MapOptions>
+                  <MultiButton
+                    style={{ marginRight: 10 }}
+                    actions={[
+                      {
+                        name: 'Show materials list',
+                        fn: () => {
+                          showMaterialsList(true);
+                        }
+                      }
+                    ]}
+                  />
+
+                  <MultiButton
+                    style={{ marginTop: 10, marginBottom: 10 }}
+                    disabled={!image_data}
+                    loading={generating}
+                    actions={[
+                      {
+                        name: 'Generate Litematic',
+                        fn: () => generate('litematic')
+                      },
+                      {
+                        name: 'Generate NBT',
+                        fn: () => generate('nbt')
+                      },
+                      {
+                        name: 'Generate JSON',
+                        fn: () => generate('json')
+                      }
+                    ]}
+                  />
+                </MapOptions>
               </PreviewContainer>
             </>
           ) : null}
@@ -306,6 +322,22 @@ export default function Root() {
 
         <BlockList palette={palette} onChange={setPalette} />
       </Content>
+
+      {image_data && materials_list_visible && (
+        <MaterialsList
+          onClose={() => {
+            showMaterialsList(false);
+          }}
+          palette={palette}
+          image_data={image_data}
+          scale={scale}
+          color_spectrum={color_spectrum}
+          transformations={{
+            saturation,
+            brightness
+          }}
+        />
+      )}
     </Container>
   );
 }

@@ -103,11 +103,25 @@ export const generateMapJSON = async (params: GenerateBlockSpaceFromImageDataPar
   return Buffer.from(JSON.stringify(block_space));
 };
 
+export const generateMaterialsList = async (params: GenerateBlockSpaceFromImageDataParams) => {
+  const block_space = generateBlockSpaceFromImageData(params);
+
+  return block_space.reduce((counts: Record<string, number>, rows) => {
+    return rows.reduce((counts, row) => {
+      return row.reduce((counts, block) => {
+        counts[block.id] = (counts[block.id] || 0) + 1;
+        return counts;
+      }, counts);
+    }, counts);
+  }, {});
+};
+
 const API = {
   generatePreview: generatePreview,
   generateLitematicaSchema: generateLightmaticaSchema,
   generateMapNBT: generateMapNBT,
-  generateMapJSON: generateMapJSON
+  generateMapJSON: generateMapJSON,
+  generateMaterialsList: generateMaterialsList
 };
 
 export type API = typeof API;

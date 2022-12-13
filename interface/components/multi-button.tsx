@@ -1,8 +1,8 @@
-import { keyframes } from 'styled-components';
 import styled from 'styled-components';
 import * as React from 'react';
 
 import Tooltip from './tooltip';
+import Loader from './loader';
 
 const Container = styled.div<{ disabled?: boolean }>`
   display: flex;
@@ -64,28 +64,6 @@ const ActionItem = styled.div`
   }
 `;
 
-const scale = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-
-const Loader = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${(props) => props.theme['light-orange']};
-  margin-left: 8px;
-
-  animation: ${scale} 2s ease-in-out infinite;
-`;
-
 type Action = {
   name: string;
   fn: () => void;
@@ -136,12 +114,12 @@ export const MultiButton: React.FC<Props> = (props) => {
 
         {props.loading ? (
           <Loader />
-        ) : (
+        ) : props.actions.length > 1 ? (
           <Selector disabled={disabled} onClick={() => setPickerShowing(!picker_showing)}>
             {' '}
             <p>▼</p>
           </Selector>
-        )}
+        ) : null}
 
         {picker_showing && (
           <Picker>
