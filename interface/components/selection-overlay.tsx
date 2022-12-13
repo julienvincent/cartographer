@@ -33,9 +33,11 @@ const SelectionBox = styled.rect`
   cursor: pointer;
 `;
 
-const ResizeHandle = styled.circle`
-  fill: ${(props) => props.theme['light-green']};
-  transform: translate(-15px, -15px);
+const ResizeHandle = styled.rect`
+  fill: ${(props) => props.theme['dark-green']};
+  stroke: ${(props) => props.theme['bg0-hard']};
+  stroke-width: 2px;
+  transform: translate(-20px, -20px);
   cursor: pointer;
 `;
 
@@ -147,9 +149,10 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
       />
 
       <ResizeHandle
-        cx={handle_x}
-        cy={handle_y}
-        r={5}
+        x={handle_x}
+        y={handle_y}
+        width={12}
+        height={12}
         onMouseDown={(e) => {
           e.stopPropagation();
           setDragEvent({
