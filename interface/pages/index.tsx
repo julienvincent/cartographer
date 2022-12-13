@@ -152,7 +152,11 @@ export default function Root() {
       </Head>
 
       <Header>
-        <Title>Cartographer</Title>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Title>Cartographer</Title>
+
+          <Description style={{ marginLeft: 10 }}>- A map-art generator for Minecraft</Description>
+        </div>
 
         <a target="_blank" href="https://github.com/julienvincent/cartographer">
           <Icon icon={icons.faGithub} />
