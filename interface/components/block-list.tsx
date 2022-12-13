@@ -36,7 +36,7 @@ type Props = {
 
 export const BlockList: React.FC<Props> = (props) => {
   const [search, setSearch] = React.useState('');
-  const [palette_preset, setPalettePreset] = React.useState('Primary');
+  const [palette_preset, setPalettePreset] = React.useState('Full');
 
   const blocks = props.palette.map((item) => item.blocks.map((block) => block.id)).flat();
   const fuse = new Fuse(blocks, {

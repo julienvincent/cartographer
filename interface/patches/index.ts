@@ -1,10 +1,15 @@
+import * as affordable from './affordable';
 import * as concrete from './concrete';
-import * as primary from './primary';
+import * as full from './full';
 
 export default [
   {
-    name: 'Primary',
-    patch: primary.patch
+    name: 'Full',
+    patch: full.patch
+  },
+  {
+    name: 'Affordable',
+    patch: affordable.patch
   },
   {
     name: 'Concrete Powder',
