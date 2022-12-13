@@ -12,7 +12,7 @@ const TooltipContainer = styled.div`
   position: absolute;
   top: 100%;
   margin-top: 5px;
-  z-index: 100;
+  z-index: 99;
 
   background-color: ${(props) => props.theme['bg0-hard']};
   border: 2px dashed ${(props) => props.theme.fg3};

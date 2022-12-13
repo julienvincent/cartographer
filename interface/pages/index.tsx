@@ -211,6 +211,11 @@ export default function Root() {
 
                 <MultiButton
                   disabled={!image_data}
+                  tooltip={[
+                    'This scale correlates to the number of maps at zoom level 1 required in order to render the full image. This IS NOT intended to be used with a zoomed out map.',
+                    '128x - 1 map required. 256x - 2 maps required 512x - 4 maps required.',
+                    'Changing this will result in a more detailed image - but will also require you to place significantly more blocks.'
+                  ]}
                   selection={{
                     fn: () => {},
                     name: scale as unknown as string

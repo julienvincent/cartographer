@@ -2,6 +2,8 @@ import { keyframes } from 'styled-components';
 import styled from 'styled-components';
 import * as React from 'react';
 
+import Tooltip from './tooltip';
+
 const Container = styled.div<{ disabled?: boolean }>`
   display: flex;
   flex-direction: row;
@@ -93,6 +95,8 @@ type Props = {
   style?: React.CSSProperties;
   className?: string;
 
+  tooltip?: string | string[];
+
   prefix?: string;
 
   actions: Action[];
@@ -113,50 +117,52 @@ export const MultiButton: React.FC<Props> = (props) => {
   const disabled = props.disabled || props.loading || false;
 
   return (
-    <Container disabled={disabled} className={props.className} style={props.style}>
-      <Button
-        disabled={disabled}
-        onClick={() => {
-          if (props.action_opens_picker) {
-            setPickerShowing(!picker_showing);
-          } else {
-            action.fn();
-          }
-        }}
-      >
-        {props.prefix}
-        {props.prefix ? ' ' : ''}
-        {action.name}
-      </Button>
+    <Tooltip tooltip={props.tooltip}>
+      <Container disabled={disabled} className={props.className} style={props.style}>
+        <Button
+          disabled={disabled}
+          onClick={() => {
+            if (props.action_opens_picker) {
+              setPickerShowing(!picker_showing);
+            } else {
+              action.fn();
+            }
+          }}
+        >
+          {props.prefix}
+          {props.prefix ? ' ' : ''}
+          {action.name}
+        </Button>
 
-      {props.loading ? (
-        <Loader />
-      ) : (
-        <Selector disabled={disabled} onClick={() => setPickerShowing(!picker_showing)}>
-          {' '}
-          <p>▼</p>
-        </Selector>
-      )}
+        {props.loading ? (
+          <Loader />
+        ) : (
+          <Selector disabled={disabled} onClick={() => setPickerShowing(!picker_showing)}>
+            {' '}
+            <p>▼</p>
+          </Selector>
+        )}
 
-      {picker_showing && (
-        <Picker>
-          {props.actions.map((action) => {
-            return (
-              <ActionItem
-                key={action.name}
-                onClick={() => {
-                  props.onSelectionChange?.(action);
-                  setAction(action);
-                  setPickerShowing(false);
-                }}
-              >
-                {action.name}
-              </ActionItem>
-            );
-          })}
-        </Picker>
-      )}
-    </Container>
+        {picker_showing && (
+          <Picker>
+            {props.actions.map((action) => {
+              return (
+                <ActionItem
+                  key={action.name}
+                  onClick={() => {
+                    props.onSelectionChange?.(action);
+                    setAction(action);
+                    setPickerShowing(false);
+                  }}
+                >
+                  {action.name}
+                </ActionItem>
+              );
+            })}
+          </Picker>
+        )}
+      </Container>
+    </Tooltip>
   );
 };
 
