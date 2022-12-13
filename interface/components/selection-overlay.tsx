@@ -102,11 +102,21 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
     props.onBoundsChange([x, y, d]);
   };
 
+  React.useEffect(() => {
+    if (!drag_event) {
+      return;
+    }
+    const mouseUpHandler = () => {
+      setDragEvent(null);
+    };
+    document.addEventListener('mouseup', mouseUpHandler);
+    return () => {
+      document.removeEventListener('mouseup', mouseUpHandler);
+    };
+  }, [drag_event]);
+
   return (
     <SVGContainer
-      onMouseUp={() => {
-        setDragEvent(null);
-      }}
       onMouseMove={(e) => {
         if (!drag_event) {
           return;
