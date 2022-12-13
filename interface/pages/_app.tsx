@@ -1,5 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { config, dom } from '@fortawesome/fontawesome-svg-core';
+import { Analytics } from '@vercel/analytics/react';
 import * as theme from '../theme/theme';
 import type * as next from 'next/app';
 import font from '@next/font/local';
@@ -39,6 +40,7 @@ export function App(props: next.AppProps) {
       <GlobalStyle />
       <ThemeProvider theme={theme.THEME}>
         <props.Component {...props.pageProps} />
+        <Analytics />
       </ThemeProvider>
     </>
   );

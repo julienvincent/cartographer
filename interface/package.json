@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@next/font": "^13.0.6",
+    "@vercel/analytics": "^0.1.6",
     "async": "^3.2.4",
     "comlink": "^4.3.1",
     "fuse.js": "^6.6.2",

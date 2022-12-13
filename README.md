@@ -46,6 +46,8 @@ The block palette data was taken directly from [rebane2001/mapartcraft](https://
 - Allow selecting multiple blocks in the color palette and balance equally between them when generating the block space. This will allow for a better distribution in accordance with the material quantities available in the users world. For example, if the user has 10 cobblestone and 10 stone, and they need 20 blocks of either, they shouldn't need to mine an additional 10 of one of the block types but rather should be able to use some cobblestone and some stone to complete the map, because they are equivalent.
 - Allow selecting the block type to be used under blocks that require support.
 - Allow creating non-symmetric map scales. For example, allow creating a `128x256` scale map.
+- Add a minecraft version selector with version specific block palettes
+- Add support for uploading custom block palettes
 
 ## Authors
 
