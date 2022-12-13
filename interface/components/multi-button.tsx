@@ -42,17 +42,20 @@ const Selector = styled.div<{ disabled: boolean }>`
 
 const Picker = styled.div`
   position: absolute;
-  width: 100%;
   left: 0;
   top: 100%;
-  background-color: ${(props) => props.theme['bg0-hard']};
+  min-width: 100%;
   z-index: 100;
+
+  border: 2px dashed ${(props) => props.theme['dark-green']};
+  background-color: ${(props) => props.theme['bg0-hard']};
 `;
 
 const ActionItem = styled.div`
   padding: 5px 10px;
-  color: ${(props) => props.theme['dark-blue']};
+  color: ${(props) => props.theme['fg2']};
   border: 1px dashed ${(props) => props.theme['bg0-hard']};
+  white-space: nowrap;
 
   :hover {
     border: 1px dashed ${(props) => props.theme.fg2};
