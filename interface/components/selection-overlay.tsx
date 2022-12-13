@@ -29,7 +29,7 @@ const SelectionBox = styled.rect`
   stroke-width: 2px;
   stroke-dasharray: 5px;
   stroke: ${(props) => props.theme['dark-red']};
-  fill: rgba(255, 255, 255, 0.1);
+  fill: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 `;
 
