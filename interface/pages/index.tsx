@@ -196,7 +196,7 @@ export default function Root() {
                   label_side="left"
                   tooltip={[
                     "Enabling the full color spectrum will add 3x more colors to the available color palette resulting in a more detailed image, however this will also result in 'staircasing' making the map harder to build in survival.",
-                    'Staircasing: The hue of a block in a Minecraft map is determined by the height of the adjacent block which means that blocks need to be placed with varying heights to achieve the full color spectrum.',
+                    'Staircasing: The hue of a block in a Minecraft map is determined by the height of adjacent blocks. This means that blocks need to be placed with varying heights in order to achieve the full color spectrum.',
                     'Turn this off if you want a perfectly flat map.'
                   ]}
                   style={{ marginRight: 15 }}
