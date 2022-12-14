@@ -1,7 +1,7 @@
 import * as pixels from '@cartographer/pixels';
 
 type PaletteSelectionProperties = {
-  selected_block_id: string;
+  selected_block_ids: string[];
   enabled: boolean;
 };
 

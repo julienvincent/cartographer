@@ -3,31 +3,31 @@ import * as defs from '../defs';
 export const patch: defs.PalettePatch = [
   {
     id: '0',
-    selected_block_id: 'minecraft:grass_block'
+    selected_block_ids: ['minecraft:grass_block']
   },
   {
     id: '1',
-    selected_block_id: 'minecraft:sand'
+    selected_block_ids: ['minecraft:sand']
   },
   {
     id: '2',
-    selected_block_id: 'minecraft:mushroom_stem'
+    selected_block_ids: ['minecraft:mushroom_stem']
   },
   {
     id: '3',
-    selected_block_id: 'minecraft:redstone_block'
+    selected_block_ids: ['minecraft:redstone_block']
   },
   {
     id: '4',
-    selected_block_id: 'minecraft:ice'
+    selected_block_ids: ['minecraft:ice']
   },
   {
     id: '5',
-    selected_block_id: 'minecraft:iron_block'
+    selected_block_ids: ['minecraft:iron_block']
   },
   {
     id: '6',
-    selected_block_id: 'minecraft:oak_leaves'
+    selected_block_ids: ['minecraft:oak_leaves']
   },
   {
     id: '7',
@@ -35,11 +35,11 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '8',
-    selected_block_id: 'minecraft:dirt'
+    selected_block_ids: ['minecraft:dirt']
   },
   {
     id: '9',
-    selected_block_id: 'minecraft:cobblestone'
+    selected_block_ids: ['minecraft:cobblestone']
   },
   {
     id: '10',
@@ -47,83 +47,83 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '11',
-    selected_block_id: 'minecraft:oak_planks'
+    selected_block_ids: ['minecraft:oak_planks']
   },
   {
     id: '12',
-    selected_block_id: 'minecraft:diorite'
+    selected_block_ids: ['minecraft:diorite']
   },
   {
     id: '13',
-    selected_block_id: 'minecraft:white_concrete_powder'
+    selected_block_ids: ['minecraft:white_concrete_powder']
   },
   {
     id: '14',
-    selected_block_id: 'minecraft:red_sand'
+    selected_block_ids: ['minecraft:red_sand']
   },
   {
     id: '15',
-    selected_block_id: 'minecraft:magenta_concrete_powder'
+    selected_block_ids: ['minecraft:magenta_concrete_powder']
   },
   {
     id: '16',
-    selected_block_id: 'minecraft:light_blue_concrete_powder'
+    selected_block_ids: ['minecraft:light_blue_concrete_powder']
   },
   {
     id: '17',
-    selected_block_id: 'minecraft:yellow_concrete_powder'
+    selected_block_ids: ['minecraft:yellow_concrete_powder']
   },
   {
     id: '18',
-    selected_block_id: 'minecraft:lime_concrete_powder'
+    selected_block_ids: ['minecraft:lime_concrete_powder']
   },
   {
     id: '19',
-    selected_block_id: 'minecraft:pink_concrete_powder'
+    selected_block_ids: ['minecraft:pink_concrete_powder']
   },
   {
     id: '20',
-    selected_block_id: 'minecraft:gray_concrete_powder'
+    selected_block_ids: ['minecraft:gray_concrete_powder']
   },
   {
     id: '21',
-    selected_block_id: 'minecraft:light_gray_concrete_powder'
+    selected_block_ids: ['minecraft:light_gray_concrete_powder']
   },
   {
     id: '22',
-    selected_block_id: 'minecraft:cyan_concrete_powder'
+    selected_block_ids: ['minecraft:cyan_concrete_powder']
   },
   {
     id: '23',
-    selected_block_id: 'minecraft:purple_concrete_powder'
+    selected_block_ids: ['minecraft:purple_concrete_powder']
   },
   {
     id: '24',
-    selected_block_id: 'minecraft:blue_concrete_powder'
+    selected_block_ids: ['minecraft:blue_concrete_powder']
   },
   {
     id: '25',
-    selected_block_id: 'minecraft:brown_concrete_powder'
+    selected_block_ids: ['minecraft:brown_concrete_powder']
   },
   {
     id: '26',
-    selected_block_id: 'minecraft:green_concrete_powder'
+    selected_block_ids: ['minecraft:green_concrete_powder']
   },
   {
     id: '27',
-    selected_block_id: 'minecraft:red_concrete_powder'
+    selected_block_ids: ['minecraft:red_concrete_powder']
   },
   {
     id: '28',
-    selected_block_id: 'minecraft:black_concrete_powder'
+    selected_block_ids: ['minecraft:black_concrete_powder']
   },
   {
     id: '29',
-    selected_block_id: 'minecraft:light_weighted_pressure_plate'
+    selected_block_ids: ['minecraft:light_weighted_pressure_plate']
   },
   {
     id: '30',
-    selected_block_id: 'minecraft:prismarine_bricks'
+    selected_block_ids: ['minecraft:prismarine_bricks']
   },
   {
     id: '31',
@@ -135,15 +135,15 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '33',
-    selected_block_id: 'minecraft:spruce_planks'
+    selected_block_ids: ['minecraft:spruce_planks']
   },
   {
     id: '34',
-    selected_block_id: 'minecraft:netherrack'
+    selected_block_ids: ['minecraft:netherrack']
   },
   {
     id: '35',
-    selected_block_id: 'minecraft:calcite'
+    selected_block_ids: ['minecraft:calcite']
   },
   {
     id: '36',
@@ -171,7 +171,7 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '42',
-    selected_block_id: 'minecraft:tuff'
+    selected_block_ids: ['minecraft:tuff']
   },
   {
     id: '43',
@@ -191,7 +191,7 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '47',
-    selected_block_id: 'minecraft:dripstone_block'
+    selected_block_ids: ['minecraft:dripstone_block']
   },
   {
     id: '48',
@@ -207,11 +207,11 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '51',
-    selected_block_id: 'minecraft:crimson_nylium'
+    selected_block_ids: ['minecraft:crimson_nylium']
   },
   {
     id: '52',
-    selected_block_id: 'minecraft:crimson_planks'
+    selected_block_ids: ['minecraft:crimson_planks']
   },
   {
     id: '53',
@@ -223,7 +223,7 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '55',
-    selected_block_id: 'minecraft:stripped_warped_stem'
+    selected_block_ids: ['minecraft:stripped_warped_stem']
   },
   {
     id: '56',
@@ -235,7 +235,7 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '58',
-    selected_block_id: 'minecraft:cobbled_deepslate'
+    selected_block_ids: ['minecraft:cobbled_deepslate']
   },
   {
     id: '59',
@@ -243,6 +243,6 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '60',
-    selected_block_id: 'minecraft:glow_lichen'
+    selected_block_ids: ['minecraft:glow_lichen']
   }
 ];

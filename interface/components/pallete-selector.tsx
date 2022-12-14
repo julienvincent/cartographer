@@ -103,25 +103,32 @@ namespace BlockSelector {
     color: ${(props) => (props.selected ? props.theme['light-green'] : props.theme['light-gray'])};
     font-weight: ${(props) => (props.selected ? 'bold' : 'medium')};
     text-decoration: ${(props) => (props.selected ? 'underline dashed' : '')};
+    user-select: none;
   `;
 
   type BlockSelectorProps = {
     block_ids: string[];
-    selected: string;
-    onChange: (block_id: string) => void;
+    selected: string[];
+    onChange: (block_ids: string[]) => void;
     enabled: boolean;
   };
   export const Component: React.FC<BlockSelectorProps> = (props) => {
     return (
       <Container enabled={props.enabled}>
         {props.block_ids.map((block_id) => {
-          const is_selected = block_id === props.selected;
+          const is_selected = props.selected.includes(block_id);
           return (
             <BlockContainer key={block_id}>
               <Text
                 selected={is_selected}
                 onClick={() => {
-                  props.onChange(block_id);
+                  if (is_selected) {
+                    if (props.selected.length === 1) {
+                      return;
+                    }
+                    return props.onChange(props.selected.filter((id) => id !== block_id));
+                  }
+                  props.onChange(props.selected.concat(block_id));
                 }}
               >
                 {block_id.replace('minecraft:', '')}
@@ -164,11 +171,11 @@ export const PalletSelector: React.FC<Props> = (props) => {
             <BlockSelector.Component
               enabled={mapping.enabled}
               block_ids={mapping.blocks.map((block) => block.id)}
-              selected={mapping.selected_block_id}
-              onChange={(block_id) => {
+              selected={mapping.selected_block_ids}
+              onChange={(block_ids) => {
                 props.onChange({
                   ...props.palette[i],
-                  selected_block_id: block_id
+                  selected_block_ids: block_ids
                 });
               }}
             />

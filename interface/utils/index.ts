@@ -44,7 +44,7 @@ export const createDefaultPalette = (patch: defs.PalettePatch): defs.ColorPalett
       id: mapping.id,
       colors: mapping.colors,
       blocks: mapping.blocks,
-      selected_block_id: block_patch?.selected_block_id ?? mapping.blocks[0].id,
+      selected_block_ids: block_patch?.selected_block_ids ?? [mapping.blocks[0].id],
       enabled: block_patch?.enabled ?? true
     };
   });
@@ -54,7 +54,7 @@ export const normalizeColorPalette = (palette: defs.ColorPalette) => {
   return palette
     .filter((item) => item.enabled)
     .map((item) => {
-      const blocks = item.blocks.filter((block) => block.id === item.selected_block_id);
+      const blocks = item.blocks.filter((block) => item.selected_block_ids.includes(block.id));
       return {
         ...item,
         blocks,

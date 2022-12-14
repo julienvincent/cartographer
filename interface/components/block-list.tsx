@@ -137,7 +137,7 @@ export const BlockList: React.FC<Props> = (props) => {
               return {
                 ...original,
                 enabled: item.enabled,
-                selected_block_id: item.selected_block_id
+                selected_block_ids: item.selected_block_ids
               };
             })
           );

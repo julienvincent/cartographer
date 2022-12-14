@@ -57,67 +57,67 @@ export const patch: defs.PalettePatch = [
   },
   {
     id: '13',
-    selected_block_id: 'minecraft:white_concrete_powder'
+    selected_block_ids: ['minecraft:white_concrete_powder']
   },
   {
     id: '14',
-    selected_block_id: 'minecraft:orange_concrete_powder'
+    selected_block_ids: ['minecraft:orange_concrete_powder']
   },
   {
     id: '15',
-    selected_block_id: 'minecraft:magenta_concrete_powder'
+    selected_block_ids: ['minecraft:magenta_concrete_powder']
   },
   {
     id: '16',
-    selected_block_id: 'minecraft:light_blue_concrete_powder'
+    selected_block_ids: ['minecraft:light_blue_concrete_powder']
   },
   {
     id: '17',
-    selected_block_id: 'minecraft:yellow_concrete_powder'
+    selected_block_ids: ['minecraft:yellow_concrete_powder']
   },
   {
     id: '18',
-    selected_block_id: 'minecraft:lime_concrete_powder'
+    selected_block_ids: ['minecraft:lime_concrete_powder']
   },
   {
     id: '19',
-    selected_block_id: 'minecraft:pink_concrete_powder'
+    selected_block_ids: ['minecraft:pink_concrete_powder']
   },
   {
     id: '20',
-    selected_block_id: 'minecraft:gray_concrete_powder'
+    selected_block_ids: ['minecraft:gray_concrete_powder']
   },
   {
     id: '21',
-    selected_block_id: 'minecraft:light_gray_concrete_powder'
+    selected_block_ids: ['minecraft:light_gray_concrete_powder']
   },
   {
     id: '22',
-    selected_block_id: 'minecraft:cyan_concrete_powder'
+    selected_block_ids: ['minecraft:cyan_concrete_powder']
   },
   {
     id: '23',
-    selected_block_id: 'minecraft:purple_concrete_powder'
+    selected_block_ids: ['minecraft:purple_concrete_powder']
   },
   {
     id: '24',
-    selected_block_id: 'minecraft:blue_concrete_powder'
+    selected_block_ids: ['minecraft:blue_concrete_powder']
   },
   {
     id: '25',
-    selected_block_id: 'minecraft:brown_concrete_powder'
+    selected_block_ids: ['minecraft:brown_concrete_powder']
   },
   {
     id: '26',
-    selected_block_id: 'minecraft:green_concrete_powder'
+    selected_block_ids: ['minecraft:green_concrete_powder']
   },
   {
     id: '27',
-    selected_block_id: 'minecraft:red_concrete_powder'
+    selected_block_ids: ['minecraft:red_concrete_powder']
   },
   {
     id: '28',
-    selected_block_id: 'minecraft:black_concrete_powder'
+    selected_block_ids: ['minecraft:black_concrete_powder']
   },
   {
     id: '29',
