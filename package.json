@@ -2,7 +2,7 @@
   "name": "cartographer",
   "private": true,
   "scripts": {
-    "build:packages": "tsc -b",
+    "build:packages": "pnpm run -r --filter {./packages} build",
     "build:interface": "cd interface && pnpm build",
     "build": "pnpm build:packages && pnpm build:interface",
     "postinstall": "cp ./scripts/pre-commit.sh ./.git/hooks/pre-commit",

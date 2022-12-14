@@ -14,25 +14,6 @@ importers:
       typescript: 4.9.4
       vitest: 0.25.7
 
-  generation:
-    specifiers:
-      '@cartographer/litematica': workspace:^
-      '@cartographer/pixels': workspace:^
-      '@types/lodash': ^4.14.191
-      '@types/pako': ^2.0.0
-      lodash: ^4.17.21
-      nbt: ^0.8.1
-      pako: ^2.1.0
-    dependencies:
-      '@cartographer/litematica': link:../litematica
-      '@cartographer/pixels': link:../pixels
-      lodash: 4.17.21
-      nbt: 0.8.1
-      pako: 2.1.0
-    devDependencies:
-      '@types/lodash': 4.14.191
-      '@types/pako': 2.0.0
-
   interface:
     specifiers:
       '@babel/core': ^7.20.5
@@ -64,8 +45,8 @@ importers:
       styled-components: ^5.3.6
       uuid: ^9.0.0
     dependencies:
-      '@cartographer/generation': link:../generation
-      '@cartographer/pixels': link:../pixels
+      '@cartographer/generation': link:../packages/generation
+      '@cartographer/pixels': link:../packages/pixels
       '@fortawesome/fontawesome-svg-core': 6.2.1
       '@fortawesome/free-brands-svg-icons': 6.2.1
       '@fortawesome/free-solid-svg-icons': 6.2.1
@@ -94,7 +75,26 @@ importers:
       '@types/styled-components': 5.1.26
       '@types/uuid': 9.0.0
 
-  litematica:
+  packages/generation:
+    specifiers:
+      '@cartographer/litematica': workspace:^
+      '@cartographer/pixels': workspace:^
+      '@types/lodash': ^4.14.191
+      '@types/pako': ^2.0.0
+      lodash: ^4.17.21
+      nbt: ^0.8.1
+      pako: ^2.1.0
+    dependencies:
+      '@cartographer/litematica': link:../litematica
+      '@cartographer/pixels': link:../pixels
+      lodash: 4.17.21
+      nbt: 0.8.1
+      pako: 2.1.0
+    devDependencies:
+      '@types/lodash': 4.14.191
+      '@types/pako': 2.0.0
+
+  packages/litematica:
     specifiers:
       '@types/lodash': ^4.14.191
       lodash: ^4.17.21
@@ -103,7 +103,10 @@ importers:
     devDependencies:
       '@types/lodash': 4.14.191
 
-  pixels:
+  packages/palettes:
+    specifiers: {}
+
+  packages/pixels:
     specifiers:
       '@types/lodash': ^4.14.191
       '@types/tinycolor2': ^1.4.3

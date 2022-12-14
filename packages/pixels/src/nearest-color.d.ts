@@ -6,9 +6,7 @@ declare module 'nearest-color' {
   };
   export type InputColors = Record<string, RGBColor>;
 
-  export type ColorFinder = (
-    color: RGBColor | string
-  ) => {
+  export type ColorFinder = (color: RGBColor | string) => {
     name: string;
     color: string;
     rgb: RGBColor;
