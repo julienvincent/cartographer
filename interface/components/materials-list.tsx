@@ -132,7 +132,7 @@ export const MaterialsList: React.FC<Props> = (props) => {
   const [search, setSearch] = React.useState('');
   const [loading, setLoading] = React.useState(true);
 
-  const [[sort_by_key, sort_by_direction], setSortBy] = React.useState<['id' | 'count', -1 | 1]>(['id', 1]);
+  const [[sort_by_key, sort_by_direction], setSortBy] = React.useState<['id' | 'count', -1 | 1]>(['count', 1]);
 
   const api = hooks.withAPIWorker();
 
