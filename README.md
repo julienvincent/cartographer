@@ -13,6 +13,7 @@ There are some alternatives to this tool out in the wild, most notably being [ma
 - Ability to manually edit the generated map-art to tweak/fix things
 - Perform all generation entirely on the browser, so not having to wait for any server-side queues
 - Simpler and more direct output format (.schematic files, json, .nbt) that don't need to be converted via third party tools
+- Allow selecting multiple blocks in the color palette and balance equally between them when generating the block space. This allows for a better distribution in accordance with the material quantities available in the users world. For example, if the user has 10 cobblestone and 10 stone, and they need 20 blocks of either, they shouldn't need to mine an additional 10 of one type but rather should be able to use both their cobblestone and their stone to complete the map.
 
 ## Components
 
@@ -31,7 +32,7 @@ This data structure looks as follows:
   [
     {
       "id": "minecraft:stone",
-      "y_offset": 0 // 0-2
+      "offset": 0
     }
   ]
 ]
@@ -43,11 +44,11 @@ The block palette data was taken directly from [rebane2001/mapartcraft](https://
 
 ## Roadmap/Features
 
-- Allow selecting multiple blocks in the color palette and balance equally between them when generating the block space. This will allow for a better distribution in accordance with the material quantities available in the users world. For example, if the user has 10 cobblestone and 10 stone, and they need 20 blocks of either, they shouldn't need to mine an additional 10 of one of the block types but rather should be able to use some cobblestone and some stone to complete the map, because they are equivalent.
+- Place blocks under other blocks that require additional support (like sand, for example).
+- Fix the staircasing algorithm to only staircase when needed.
 - Allow selecting the block type to be used under blocks that require support.
-- Allow creating non-symmetric map scales. For example, allow creating a `128x256` scale map.
-- Add a minecraft version selector with version specific block palettes
-- Add support for uploading custom block palettes
+- Add a minecraft version selector with version specific block palettes.
+- Add support for uploading custom block palettes.
 
 ## Authors
 
