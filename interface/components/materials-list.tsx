@@ -117,6 +117,7 @@ type Props = {
 
   image_data: ImageData;
   scale: defs.Scale;
+  bounds: defs.Bounds;
   color_spectrum: pixels.defs.BlockColorSpectrum;
 
   transformations: {
@@ -146,6 +147,7 @@ export const MaterialsList: React.FC<Props> = (props) => {
       const materials_list = await api.current.generateMaterialsList({
         image_data: props.image_data,
         scale: props.scale,
+        bounds: props.bounds,
         color_spectrum: props.color_spectrum,
         palette: utils.normalizeColorPalette(props.palette),
         transformations: props.transformations
@@ -163,6 +165,7 @@ export const MaterialsList: React.FC<Props> = (props) => {
     api.current,
     props.palette,
     props.scale,
+    props.bounds,
     props.transformations.brightness,
     props.transformations.saturation,
     props.color_spectrum

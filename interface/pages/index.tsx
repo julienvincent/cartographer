@@ -132,13 +132,14 @@ export default function Root() {
     /^((?!chrome|android).)*safari/i.test(globalThis.window?.navigator.userAgent || '');
 
   const generate = async (type: 'litematic' | 'nbt' | 'json') => {
-    if (!image_data || !api.current) {
+    if (!image_data || !bounds || !api.current) {
       return;
     }
 
     const params = {
       image_data,
       scale,
+      bounds,
       palette: utils.normalizeColorPalette(palette),
       color_spectrum,
       transformations: {
@@ -374,7 +375,7 @@ export default function Root() {
         <BlockList palette={palette} onChange={setPalette} />
       </Content>
 
-      {image_data && materials_list_visible && (
+      {image_data && bounds && materials_list_visible && (
         <MaterialsList
           onClose={() => {
             showMaterialsList(false);
@@ -382,6 +383,7 @@ export default function Root() {
           palette={palette}
           image_data={image_data}
           scale={scale}
+          bounds={bounds}
           color_spectrum={color_spectrum}
           transformations={{
             saturation,

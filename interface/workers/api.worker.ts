@@ -10,7 +10,10 @@ export type Transformations = {
   saturation?: number;
   brightness?: number;
 };
-export type CommonPipelineParams = {
+export type GenerationParams = {
+  image_data: ImageData;
+
+  bounds: defs.Bounds;
   scale: defs.Scale;
 
   palette: pixels.defs.BlockPalette;
@@ -19,12 +22,19 @@ export type CommonPipelineParams = {
   transformations?: Transformations;
 };
 
-type BaseImagePipelineParams = CommonPipelineParams & {
-  pixels: pixels.defs.PixelGrid;
-};
-const baseImagePipeline = (params: BaseImagePipelineParams) => {
+const baseImagePipeline = (params: GenerationParams) => {
+  const [x, y, dx, dy] = params.bounds;
+
+  const canvas = new OffscreenCanvas(params.image_data.width, params.image_data.height);
+  const context = canvas.getContext('2d') as OffscreenCanvasRenderingContext2D;
+  context.putImageData(params.image_data, 0, 0);
+
+  const image_data = context.getImageData(x, y, dx, dy);
+
+  const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(image_data);
+
   const scaled_pixel_grid = pixels.conversion.scaleDownPixelGrid(
-    params.pixels,
+    pixel_grid,
     params.scale.x * constants.SCALE_FACTOR,
     params.scale.y * constants.SCALE_FACTOR
   );
@@ -49,11 +59,9 @@ const baseImagePipeline = (params: BaseImagePipelineParams) => {
   });
 };
 
-type GenerationParams = CommonPipelineParams & {
-  image_data: ImageData;
-  bounds: defs.Bounds;
-};
 const generatePreview = (params: GenerationParams) => {
+  const color_converted = baseImagePipeline(params);
+
   const ratio_xy = params.scale.y / params.scale.x;
   const ratio_yx = params.scale.x / params.scale.y;
   let width, height;
@@ -65,57 +73,35 @@ const generatePreview = (params: GenerationParams) => {
     width = height * ratio_yx;
   }
 
-  const [x, y, dx, dy] = params.bounds;
-
-  const canvas = new OffscreenCanvas(params.image_data.width, params.image_data.height);
-  const context = canvas.getContext('2d') as OffscreenCanvasRenderingContext2D;
-  context.putImageData(params.image_data, 0, 0);
-
-  const image_data = context.getImageData(x, y, dx, dy);
-
-  const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(image_data);
-  const color_converted = baseImagePipeline({
-    pixels: pixel_grid,
-    ...params
-  });
-
   const scaled_up_pixel_grid = pixels.conversion.scaleUpPixelGrid(color_converted, width, height);
   return pixels.conversion.convertPixelGridToImageData(scaled_up_pixel_grid);
 };
 
-type BlockSpaceGenerationParams = CommonPipelineParams & {
-  image_data: ImageData;
-};
-const generateBlockSpaceFromImageData = (params: BlockSpaceGenerationParams) => {
-  const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(params.image_data);
-
-  const color_converted = baseImagePipeline({
-    pixels: pixel_grid,
-    ...params
-  });
+const generateBlockSpaceFromImageData = (params: GenerationParams) => {
+  const color_converted = baseImagePipeline(params);
 
   const blocks = pixels.conversion.convertPixelGridToMCBlocks(color_converted, params.palette);
   return generation.block_generation.buildBlockSpace(blocks);
 };
 
-export const generateLightmaticaSchema = async (params: BlockSpaceGenerationParams) => {
+export const generateLightmaticaSchema = async (params: GenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
   const schema = generation.schema_generation.litematica.generateLitematicaSchema(block_space);
   return await generation.serialization.serializeNBTData(schema);
 };
 
-export const generateMapNBT = async (params: BlockSpaceGenerationParams) => {
+export const generateMapNBT = async (params: GenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
   const map = generation.schema_generation.map.asNbtObject(block_space);
   return await generation.serialization.serializeNBTData(map);
 };
 
-export const generateMapJSON = async (params: BlockSpaceGenerationParams) => {
+export const generateMapJSON = async (params: GenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
   return Buffer.from(JSON.stringify(block_space));
 };
 
-export const generateMaterialsList = async (params: BlockSpaceGenerationParams) => {
+export const generateMaterialsList = async (params: GenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
 
   return block_space.reduce((counts: Record<string, number>, rows) => {
