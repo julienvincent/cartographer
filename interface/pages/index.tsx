@@ -216,9 +216,9 @@ export default function Root() {
                   label="Full color spectrum"
                   label_side="left"
                   tooltip={[
-                    "Enabling the full color spectrum will add 3x more colors to the available color palette resulting in a more detailed image, however this will also result in 'staircasing' making the map harder to build in survival.",
-                    'Staircasing: The hue of a block in a Minecraft map is determined by the height of adjacent blocks. This means that blocks need to be placed with varying heights in order to achieve the full color spectrum.',
-                    'Turn this off if you want a perfectly flat map.'
+                    "Enabling the full color spectrum will add 3x more colors to the color palette resulting in a more detailed image, however this will also result in 'staircasing' making the map significantly harder to build in survival.",
+                    'Staircasing is where blocks are placed at varying heights in order to adjust the hue of adjacent blocks. The hue of a block in a Minecraft map is determined by the height of the block north of it.',
+                    'Turn this off if you want a perfectly flat (2D) map thats easy to build.'
                   ]}
                   style={{ marginRight: 15 }}
                   value={color_spectrum === pixels.defs.BlockColorSpectrum.Full}
@@ -230,13 +230,15 @@ export default function Root() {
                   }}
                 />
 
-                <Description style={{ marginRight: 10 }}>Map Scale</Description>
                 <Tooltip
+                  style={{ alignItems: 'center' }}
                   tooltip={[
-                    'This scale correlates to the number of maps at zoom level 1 placed side-by-side required in order to render the full image.',
+                    'This scale correlates to the number of maps at zoom level 1 placed side-by-side required in order to display the full image.',
                     'Changing this will result in a more detailed image but will also require you to place significantly more blocks.'
                   ]}
                 >
+                  <Description style={{ marginRight: 10 }}>Map Scale</Description>
+
                   <MultiButton
                     disabled={!image_data}
                     style={{ marginRight: 5 }}
@@ -328,7 +330,7 @@ export default function Root() {
                 />
 
                 <Description style={{ marginTop: 10 }}>
-                  This is a preview of how the Map itself should look once placed.
+                  This is a preview of how the Map should look once placed.
                 </Description>
 
                 <MapOptions>
