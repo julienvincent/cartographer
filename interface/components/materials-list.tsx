@@ -70,13 +70,13 @@ const TableHeader = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  cursor: pointer;
 `;
 
 const HeaderTitle = styled.p`
   color: ${(props) => props.theme['dark-blue']};
   font-weight: bold;
   user-select: none;
+  cursor: pointer;
 `;
 
 const Row = styled.div`
