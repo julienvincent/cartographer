@@ -66,6 +66,19 @@ const TableContainer = styled.div`
   padding: 10px;
 `;
 
+const TableHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+`;
+
+const HeaderTitle = styled.p`
+  color: ${(props) => props.theme['dark-blue']};
+  font-weight: bold;
+  user-select: none;
+`;
+
 const Row = styled.div`
   display: flex;
   align-items: center;
@@ -84,6 +97,20 @@ const RowCount = styled.p`
   color: ${(props) => props.theme['dark-orange']};
   font-weight: bold;
 `;
+
+type SortedTitleProps = {
+  children: React.ReactNode;
+  active: boolean;
+  direction: 1 | -1;
+  onClick: () => void;
+};
+const SortedTitle: React.FC<SortedTitleProps> = (props) => {
+  return (
+    <HeaderTitle onClick={props.onClick}>
+      {props.children} {props.active ? (props.direction === 1 ? '▼' : '▲') : null}
+    </HeaderTitle>
+  );
+};
 
 type Props = {
   onClose: () => void;
@@ -104,6 +131,8 @@ export const MaterialsList: React.FC<Props> = (props) => {
   const [materials, setMaterials] = React.useState<{ id: string; count: number }[]>([]);
   const [search, setSearch] = React.useState('');
   const [loading, setLoading] = React.useState(true);
+
+  const [[sort_by_key, sort_by_direction], setSortBy] = React.useState<['id' | 'count', -1 | 1]>(['id', 1]);
 
   const api = hooks.withAPIWorker();
 
@@ -149,6 +178,22 @@ export const MaterialsList: React.FC<Props> = (props) => {
     filtered = fuse.search(search).map((item) => item.item);
   }
 
+  let sorted = filtered.sort((_a, _b) => {
+    const a = _a[sort_by_key];
+    const b = _b[sort_by_key];
+    if (a === b) {
+      return 0;
+    }
+    if (a > b) {
+      return 1;
+    }
+    return -1;
+  });
+
+  if (sort_by_direction === -1) {
+    sorted = sorted.reverse();
+  }
+
   return (
     <Container
       onClick={() => {
@@ -177,7 +222,29 @@ export const MaterialsList: React.FC<Props> = (props) => {
         )}
 
         <TableContainer>
-          {filtered.map((material) => {
+          <TableHeader>
+            <SortedTitle
+              active={sort_by_key === 'id'}
+              direction={sort_by_direction}
+              onClick={() => {
+                setSortBy(['id', sort_by_direction === 1 ? -1 : 1]);
+              }}
+            >
+              Block ID
+            </SortedTitle>
+
+            <SortedTitle
+              active={sort_by_key === 'count'}
+              direction={sort_by_direction}
+              onClick={() => {
+                setSortBy(['count', sort_by_direction === 1 ? -1 : 1]);
+              }}
+            >
+              Count
+            </SortedTitle>
+          </TableHeader>
+
+          {sorted.map((material) => {
             return (
               <Row key={material.id}>
                 <RowId>{material.id}</RowId>
