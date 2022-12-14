@@ -42,41 +42,56 @@ const ResizeHandle = styled.rect`
 `;
 
 type OverlayProps = {
+  scale: defs.Scale;
   bounds: defs.Bounds;
   onBoundsChange: (bounds: defs.Bounds) => void;
   canvas_dimensions: Coords;
-  min: number;
+  min_x: number;
+  min_y: number;
 };
 export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
   const [drag_event, setDragEvent] = React.useState<SelectionBoxOperation | null>();
 
-  const [x, y, d] = props.bounds;
-  const [handle_x, handle_y] = [x + d, y + d];
+  const [x, y, dx, dy] = props.bounds;
+  const [handle_x, handle_y] = [x + dx, y + dy];
+
+  const ratio_xy = props.scale.y / props.scale.x;
+  const ratio_yx = props.scale.x / props.scale.y;
 
   const handleResizeDragEvent = (mouse_event: React.MouseEvent, op: SelectionBoxOperation) => {
     const [diff_x, diff_y] = calculateMouseDiff(op, mouse_event);
-    const [init_x, init_y, init_d] = op.initial_bounds;
+    const [init_x, init_y, init_dx, init_dy] = op.initial_bounds;
 
-    let leader = diff_x;
+    let dx, dy;
     if (diff_y * -1 > diff_x * -1) {
-      leader = diff_y;
+      dx = init_dx - diff_y * ratio_yx;
+      dy = init_dy - diff_y;
+    } else {
+      dx = init_dx - diff_x;
+      dy = init_dy - diff_x * ratio_xy;
     }
-
-    let d = init_d - leader;
 
     const [max_x, max_y] = props.canvas_dimensions;
-    if (init_x + d > max_x) {
-      d = max_x - init_x;
+    if (init_x + dx > max_x) {
+      dx = max_x - init_x;
+      dy = dx * ratio_xy;
     }
-    if (init_y + d > max_y) {
-      d = max_y - init_y;
-    }
-
-    if (d <= props.min) {
-      d = props.min;
+    if (init_y + dy > max_y) {
+      dy = max_y - init_y;
+      dx = dy * ratio_yx;
     }
 
-    props.onBoundsChange([x, y, d]);
+    if (dx <= props.min_x) {
+      dx = props.min_x;
+      dy = dx * ratio_xy;
+    }
+
+    if (dy <= props.min_y) {
+      dy = props.min_y;
+      dx = dy * ratio_yx;
+    }
+
+    props.onBoundsChange([x, y, Math.floor(dx), Math.floor(dy)]);
   };
 
   const handleMoveDragEvent = (mouse_event: React.MouseEvent, op: SelectionBoxOperation) => {
@@ -94,14 +109,14 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
     }
 
     const [max_x, max_y] = props.canvas_dimensions;
-    if (x + d > max_x) {
-      x = max_x - d;
+    if (x + dx > max_x) {
+      x = max_x - dx;
     }
-    if (y + d > max_y) {
-      y = max_y - d;
+    if (y + dy > max_y) {
+      y = max_y - dy;
     }
 
-    props.onBoundsChange([x, y, d]);
+    props.onBoundsChange([x, y, dx, dy]);
   };
 
   React.useEffect(() => {
@@ -137,8 +152,8 @@ export const SelectionOverlay: React.FC<OverlayProps> = (props) => {
       <SelectionBox
         x={x}
         y={y}
-        width={d}
-        height={d}
+        width={dx}
+        height={dy}
         onMouseDown={(e) => {
           setDragEvent({
             type: 'move',

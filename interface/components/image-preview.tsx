@@ -1,4 +1,5 @@
 import * as pixels from '@cartographer/pixels';
+import * as constants from '../constants';
 import styled from 'styled-components';
 import * as hooks from '../hooks';
 import * as utils from '../utils';
@@ -8,7 +9,7 @@ import * as async from 'async';
 
 type Props = {
   image_data: ImageData;
-  scale: defs.MAP_SCALE;
+  scale: defs.Scale;
   bounds: defs.Bounds;
   color_spectrum: pixels.defs.BlockColorSpectrum;
 
@@ -50,6 +51,8 @@ export const ImagePreview: React.FC<Props> = (props) => {
   const queue = React.useRef(createPreviewQueue());
   const api = hooks.withAPIWorker();
 
+  const [[width, height], setDimensions] = React.useState([0, 0]);
+
   React.useEffect(() => {
     if (!canvas.current || !api.current) {
       return;
@@ -68,6 +71,8 @@ export const ImagePreview: React.FC<Props> = (props) => {
       canvas.current!.setAttribute('width', image_data.width.toString());
       canvas.current!.setAttribute('height', image_data.height.toString());
       canvas.current!.getContext('2d')!.putImageData(image_data, 0, 0);
+
+      setDimensions([image_data.width, image_data.height]);
     });
   }, [
     props.image_data,
@@ -86,8 +91,8 @@ export const ImagePreview: React.FC<Props> = (props) => {
       className={props.className}
       style={{
         ...props.style,
-        width: 640,
-        height: 640
+        width,
+        height
       }}
     >
       <Canvas ref={canvas} />

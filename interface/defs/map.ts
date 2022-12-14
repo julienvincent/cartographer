@@ -1,7 +1,6 @@
-export enum MAP_SCALE {
-  X128 = 128,
-  X256 = 256,
-  X512 = 512
-}
+export type Scale = {
+  x: number;
+  y: number;
+};
 
-export type Bounds = [x: number, y: number, d: number];
+export type Bounds = [x: number, y: number, dx: number, dy: number];

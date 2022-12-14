@@ -116,7 +116,7 @@ type Props = {
   onClose: () => void;
 
   image_data: ImageData;
-  scale: defs.MAP_SCALE;
+  scale: defs.Scale;
   color_spectrum: pixels.defs.BlockColorSpectrum;
 
   transformations: {

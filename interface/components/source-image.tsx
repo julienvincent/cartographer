@@ -1,10 +1,11 @@
 import * as overlay from './selection-overlay';
+import * as constants from '../constants';
 import styled from 'styled-components';
 import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
-import * as _ from 'lodash';
 import Slider from './slider';
+import * as _ from 'lodash';
 
 const Container = styled.div`
   display: flex;
@@ -33,7 +34,7 @@ const Options = styled.div`
 
 type Props = {
   image_data: ImageData;
-  scale: defs.MAP_SCALE;
+  scale: defs.Scale;
   onBoundsChange: (bounds: defs.Bounds, raw_bounds: defs.Bounds) => void;
 
   saturation: number;
@@ -44,13 +45,26 @@ type Props = {
 };
 
 export const SourceImage: React.FC<Props> = (props) => {
-  const [canvas_dimensions, setCanvasDimensions] = React.useState<[number, number]>([0, 0]);
   const [bounds, setBounds] = React.useState<defs.Bounds>();
   const canvas = React.useRef<HTMLCanvasElement>(null);
   const api = hooks.withAPIWorker();
 
-  const scale_factor = props.image_data.width / 640;
-  const min = Math.ceil(props.scale / scale_factor);
+  const ratio_xy = props.image_data.height / props.image_data.width;
+  const ratio_yx = props.image_data.width / props.image_data.height;
+
+  let width: number, height: number, scale_factor: number;
+  if (props.image_data.height > props.image_data.width) {
+    height = constants.RENDER_IMAGE_MAX_SIZE;
+    width = height * ratio_yx;
+    scale_factor = props.image_data.height / height;
+  } else {
+    width = constants.RENDER_IMAGE_MAX_SIZE;
+    height = width * ratio_xy;
+    scale_factor = props.image_data.width / width;
+  }
+
+  const min_x = Math.ceil((props.scale.x * constants.SCALE_FACTOR) / scale_factor);
+  const min_y = Math.ceil((props.scale.y * constants.SCALE_FACTOR) / scale_factor);
 
   const scaleAndNotify = (bounds: defs.Bounds) => {
     const scaled_bounds = bounds.map((item) => Math.floor(item * scale_factor)) as defs.Bounds;
@@ -73,9 +87,6 @@ export const SourceImage: React.FC<Props> = (props) => {
         return;
       }
 
-      const width = 640;
-      const height = Math.floor(props.image_data.height / scale_factor);
-
       const scale_canvas = new OffscreenCanvas(props.image_data.width, props.image_data.height);
       const scale_context = scale_canvas.getContext('2d') as OffscreenCanvasRenderingContext2D;
 
@@ -86,25 +97,14 @@ export const SourceImage: React.FC<Props> = (props) => {
 
       const context = canvas.current.getContext('2d')!;
       context.drawImage(scale_canvas, 0, 0, width, height);
-      setCanvasDimensions([width, height]);
-
-      const dimension = Math.min(width, height);
-      updateBounds([0, 0, dimension]);
     })();
   }, [props.image_data, api.current]);
 
   React.useEffect(() => {
-    if (bounds) {
-      const [, , d] = bounds;
-      if (d < min) {
-        const next_bounds: defs.Bounds = [0, 0, min];
-        setBounds(next_bounds);
-        scaleAndNotify(next_bounds);
-      }
-    }
-  }, [min]);
-
-  const [width, height] = canvas_dimensions;
+    const bounds: defs.Bounds = [0, 0, min_x, min_y];
+    setBounds(bounds);
+    scaleAndNotify(bounds);
+  }, [min_x, min_y]);
 
   return (
     <Container>
@@ -114,9 +114,11 @@ export const SourceImage: React.FC<Props> = (props) => {
         {bounds ? (
           <overlay.SelectionOverlay
             bounds={bounds}
-            min={min}
+            scale={props.scale}
+            min_x={min_x}
+            min_y={min_y}
             onBoundsChange={updateBounds}
-            canvas_dimensions={canvas_dimensions}
+            canvas_dimensions={[width, height]}
           />
         ) : null}
       </CanvasContainer>

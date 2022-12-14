@@ -14,10 +14,12 @@ import * as hooks from '../hooks';
 import * as defs from '../defs';
 import * as React from 'react';
 import Head from 'next/head';
+import * as _ from 'lodash';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as icons from '@fortawesome/free-brands-svg-icons';
 import MaterialsList from '../components/materials-list';
+import Tooltip from '../components/tooltip';
 
 const Container = styled.div`
   display: flex;
@@ -106,7 +108,8 @@ export default function Root() {
   const [saturation, setSaturation] = React.useState(0);
   const [brightness, setBrightness] = React.useState(0);
   const [color_spectrum, setColorSpectrum] = React.useState(pixels.defs.BlockColorSpectrum.Full);
-  const [scale, setMapScale] = React.useState<defs.MAP_SCALE>(defs.MAP_SCALE.X128);
+  const [scale_range, setScaleRange] = React.useState<[number, number]>([1, 1]);
+  const [scale, setScale] = React.useState<defs.Scale>({ x: 1, y: 1 });
   const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette(patches[0].patch));
   const [materials_list_visible, showMaterialsList] = React.useState(false);
   const api = hooks.withAPIWorker();
@@ -154,10 +157,6 @@ export default function Root() {
     }
     isGenerating(false);
   };
-
-  const scale_options = Object.values(defs.MAP_SCALE).filter((value) => {
-    return typeof value === 'number';
-  });
 
   return (
     <Container>
@@ -211,29 +210,58 @@ export default function Root() {
                   }}
                 />
 
-                <MultiButton
-                  disabled={!image_data}
+                <Description style={{ marginRight: 10 }}>Map Scale</Description>
+                <Tooltip
                   tooltip={[
-                    'This scale correlates to the number of maps at zoom level 1 required in order to render the full image. This IS NOT intended to be used with a zoomed out map.',
-                    '128x - 1 map required. 256x - 2 maps required 512x - 4 maps required.',
-                    'Changing this will result in a more detailed image - but will also require you to place significantly more blocks.'
+                    'This scale correlates to the number of maps at zoom level 1 placed side-by-side required in order to render the full image.',
+                    'Changing this will result in a more detailed image but will also require you to place significantly more blocks.'
                   ]}
-                  selection={{
-                    fn: () => {},
-                    name: scale as unknown as string
-                  }}
-                  actions={scale_options.map((option) => {
-                    return {
+                >
+                  <MultiButton
+                    disabled={!image_data}
+                    style={{ marginRight: 5 }}
+                    selection={{
                       fn: () => {},
-                      name: option as string
-                    };
-                  })}
-                  onSelectionChange={(action) => {
-                    setMapScale(action.name as unknown as defs.MAP_SCALE);
-                  }}
-                  action_opens_picker
-                  prefix="Map Scale - "
-                />
+                      name: `${scale.x}`
+                    }}
+                    actions={_.range(1, scale_range[0]).map((option) => {
+                      return {
+                        fn: () => {},
+                        name: `${option}`
+                      };
+                    })}
+                    onSelectionChange={(action) => {
+                      setScale({
+                        ...scale,
+                        x: parseInt(action.name)
+                      });
+                    }}
+                    action_opens_picker
+                    prefix="X "
+                  />
+
+                  <MultiButton
+                    disabled={!image_data}
+                    selection={{
+                      fn: () => {},
+                      name: `${scale.y}`
+                    }}
+                    actions={_.range(1, scale_range[1]).map((option) => {
+                      return {
+                        fn: () => {},
+                        name: `${option}`
+                      };
+                    })}
+                    onSelectionChange={(action) => {
+                      setScale({
+                        ...scale,
+                        y: parseInt(action.name)
+                      });
+                    }}
+                    action_opens_picker
+                    prefix="Y "
+                  />
+                </Tooltip>
               </MapOptions>
 
               <SourceImage
@@ -256,6 +284,7 @@ export default function Root() {
             <ImageSelector
               style={{ margin: 'auto' }}
               onFileSelected={async (image_data) => {
+                setScaleRange([Math.ceil(image_data.width / 128), Math.ceil(image_data.height / 128)]);
                 setImageData(image_data);
               }}
             />
