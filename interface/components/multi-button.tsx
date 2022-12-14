@@ -32,8 +32,6 @@ const Button = styled.div<{ disabled: boolean }>`
 `;
 
 const Selector = styled.div<{ disabled: boolean }>`
-  margin-left: 10px;
-  border-left: 1px dashed ${(props) => props.theme.fg4};
   padding: 5px 10px;
 
   :hover {
@@ -41,6 +39,13 @@ const Selector = styled.div<{ disabled: boolean }>`
   }
 
   ${(props) => (props.disabled ? 'opacity: 0.2;' : '')};
+`;
+
+const Separator = styled.div`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-left: 1px dashed ${(props) => props.theme.fg4};
+  align-self: stretch;
 `;
 
 const Picker = styled.div`
@@ -107,11 +112,19 @@ export const MultiButton: React.FC<Props> = (props) => {
 
   return (
     <Tooltip tooltip={props.tooltip}>
-      <Container disabled={disabled} className={props.className} style={props.style}>
+      <Container
+        disabled={disabled}
+        className={props.className}
+        style={props.style}
+        onClick={(e) => {
+          // This prevents any click that occurred on the button element from triggering the global 'click off'
+          // handler registered in the components effect.
+          e.stopPropagation();
+        }}
+      >
         <Button
           disabled={disabled}
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
             if (props.action_opens_picker) {
               setPickerShowing(!picker_showing);
             } else {
@@ -127,16 +140,18 @@ export const MultiButton: React.FC<Props> = (props) => {
         {props.loading ? (
           <Loader />
         ) : props.actions.length > 1 ? (
-          <Selector
-            disabled={disabled}
-            onClick={(e) => {
-              e.stopPropagation();
-              setPickerShowing(!picker_showing);
-            }}
-          >
-            {' '}
-            <p>▼</p>
-          </Selector>
+          <>
+            <Separator />
+            <Selector
+              disabled={disabled}
+              onClick={() => {
+                setPickerShowing(!picker_showing);
+              }}
+            >
+              {' '}
+              <p>▼</p>
+            </Selector>
+          </>
         ) : null}
 
         {picker_showing && (
@@ -145,8 +160,7 @@ export const MultiButton: React.FC<Props> = (props) => {
               return (
                 <ActionItem
                   key={action.name}
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  onClick={() => {
                     props.onSelectionChange?.(action);
                     setAction(action);
                     setPickerShowing(false);
