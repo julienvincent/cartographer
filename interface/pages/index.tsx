@@ -243,20 +243,16 @@ export default function Root() {
                   <MultiButton
                     disabled={!image_data}
                     style={{ marginRight: 5 }}
-                    selection={{
-                      fn: () => {},
-                      name: `${scale.x}`
-                    }}
+                    selected={`${scale.x}`}
                     actions={_.range(1, scale_range[0]).map((option) => {
                       return {
-                        fn: () => {},
                         name: `${option}`
                       };
                     })}
-                    onSelectionChange={(action) => {
+                    onSelectionChange={(name) => {
                       setScale({
                         ...scale,
-                        x: parseInt(action.name)
+                        x: parseInt(name)
                       });
                     }}
                     action_opens_picker
@@ -265,20 +261,16 @@ export default function Root() {
 
                   <MultiButton
                     disabled={!image_data}
-                    selection={{
-                      fn: () => {},
-                      name: `${scale.y}`
-                    }}
+                    selected={`${scale.y}`}
                     actions={_.range(1, scale_range[1]).map((option) => {
                       return {
-                        fn: () => {},
                         name: `${option}`
                       };
                     })}
-                    onSelectionChange={(action) => {
+                    onSelectionChange={(name) => {
                       setScale({
                         ...scale,
-                        y: parseInt(action.name)
+                        y: parseInt(name)
                       });
                     }}
                     action_opens_picker

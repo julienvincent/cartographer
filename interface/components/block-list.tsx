@@ -96,21 +96,17 @@ export const BlockList: React.FC<Props> = (props) => {
       <Header style={{ marginBottom: 5 }}>
         <MultiButton
           action_opens_picker
-          selection={{
-            name: palette_preset,
-            fn: () => {}
-          }}
+          selected={palette_preset}
           actions={patches.map((patch) => {
             return {
-              name: patch.name,
-              fn: () => {}
+              name: patch.name
             };
           })}
-          onSelectionChange={(action) => {
-            const patch = patches.find((patch) => patch.name === action.name);
+          onSelectionChange={(name) => {
+            const patch = patches.find((patch) => patch.name === name);
             if (patch) {
               props.onChange(utils.createDefaultPalette(patch.patch));
-              setPalettePreset(action.name);
+              setPalettePreset(name);
             }
           }}
         />

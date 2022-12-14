@@ -72,7 +72,7 @@ const ActionItem = styled.div`
 
 type Action = {
   name: string;
-  fn: () => void;
+  fn?: () => void;
 };
 
 type Props = {
@@ -84,8 +84,8 @@ type Props = {
   prefix?: string;
 
   actions: Action[];
-  onSelectionChange?: (action: Action) => void;
-  selection?: Action;
+  onSelectionChange?: (name: string) => void;
+  selected?: string;
 
   action_opens_picker?: boolean;
 
@@ -95,9 +95,9 @@ type Props = {
 
 export const MultiButton: React.FC<Props> = (props) => {
   const [picker_showing, setPickerShowing] = React.useState(false);
-  const [_action, setAction] = React.useState(props.actions[0]);
+  const [_selected, setSelected] = React.useState(props.actions[0].name);
 
-  const action = props.selection || _action;
+  const action = props.actions.find((action) => action.name === (props.selected ?? _selected));
   const disabled = props.disabled || props.loading || false;
 
   React.useEffect(() => {
@@ -128,13 +128,13 @@ export const MultiButton: React.FC<Props> = (props) => {
             if (props.action_opens_picker) {
               setPickerShowing(!picker_showing);
             } else {
-              action.fn();
+              action?.fn?.();
             }
           }}
         >
           {props.prefix}
           {props.prefix ? ' ' : ''}
-          {action.name}
+          {action?.name}
         </Button>
 
         {props.loading ? (
@@ -161,8 +161,8 @@ export const MultiButton: React.FC<Props> = (props) => {
                 <ActionItem
                   key={action.name}
                   onClick={() => {
-                    props.onSelectionChange?.(action);
-                    setAction(action);
+                    props.onSelectionChange?.(action.name);
+                    setSelected(action.name);
                     setPickerShowing(false);
                   }}
                 >
