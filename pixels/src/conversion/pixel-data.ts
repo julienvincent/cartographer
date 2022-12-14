@@ -39,7 +39,7 @@ export const convertPixelGridToImageData = (pixel_grid: defs.PixelGrid) => {
 
   return pixel_grid.reduce((image_data, pixels, h) => {
     return pixels.reduce((image_data, pixel, w) => {
-      const i = h * height * 4 + w * 4;
+      const i = h * width * 4 + w * 4;
       const { r, g, b } = pixel;
       image_data.data[i] = r;
       image_data.data[i + 1] = g;
@@ -105,8 +105,8 @@ export const scaleUpPixelGrid = (pixel_grid: defs.PixelGrid, width: number, heig
 
   return _.range(height).map((target_height) => {
     return _.range(width).map((target_width) => {
-      const pixel_h = Math.floor(target_height / height_pixel_scale);
       const pixel_w = Math.floor(target_width / width_pixel_scale);
+      const pixel_h = Math.floor(target_height / height_pixel_scale);
       return pixel_grid[pixel_h][pixel_w];
     });
   });
