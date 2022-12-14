@@ -58,10 +58,10 @@ export const Tooltip: React.FC<Props> = (props) => {
           {Array.isArray(props.tooltip) ? (
             props.tooltip.map((text, i) => {
               return (
-                <>
-                  <Text key={i}>{text}</Text>
-                  {i !== props.tooltip!.length - 1 ? <br key={`${i}-br`} /> : null}
-                </>
+                <div key={i}>
+                  <Text>{text}</Text>
+                  {i !== props.tooltip!.length - 1 ? <br /> : null}
+                </div>
               );
             })
           ) : (
