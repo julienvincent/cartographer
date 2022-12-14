@@ -102,6 +102,16 @@ export const Description = styled.p`
   color: ${(props) => props.theme.fg2};
 `;
 
+export const ClearButton = styled.p`
+  font-weight: bold;
+  align-self: flex-start;
+  margin: 10px;
+  color: ${(props) => props.theme.fg2};
+  border: 1px dashed ${(props) => props.theme.fg3};
+  padding: 3px 7px;
+  cursor: pointer;
+`;
+
 export default function Root() {
   const [image_data, setImageData] = React.useState<ImageData>();
   const [bounds, setBounds] = React.useState<defs.Bounds>();
@@ -188,6 +198,16 @@ export default function Root() {
               You will need to switch to a Chrome based browser if you would like to use Cartographer.
             </Warning>
           ) : null}
+
+          {image_data && (
+            <ClearButton
+              onClick={() => {
+                setImageData(undefined);
+              }}
+            >
+              Reset
+            </ClearButton>
+          )}
 
           {image_data ? (
             <PreviewContainer>
