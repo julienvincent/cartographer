@@ -1,4 +1,4 @@
-import * as defs from '../defs';
+import * as defs from '../definitions';
 
 export const applyGrayScale = (pixel_grid: defs.PixelGrid) => {
   return pixel_grid.map((pixels) => {

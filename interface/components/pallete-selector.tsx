@@ -4,7 +4,7 @@ import * as defs from '../defs';
 import * as React from 'react';
 
 type MultiColorIconProps = {
-  colors: pixels.defs.RGBColor[];
+  colors: pixels.Pixel[];
   style?: React.CSSProperties;
   enabled: boolean;
 };
@@ -30,7 +30,7 @@ const MultiColorSlice = styled.div<{ c: string }>`
 export const MultiColorIcon: React.FC<MultiColorIconProps> = (props) => {
   return (
     <MultiColorContainer style={props.style} enabled={props.enabled}>
-      {props.colors.map(([r, g, b], i) => {
+      {props.colors.map(({ r, g, b }, i) => {
         return <MultiColorSlice key={i} c={`rgb(${r}, ${g}, ${b})`} />;
       })}
     </MultiColorContainer>

@@ -1,5 +1,5 @@
+import * as block_palettes from '@cartographer/block-palettes';
 import * as defs from '../defs';
-import * as pixels from '@cartographer/pixels';
 
 export const extractImageDataFromFile = (file: File) => {
   const image = new Image();
@@ -38,11 +38,11 @@ export const download = (data: Uint8Array, file_name: string) => {
 
 export const createDefaultPalette = (patch: defs.PalettePatch): defs.ColorPalette => {
   const indexed = Object.fromEntries(patch.map((patch) => [patch.id, patch]));
-  return pixels.data.MC_BLOCK_COLORS.map((mapping) => {
+  return block_palettes.palettes['1.19'].map((mapping) => {
     const block_patch = indexed[mapping.id];
     return {
       id: mapping.id,
-      colors: mapping.colors.slice(0, 3),
+      colors: mapping.colors,
       blocks: mapping.blocks,
       selected_block_id: block_patch?.selected_block_id ?? mapping.blocks[0].id,
       enabled: block_patch?.enabled ?? true
@@ -54,9 +54,10 @@ export const normalizeColorPalette = (palette: defs.ColorPalette) => {
   return palette
     .filter((item) => item.enabled)
     .map((item) => {
-      const block = item.blocks.find((block) => block.id === item.selected_block_id);
+      const blocks = item.blocks.filter((block) => block.id === item.selected_block_id);
       return {
-        ...block!,
+        ...item,
+        blocks,
         colors: item.colors
       };
     });

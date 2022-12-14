@@ -1,4 +1,4 @@
-import * as defs from '../defs';
+import * as defs from '../definitions';
 import * as _ from 'lodash';
 
 function average<T>(datums: T[], getter: (datum: T) => number) {

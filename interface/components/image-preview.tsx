@@ -1,5 +1,4 @@
 import * as pixels from '@cartographer/pixels';
-import * as constants from '../constants';
 import styled from 'styled-components';
 import * as hooks from '../hooks';
 import * as utils from '../utils';
@@ -11,7 +10,7 @@ type Props = {
   image_data: ImageData;
   scale: defs.Scale;
   bounds: defs.Bounds;
-  color_spectrum: pixels.defs.BlockColorSpectrum;
+  color_spectrum: pixels.BlockColorSpectrum;
 
   transformations: {
     saturation: number;

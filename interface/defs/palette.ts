@@ -5,7 +5,7 @@ type PaletteSelectionProperties = {
   enabled: boolean;
 };
 
-export type ColorPaletteItem = pixels.defs.ColorPaletteItem & PaletteSelectionProperties;
+export type ColorPaletteItem = pixels.BlockPaletteItem & PaletteSelectionProperties;
 
 export type ColorPalette = ColorPaletteItem[];
 

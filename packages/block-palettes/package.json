@@ -1,0 +1,13 @@
+{
+  "name": "@cartographer/block-palettes",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/index",
+  "types": "dist/index",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@cartographer/pixels": "^0.0.1"
+  }
+}

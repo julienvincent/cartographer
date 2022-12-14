@@ -16,8 +16,8 @@ export type GenerationParams = {
   bounds: defs.Bounds;
   scale: defs.Scale;
 
-  palette: pixels.defs.BlockPalette;
-  color_spectrum: pixels.defs.BlockColorSpectrum;
+  palette: pixels.BlockPalette;
+  color_spectrum: pixels.BlockColorSpectrum;
 
   transformations?: Transformations;
 };

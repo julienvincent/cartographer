@@ -1,5 +1,5 @@
 import * as nearest from 'nearest-color';
-import * as defs from '../defs';
+import * as defs from '../definitions';
 
 export const flattenColors = (palette: defs.BlockPalette, spectrum: defs.BlockColorSpectrum) => {
   return palette
@@ -14,13 +14,8 @@ export const flattenColors = (palette: defs.BlockPalette, spectrum: defs.BlockCo
       }
     })
     .flat()
-    .reduce((acc: Record<string, defs.Pixel>, colors, i) => {
-      const [r, g, b] = colors;
-      acc[i] = {
-        r,
-        g,
-        b
-      };
+    .reduce((acc: Record<string, defs.Pixel>, pixel, i) => {
+      acc[i] = pixel;
       return acc;
     }, {});
 };

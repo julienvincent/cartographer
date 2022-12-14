@@ -5,8 +5,8 @@ const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
   return block_space.reduce((height, columns) => {
     return columns.reduce((height, rows) => {
       return rows.reduce((height, pillar) => {
-        if (pillar.y_offset + 1 > height) {
-          return pillar.y_offset + 1;
+        if (pillar.offset + 1 > height) {
+          return pillar.offset + 1;
         }
         return height;
       }, height);
@@ -34,7 +34,7 @@ export const asNbtObject = (space: MCBlockSpace): object => {
     const pillar = space[x][z];
 
     for (const b of pillar) {
-      if (b.y_offset === y) {
+      if (b.offset === y) {
         return b.id;
       }
     }

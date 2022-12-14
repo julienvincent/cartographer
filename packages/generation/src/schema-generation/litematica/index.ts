@@ -13,7 +13,7 @@ export const generateLitematicaSchema = (block_space: MCBlockSpace) => {
           id: block.id,
           properties: block.properties,
           x,
-          y: block.y_offset,
+          y: block.offset,
           z
         });
         return blocks;

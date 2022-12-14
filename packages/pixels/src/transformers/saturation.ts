@@ -1,4 +1,4 @@
-import * as defs from '../defs';
+import * as defs from '../definitions';
 import tc from 'tinycolor2';
 
 type Params = {

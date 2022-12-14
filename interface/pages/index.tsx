@@ -117,7 +117,7 @@ export default function Root() {
   const [bounds, setBounds] = React.useState<defs.Bounds>();
   const [saturation, setSaturation] = React.useState(0);
   const [brightness, setBrightness] = React.useState(0);
-  const [color_spectrum, setColorSpectrum] = React.useState(pixels.defs.BlockColorSpectrum.Full);
+  const [color_spectrum, setColorSpectrum] = React.useState(pixels.BlockColorSpectrum.Full);
   const [scale_range, setScaleRange] = React.useState<[number, number]>([1, 1]);
   const [scale, setScale] = React.useState<defs.Scale>({ x: 1, y: 1 });
   const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette(patches[0].patch));
@@ -222,12 +222,12 @@ export default function Root() {
                     'Turn this off if you want a perfectly flat (2D) map thats easy to build.'
                   ]}
                   style={{ marginRight: 15 }}
-                  value={color_spectrum === pixels.defs.BlockColorSpectrum.Full}
+                  value={color_spectrum === pixels.BlockColorSpectrum.Full}
                   onChange={(value) => {
                     if (value) {
-                      return setColorSpectrum(pixels.defs.BlockColorSpectrum.Full);
+                      return setColorSpectrum(pixels.BlockColorSpectrum.Full);
                     }
-                    setColorSpectrum(pixels.defs.BlockColorSpectrum.Flat);
+                    setColorSpectrum(pixels.BlockColorSpectrum.Flat);
                   }}
                 />
 
