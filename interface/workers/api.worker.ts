@@ -81,7 +81,10 @@ const generateBlockSpaceFromImageData = (params: GenerationParams) => {
   const color_converted = baseImagePipeline(params);
 
   const blocks = pixels.conversion.convertPixelGridToMCBlocks(color_converted, params.palette);
-  return generation.block_generation.buildBlockSpace(blocks);
+  return generation.block_generation.generateBlockSpace({
+    block_grid: blocks,
+    support_block_id: 'minecraft:cobblestone'
+  });
 };
 
 export const generateLightmaticaSchema = async (params: GenerationParams) => {
@@ -104,13 +107,9 @@ export const generateMapJSON = async (params: GenerationParams) => {
 export const generateMaterialsList = async (params: GenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
 
-  return block_space.reduce((counts: Record<string, number>, rows) => {
-    return rows.reduce((counts, row) => {
-      return row.reduce((counts, block) => {
-        counts[block.id] = (counts[block.id] || 0) + 1;
-        return counts;
-      }, counts);
-    }, counts);
+  return block_space.reduce((counts: Record<string, number>, block) => {
+    counts[block.id] = (counts[block.id] || 0) + 1;
+    return counts;
   }, {});
 };
 

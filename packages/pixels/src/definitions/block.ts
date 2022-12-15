@@ -1,4 +1,4 @@
-export type BlockAttributes = Record<string, string> & {
+export type BlockAttributes = {
   requires_support?: boolean;
   flammable?: boolean;
   liquid?: boolean;

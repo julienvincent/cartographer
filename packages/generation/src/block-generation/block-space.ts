@@ -1,35 +1,64 @@
-import { generateOptimizedStaircase } from './staircase';
 import * as pixels from '@cartographer/pixels';
 
-export type MCBlockSpace = pixels.MCBlockWithOffset[][][];
-
-const defaultNorthBorderBlock: pixels.MCBlockWithOffset = {
-  id: 'minecraft:stone',
-  offset: 1
+export type BlockWithCoords = pixels.MCBlockWithHue & {
+  x: number;
+  y: number;
+  z: number;
 };
 
-export const buildBlockSpace = (mcBlockGrid: pixels.BlockGrid): MCBlockSpace => {
-  const space: MCBlockSpace = [];
-  const width: number = mcBlockGrid[0].length;
-  const height: number = mcBlockGrid.length;
+export type BlockSpace = BlockWithCoords[];
 
-  for (let x = 0; x < width; x++) {
-    const strip = mcBlockGrid.map((a) => a[x]); // to redo
-    const staircase: number[] = generateOptimizedStaircase(strip, (s) => s.offset);
+type GenerateBlockSpaceParams = {
+  block_grid: pixels.BlockGrid;
+  support_block_id: string;
+};
+export const generateBlockSpace = (params: GenerateBlockSpaceParams) => {
+  return params.block_grid.reduce((block_space: BlockSpace, row, x) => {
+    const init = {
+      blocks: [] as BlockSpace,
+      support: [] as BlockSpace,
+      previous: undefined as BlockWithCoords | undefined
+    };
 
-    space[x] = [defaultNorthBorderBlock].concat(strip).map((v, y) => {
-      return [
-        {
-          ...v,
-          offset: staircase[y]
-        }
-      ];
-    });
-  }
+    const { blocks, support, previous } = row.reduce((acc, block, z) => {
+      const next = {
+        ...block,
+        x,
+        z,
 
-  // apply water fixes
-  // apply dirt fixes
-  // apply lava fixes?
+        // We start the initial block in a strip at y=1 to allow for support blocks below
+        y: acc.previous ? acc.previous.y + acc.previous.hue : 1
+      };
+      acc.blocks.push(next);
 
-  return space;
+      if (block.attributes?.requires_support) {
+        acc.support.push({
+          id: params.support_block_id,
+          hue: 0,
+          x,
+          y: next.y - 1,
+          z
+        });
+      }
+
+      acc.previous = next;
+      return acc;
+    }, init);
+
+    block_space.push(...blocks);
+    block_space.push(...support);
+
+    // Add a final north block if the last block in the strip has a non-0 hue
+    if (previous && previous.hue !== 0) {
+      block_space.push({
+        id: params.support_block_id,
+        hue: 0,
+        x: previous.x,
+        y: previous.y + 1,
+        z: previous.z + 1
+      });
+    }
+
+    return block_space;
+  }, []);
 };

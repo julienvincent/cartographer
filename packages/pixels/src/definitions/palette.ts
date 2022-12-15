@@ -1,11 +1,12 @@
 import { MCBlock } from './block';
 import { Pixel } from './pixel';
 
-export type MCBlockWithOffset = MCBlock & {
-  offset: number;
+export type BlockHue = 0 | 1 | 2;
+export type MCBlockWithHue = MCBlock & {
+  hue: BlockHue;
 };
 
-export type BlockGrid = MCBlockWithOffset[][];
+export type BlockGrid = MCBlockWithHue[][];
 
 export type PaletteColorTuple = [light: Pixel, medium: Pixel, dark: Pixel];
 

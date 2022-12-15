@@ -1,23 +1,26 @@
-import { MCBlockSpace } from '../../block-generation';
+import { BlockSpace } from '../../block-generation';
 import * as _ from 'lodash';
 
-const getBlockSpaceHeight = (block_space: MCBlockSpace) => {
-  return block_space.reduce((height, columns) => {
-    return columns.reduce((height, rows) => {
-      return rows.reduce((height, pillar) => {
-        if (pillar.offset + 1 > height) {
-          return pillar.offset + 1;
-        }
-        return height;
-      }, height);
-    }, height);
-  }, 0);
+const getBlockSpaceDimensions = (block_space: BlockSpace) => {
+  return block_space.reduce(
+    (dimensions, block) => {
+      if (block.x > dimensions.width) {
+        dimensions.width = block.x;
+      }
+      if (block.y > dimensions.height) {
+        dimensions.height = block.y;
+      }
+      if (block.z > dimensions.length) {
+        dimensions.length = block.z;
+      }
+      return dimensions;
+    },
+    { width: 0, height: 0, length: 0 }
+  );
 };
 
-export const asNbtObject = (space: MCBlockSpace): object => {
-  const width = space.length;
-  const length = space[0].length;
-  const height = getBlockSpaceHeight(space);
+export const asNbtObject = (space: BlockSpace): object => {
+  const { width, height, length } = getBlockSpaceDimensions(space);
 
   const palette: string[] = ['minecraft:air'];
 
@@ -30,16 +33,17 @@ export const asNbtObject = (space: MCBlockSpace): object => {
     return id;
   };
 
+  const index = space.reduce((index, block) => {
+    index.set(`${block.x}:${block.y}:${block.z}`, block.id);
+    return index;
+  }, new Map<string, string>());
+
   const getSid = (x: number, y: number, z: number): string => {
-    const pillar = space[x][z];
-
-    for (const b of pillar) {
-      if (b.offset === y) {
-        return b.id;
-      }
+    const id = index.get(`${x}:${y}:${z}`);
+    if (!id) {
+      return 'minecraft:air';
     }
-
-    return 'minecraft:air';
+    return id;
   };
 
   const blocks = _.range(width).reduce((blocks, x) => {

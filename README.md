@@ -44,8 +44,6 @@ The block palette data was taken directly from [rebane2001/mapartcraft](https://
 
 ## Roadmap/Features
 
-- Place blocks under other blocks that require additional support (like sand, for example).
-- Fix the staircasing algorithm to only staircase when needed.
 - Allow selecting the block type to be used under blocks that require support.
 - Add support for uploading custom block palettes.
 

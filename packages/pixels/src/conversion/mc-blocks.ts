@@ -38,7 +38,7 @@ export const convertPixelGridToMCBlocks = (pixel_grid: defs.PixelGrid, palette: 
 
       return {
         ...block,
-        offset: findColorIndex(palette_item.colors, pixel)
+        hue: findColorIndex(palette_item.colors, pixel) as defs.BlockHue
       };
     });
   });
