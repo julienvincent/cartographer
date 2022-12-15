@@ -5,6 +5,7 @@ import MultiButton from '../components/multi-button';
 import BlockList from '../components/block-list';
 import CheckBox from '../components/check-box';
 
+import * as block_palettes from '@cartographer/block-palettes';
 import * as pixels from '@cartographer/pixels';
 import * as rr from 'react-responsive';
 import styled from 'styled-components';
@@ -120,7 +121,9 @@ export default function Root() {
   const [color_spectrum, setColorSpectrum] = React.useState(pixels.BlockColorSpectrum.Full);
   const [scale_range, setScaleRange] = React.useState<[number, number]>([1, 1]);
   const [scale, setScale] = React.useState<defs.Scale>({ x: 1, y: 1 });
-  const [palette, setPalette] = React.useState<defs.ColorPalette>(utils.createDefaultPalette(patches[0].patch));
+  const [palette, setPalette] = React.useState<defs.ColorPalette>(
+    utils.applyPalettePatch(block_palettes.palettes['1.19'], patches[0].patch)
+  );
   const [materials_list_visible, showMaterialsList] = React.useState(false);
   const api = hooks.withAPIWorker();
 

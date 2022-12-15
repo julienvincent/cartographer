@@ -1,4 +1,4 @@
-import * as block_palettes from '@cartographer/block-palettes';
+import * as pixels from '@cartographer/pixels';
 import * as defs from '../defs';
 
 export const extractImageDataFromFile = (file: File) => {
@@ -36,9 +36,9 @@ export const download = (data: Uint8Array, file_name: string) => {
   a.remove();
 };
 
-export const createDefaultPalette = (patch: defs.PalettePatch): defs.ColorPalette => {
+export const applyPalettePatch = (palette: pixels.BlockPalette, patch: defs.PalettePatch): defs.ColorPalette => {
   const indexed = Object.fromEntries(patch.map((patch) => [patch.id, patch]));
-  return block_palettes.palettes['1.19'].map((mapping) => {
+  return palette.map((mapping) => {
     const block_patch = indexed[mapping.id];
     return {
       id: mapping.id,

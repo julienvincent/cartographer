@@ -1,4 +1,5 @@
 import PaletteSelector, { EnabledSelector } from '../components/pallete-selector';
+import * as block_palettes from '@cartographer/block-palettes';
 import SearchBox from '../components/search-box';
 import MultiButton from './multi-button';
 import styled from 'styled-components';
@@ -8,6 +9,8 @@ import Fuse from 'fuse.js';
 
 import * as utils from '../utils';
 import patches from '../patches';
+
+const PALETTE_VERSIONS = Object.keys(block_palettes.palettes) as (keyof typeof block_palettes.palettes)[];
 
 const Container = styled.div`
   display: flex;
@@ -36,6 +39,7 @@ type Props = {
 
 export const BlockList: React.FC<Props> = (props) => {
   const [search, setSearch] = React.useState('');
+  const [palette_version, setPaletteVersion] = React.useState(PALETTE_VERSIONS[0]);
   const [palette_preset, setPalettePreset] = React.useState('Full');
 
   const blocks = props.palette.map((item) => item.blocks.map((block) => block.id)).flat();
@@ -96,6 +100,29 @@ export const BlockList: React.FC<Props> = (props) => {
       <Header style={{ marginBottom: 5 }}>
         <MultiButton
           action_opens_picker
+          selected={palette_version}
+          style={{ marginRight: 10 }}
+          actions={PALETTE_VERSIONS.map((key) => {
+            return {
+              name: key
+            };
+          })}
+          onSelectionChange={(name) => {
+            setPaletteVersion(name as any);
+            const patch = patches.find((patch) => patch.name === palette_preset);
+            if (patch) {
+              props.onChange(
+                utils.applyPalettePatch(
+                  block_palettes.palettes[name as keyof typeof block_palettes.palettes],
+                  patch.patch
+                )
+              );
+            }
+          }}
+        />
+
+        <MultiButton
+          action_opens_picker
           selected={palette_preset}
           actions={patches.map((patch) => {
             return {
@@ -105,7 +132,7 @@ export const BlockList: React.FC<Props> = (props) => {
           onSelectionChange={(name) => {
             const patch = patches.find((patch) => patch.name === name);
             if (patch) {
-              props.onChange(utils.createDefaultPalette(patch.patch));
+              props.onChange(utils.applyPalettePatch(block_palettes.palettes[palette_version], patch.patch));
               setPalettePreset(name);
             }
           }}
