@@ -15,7 +15,8 @@ describe('block-space generation', () => {
         [block, block, block],
         [block, block, block]
       ],
-      support_block_id: ''
+      support_block_id: '',
+      staircase_alg: block_generation.StaircaseAlgorithm.Continuous
     });
 
     const largest_offset = block_space.reduce((offset, block) => {
@@ -38,9 +39,11 @@ describe('block-space generation', () => {
     const block_space = block_generation.generateBlockSpace({
       block_grid: [
         [block, block, block],
+        [block, block, block],
         [block, block, block]
       ],
-      support_block_id: 'support'
+      support_block_id: 'support',
+      staircase_alg: block_generation.StaircaseAlgorithm.Continuous
     });
 
     const largest_offset = block_space.reduce((offset, block) => {
@@ -85,7 +88,8 @@ describe('block-space generation', () => {
           }
         ]
       ],
-      support_block_id: 'support'
+      support_block_id: 'support',
+      staircase_alg: block_generation.StaircaseAlgorithm.Continuous
     });
 
     const largest_offset = block_space.reduce((offset, block) => {
@@ -110,7 +114,34 @@ describe('block-space generation', () => {
 
     const block_space = block_generation.generateBlockSpace({
       block_grid: [[block], [block]],
-      support_block_id: 'support'
+      support_block_id: 'support',
+      staircase_alg: block_generation.StaircaseAlgorithm.Continuous
+    });
+
+    expect(block_space).toMatchSnapshot();
+  });
+
+  it.only('should reset staircase offset to baseline', () => {
+    const make = (hue: pixels.BlockHue): pixels.MCBlockWithHue => {
+      return {
+        id: 'minecraft:stone',
+        hue
+      };
+    };
+
+    const block_space = block_generation.generateBlockSpace({
+      block_grid: [
+        [make(1)],
+        [make(2)],
+        [make(1)],
+        [make(0)], // Here we should see a reset
+        [make(1)],
+        [make(2)],
+        [make(0)], // Here we should see a reset
+        [make(1)]
+      ],
+      support_block_id: '',
+      staircase_alg: block_generation.StaircaseAlgorithm.Baseline
     });
 
     expect(block_space).toMatchSnapshot();

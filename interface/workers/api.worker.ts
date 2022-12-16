@@ -83,7 +83,8 @@ const generateBlockSpaceFromImageData = (params: GenerationParams) => {
   const blocks = pixels.conversion.convertPixelGridToMCBlocks(color_converted, params.palette);
   return generation.block_generation.generateBlockSpace({
     block_grid: blocks,
-    support_block_id: 'minecraft:cobblestone'
+    support_block_id: 'minecraft:cobblestone',
+    staircase_alg: generation.block_generation.StaircaseAlgorithm.Boundary
   });
 };
 

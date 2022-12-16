@@ -1,195 +1,69 @@
 // Vitest Snapshot v1
 
-exports[`block-space generation > should add support under required blocks 1`] = `
-[
-  {
-    "attributes": {
-      "requires_support": true,
-    },
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 1,
-    "z": 0,
-  },
-  {
-    "hue": 0,
-    "id": "support",
-    "x": 0,
-    "y": 0,
-    "z": 0,
-  },
-  {
-    "attributes": {
-      "requires_support": true,
-    },
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 1,
-    "y": 1,
-    "z": 0,
-  },
-  {
-    "hue": 0,
-    "id": "support",
-    "x": 1,
-    "y": 0,
-    "z": 0,
-  },
-]
-`;
-
-exports[`block-space generation > should generate a flat block space 1`] = `
-[
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 1,
-    "z": 0,
-  },
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 1,
-    "z": 1,
-  },
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 1,
-    "z": 2,
-  },
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 1,
-    "y": 1,
-    "z": 0,
-  },
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 1,
-    "y": 1,
-    "z": 1,
-  },
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 1,
-    "y": 1,
-    "z": 2,
-  },
-]
-`;
-
-exports[`block-space generation > should generate a symmetrical staircased block space and include a north block 1`] = `
+exports[`block-space generation > should reset staircase offset to baseline 1`] = `
 [
   {
     "hue": 1,
     "id": "minecraft:stone",
     "x": 0,
     "y": 1,
-    "z": 0,
-  },
-  {
-    "hue": 1,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 2,
-    "z": 1,
-  },
-  {
-    "hue": 1,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 3,
-    "z": 2,
+    "z": 8,
   },
   {
     "hue": 0,
-    "id": "support",
-    "x": 0,
-    "y": 4,
-    "z": 3,
-  },
-  {
-    "hue": 1,
-    "id": "minecraft:stone",
-    "x": 1,
-    "y": 1,
-    "z": 0,
-  },
-  {
-    "hue": 1,
-    "id": "minecraft:stone",
-    "x": 1,
-    "y": 2,
-    "z": 1,
-  },
-  {
-    "hue": 1,
-    "id": "minecraft:stone",
-    "x": 1,
-    "y": 3,
-    "z": 2,
-  },
-  {
-    "hue": 0,
-    "id": "support",
-    "x": 1,
-    "y": 4,
-    "z": 3,
-  },
-]
-`;
-
-exports[`block-space generation > should generate varied staircased block space 1`] = `
-[
-  {
-    "hue": 1,
     "id": "minecraft:stone",
     "x": 0,
     "y": 1,
-    "z": 0,
-  },
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 2,
-    "z": 1,
-  },
-  {
-    "hue": 0,
-    "id": "minecraft:stone",
-    "x": 0,
-    "y": 2,
-    "z": 2,
+    "z": 7,
   },
   {
     "hue": 2,
     "id": "minecraft:stone",
-    "x": 1,
-    "y": 1,
-    "z": 0,
+    "x": 0,
+    "y": 0,
+    "z": 6,
   },
   {
     "hue": 1,
     "id": "minecraft:stone",
-    "x": 1,
-    "y": 3,
-    "z": 1,
+    "x": 0,
+    "y": 1,
+    "z": 5,
   },
   {
     "hue": 0,
     "id": "minecraft:stone",
-    "x": 1,
-    "y": 4,
+    "x": 0,
+    "y": 1,
+    "z": 4,
+  },
+  {
+    "hue": 1,
+    "id": "minecraft:stone",
+    "x": 0,
+    "y": 0,
+    "z": 3,
+  },
+  {
+    "hue": 2,
+    "id": "minecraft:stone",
+    "x": 0,
+    "y": 0,
     "z": 2,
+  },
+  {
+    "hue": 1,
+    "id": "minecraft:stone",
+    "x": 0,
+    "y": 1,
+    "z": 1,
+  },
+  {
+    "hue": 0,
+    "id": "",
+    "x": 0,
+    "y": 1,
+    "z": 0,
   },
 ]
 `;
