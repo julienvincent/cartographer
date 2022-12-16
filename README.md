@@ -4,22 +4,26 @@ A web-based tool for converting images into Minecraft map-art, formatted in a va
 
 ## About
 
-There are some alternatives to this tool out in the wild, most notably being [mapartcraft](https://rebane2001.com/mapartcraft/), however none of the existing tools could generate map schematics in a format compatible with the excellent [Litematica](https://github.com/maruohon/litematica) mod. As we want to use Litematica for building the actual map in survival we decided to build a new tool that could produce files of this format and at the same time improve on some other things such as:
+There are already some good implementations/alternatives to this tool out in the wild, most notably being [mapartcraft](https://rebane2001.com/mapartcraft/), however I found their interfaces very clunky to work in and hard to iterate fluidly on a map-art idea. I also wanted to add features that were missing and add support for outputting in alternative data formats such as `.litematic` files for the excellent [Litematica](https://github.com/maruohon/litematica) mod.
 
-- Better interface for working with the loaded image
+Some features of this tool:
+
+- Clean, fluid interface for working with the loaded image
   - Live preview
-  - Interactive selection box
+  - Interactive selection/crop box
   - Image manipulation tools (saturation, brightness)
-- Ability to manually edit the generated map-art to tweak/fix things
-- Perform all generation entirely on the browser, so not having to wait for any server-side queues
-- Simpler and more direct output format (.schematic files, json, .nbt) that don't need to be converted via third party tools
+- Perform all generation entirely on the browser
+- Various output formats (.schematic files, .json, .nbt) that don't need to be converted via third party tools
 - Allow selecting multiple blocks in the color palette and balance equally between them when generating the block space. This allows for a better distribution in accordance with the material quantities available in the users world. For example, if the user has 10 cobblestone and 10 stone, and they need 20 blocks of either, they shouldn't need to mine an additional 10 of one type but rather should be able to use both their cobblestone and their stone to complete the map.
+- Various staircasing algorithms
+- Material list view
 
 ## Components
 
-- [@cartographer/litematica](./litematica) - A set of utilities for generating Litematica compatible schema NBT data
-- [@cartographer/generation](./generation) - Contains the core block generation algorithm as well as transformers to convert the generated map to other formats like `litematica` and `nbt`.
-- [@cartographer/pixels](./pixels) - Contains block palette data and tools for working with image data. Essentially conversion tools for 'pixels' where a pixel could be an image pixel or a MC block
+- [@cartographer/litematica](./packages/litematica) - A set of utilities for generating Litematica compatible schematics
+- [@cartographer/generation](./packages/generation) - Contains the core block generation algorithm as well as transformers to convert the generated map to other formats like `litematica` and `nbt`.
+- [@cartographer/pixels](./packages/pixels) - Contains block palette data and tools for working with image data. Essentially conversion tools for 'pixels' where a pixel could be an image pixel or a MC block
+- [@cartographer/block-palettes](./packages/block-palettes) - Curated block-palette data
 
 ## JSON output format
 
@@ -29,12 +33,14 @@ This data structure looks as follows:
 
 ```json
 [
-  [
-    {
-      "id": "minecraft:stone",
-      "offset": 0
-    }
-  ]
+  {
+    "id": "minecraft:birch_log",
+    "properties": {"axis": "y"},
+    "hue": 1,
+    "x": 0,
+    "y": 1,
+    "z": 0
+  }
 ]
 ```
 
@@ -44,8 +50,9 @@ The block palette data was taken directly from [rebane2001/mapartcraft](https://
 
 ## Roadmap/Features
 
-- Allow selecting the block type to be used under blocks that require support.
 - Add support for uploading custom block palettes.
+- Ability to manually edit the generated map-art to tweak/fix things
+- Deal with infection blocks like grass or nylium
 
 ## Authors
 
