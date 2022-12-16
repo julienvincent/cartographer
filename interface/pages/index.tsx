@@ -6,6 +6,7 @@ import BlockList from '../components/block-list';
 import CheckBox from '../components/check-box';
 
 import * as block_palettes from '@cartographer/block-palettes';
+import * as generation from '@cartographer/generation';
 import * as pixels from '@cartographer/pixels';
 import * as rr from 'react-responsive';
 import styled from 'styled-components';
@@ -125,6 +126,10 @@ export default function Root() {
     utils.applyPalettePatch(block_palettes.palettes['1.19'], patches[0].patch)
   );
   const [materials_list_visible, showMaterialsList] = React.useState(false);
+
+  const [staircase_alg, setStaircaseAlg] = React.useState(generation.block_generation.StaircaseAlgorithm.Boundary);
+  const [support_block_id, setSupportBlockId] = React.useState('minecraft:cobblestone');
+
   const api = hooks.withAPIWorker();
 
   const [generating, isGenerating] = React.useState(false);
@@ -145,6 +150,8 @@ export default function Root() {
       bounds,
       palette: utils.normalizeColorPalette(palette),
       color_spectrum,
+      staircase_alg,
+      support_block_id,
       transformations: {
         saturation,
         brightness
@@ -314,6 +321,7 @@ export default function Root() {
 
               <PreviewContainer>
                 <ImagePreview
+                  style={{ alignSelf: 'center' }}
                   palette={palette}
                   bounds={bounds}
                   image_data={image_data}
@@ -329,7 +337,54 @@ export default function Root() {
                   This is a preview of how the Map should look once placed.
                 </Description>
 
-                <MapOptions>
+                <Tooltip
+                  style={{ marginTop: 10 }}
+                  direction="up"
+                  tooltip={[
+                    'Staircasing is the placement of blocks at varying heights in order to control the color hue of the block south of it. Cartographer implements various algorithms for producing these staircases that have slightly different properties.',
+                    'Continuous: Make continuous staircases that never reset back to y=0. This makes it easier to build but may reach the maximum build height on large maps.',
+                    'Baseline: Make staircases that continuously reset to y=0 whenever an opportunity arises. This will result in a more compact map but may be harder to build.',
+                    'Boundary: Prefer making continuous staircases that never reset except when crossing map boundaries, in which case a single reset is allowed. This allows for most of the benefits of Continuous but should prevent maps from reaching the build-height limit.'
+                  ]}
+                >
+                  <Description style={{ marginRight: 10 }}>Staircase Algorithm</Description>
+                  <MultiButton
+                    disabled={color_spectrum === pixels.BlockColorSpectrum.Flat}
+                    selected={_.upperFirst(staircase_alg)}
+                    action_opens_picker
+                    onSelectionChange={(name) => setStaircaseAlg(name.toLowerCase() as any)}
+                    actions={Object.values(generation.block_generation.StaircaseAlgorithm).map((alg) => {
+                      return {
+                        name: _.upperFirst(alg)
+                      };
+                    })}
+                  />
+                </Tooltip>
+
+                <Tooltip
+                  style={{ marginTop: 10 }}
+                  direction="up"
+                  tooltip={[
+                    'This is the block that will be placed below blocks that require support such as falling sand'
+                  ]}
+                >
+                  <Description style={{ marginRight: 10 }}>Support block</Description>
+                  <MultiButton
+                    selected={support_block_id}
+                    action_opens_picker
+                    onSelectionChange={(name) => setSupportBlockId(name)}
+                    actions={[
+                      {
+                        name: 'minecraft:cobblestone'
+                      },
+                      {
+                        name: 'minecraft:stone'
+                      }
+                    ]}
+                  />
+                </Tooltip>
+
+                <MapOptions style={{ marginTop: 10, marginBottom: 10 }}>
                   <MultiButton
                     style={{ marginRight: 10 }}
                     actions={[
@@ -343,7 +398,6 @@ export default function Root() {
                   />
 
                   <MultiButton
-                    style={{ marginTop: 10, marginBottom: 10 }}
                     disabled={!image_data}
                     loading={generating}
                     actions={[
@@ -380,6 +434,7 @@ export default function Root() {
           scale={scale}
           bounds={bounds}
           color_spectrum={color_spectrum}
+          support_block_id={support_block_id}
           transformations={{
             saturation,
             brightness

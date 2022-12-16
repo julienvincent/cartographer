@@ -77,35 +77,40 @@ const generatePreview = (params: GenerationParams) => {
   return pixels.conversion.convertPixelGridToImageData(scaled_up_pixel_grid);
 };
 
-const generateBlockSpaceFromImageData = (params: GenerationParams) => {
+type BlockGenerationParams = GenerationParams & {
+  staircase_alg: generation.block_generation.StaircaseAlgorithm;
+  support_block_id: string;
+};
+
+const generateBlockSpaceFromImageData = (params: BlockGenerationParams) => {
   const color_converted = baseImagePipeline(params);
 
   const blocks = pixels.conversion.convertPixelGridToMCBlocks(color_converted, params.palette);
   return generation.block_generation.generateBlockSpace({
     block_grid: blocks,
-    support_block_id: 'minecraft:cobblestone',
-    staircase_alg: generation.block_generation.StaircaseAlgorithm.Boundary
+    support_block_id: params.support_block_id,
+    staircase_alg: params.staircase_alg
   });
 };
 
-export const generateLightmaticaSchema = async (params: GenerationParams) => {
+export const generateLightmaticaSchema = async (params: BlockGenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
   const schema = generation.schema_generation.litematica.generateLitematicaSchema(block_space);
   return await generation.serialization.serializeNBTData(schema);
 };
 
-export const generateMapNBT = async (params: GenerationParams) => {
+export const generateMapNBT = async (params: BlockGenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
   const map = generation.schema_generation.map.asNbtObject(block_space);
   return await generation.serialization.serializeNBTData(map);
 };
 
-export const generateMapJSON = async (params: GenerationParams) => {
+export const generateMapJSON = async (params: BlockGenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
   return Buffer.from(JSON.stringify(block_space));
 };
 
-export const generateMaterialsList = async (params: GenerationParams) => {
+export const generateMaterialsList = async (params: BlockGenerationParams) => {
   const block_space = generateBlockSpaceFromImageData(params);
 
   return block_space.reduce((counts: Record<string, number>, block) => {

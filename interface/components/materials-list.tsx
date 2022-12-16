@@ -1,3 +1,4 @@
+import * as gen from '@cartographer/generation';
 import * as pixels from '@cartographer/pixels';
 import styled from 'styled-components';
 import SearchBox from './search-box';
@@ -119,6 +120,7 @@ type Props = {
   scale: defs.Scale;
   bounds: defs.Bounds;
   color_spectrum: pixels.BlockColorSpectrum;
+  support_block_id: string;
 
   transformations: {
     saturation: number;
@@ -149,6 +151,8 @@ export const MaterialsList: React.FC<Props> = (props) => {
         scale: props.scale,
         bounds: props.bounds,
         color_spectrum: props.color_spectrum,
+        support_block_id: props.support_block_id,
+        staircase_alg: gen.block_generation.StaircaseAlgorithm.Continuous,
         palette: utils.normalizeColorPalette(props.palette),
         transformations: props.transformations
       });
@@ -168,7 +172,8 @@ export const MaterialsList: React.FC<Props> = (props) => {
     props.bounds,
     props.transformations.brightness,
     props.transformations.saturation,
-    props.color_spectrum
+    props.color_spectrum,
+    props.support_block_id
   ]);
 
   const fuse = new Fuse(materials, {

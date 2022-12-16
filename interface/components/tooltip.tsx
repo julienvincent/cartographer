@@ -6,12 +6,13 @@ const Container = styled.div`
   position: relative;
   display: flex;
   flex-grow: 1;
+  align-items: center;
 `;
 
-const TooltipContainer = styled.div`
+const TooltipContainer = styled.div<{ reverse: boolean }>`
   position: absolute;
-  top: 100%;
-  margin-top: 5px;
+  ${(props) => (!props.reverse ? 'top: 100%' : 'bottom: 100%')};
+  ${(props) => (!props.reverse ? 'margin-top: 5px' : 'margin-bottom: 5px')};
   z-index: 99;
 
   background-color: ${(props) => props.theme['bg0-hard']};
@@ -31,6 +32,7 @@ type Props = {
   children: React.ReactNode;
 
   tooltip?: string | string[];
+  direction?: 'up' | 'down';
 };
 
 export const Tooltip: React.FC<Props> = (props) => {
@@ -54,7 +56,7 @@ export const Tooltip: React.FC<Props> = (props) => {
       {props.children}
 
       {visible && (
-        <TooltipContainer>
+        <TooltipContainer reverse={props.direction === 'up'}>
           {Array.isArray(props.tooltip) ? (
             props.tooltip.map((text, i) => {
               return (
