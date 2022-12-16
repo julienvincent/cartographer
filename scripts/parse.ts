@@ -17,7 +17,7 @@ const tupleToRgb = (color: [number, number, number]) => {
 const final = Object.entries(data as any).reduce((palette: any[], [id, item]: any) => {
   palette.push({
     id,
-    colors: [tupleToRgb(item.tonesRGB.dark), tupleToRgb(item.tonesRGB.normal), tupleToRgb(item.tonesRGB.light)],
+    colors: [tupleToRgb(item.tonesRGB.light), tupleToRgb(item.tonesRGB.normal), tupleToRgb(item.tonesRGB.dark)],
     blocks: Object.values(item.blocks)
       .map((block: any) => {
         if (!block.validVersions[target_version]) {
