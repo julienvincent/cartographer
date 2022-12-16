@@ -138,7 +138,7 @@ export const MultiButton: React.FC<Props> = (props) => {
         </Button>
 
         {props.loading ? (
-          <Loader />
+          <Loader style={{ marginRight: 10 }} />
         ) : props.actions.length > 1 ? (
           <>
             <Separator />
