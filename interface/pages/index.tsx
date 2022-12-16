@@ -379,6 +379,9 @@ export default function Root() {
                       },
                       {
                         name: 'minecraft:stone'
+                      },
+                      {
+                        name: 'minecraft:dirt'
                       }
                     ]}
                   />
