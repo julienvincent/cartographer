@@ -9,7 +9,7 @@ export const flattenColors = (palette: defs.BlockPalette, spectrum: defs.BlockCo
           return block.colors;
         }
         case defs.BlockColorSpectrum.Flat: {
-          return [block.colors[0]];
+          return [block.colors[1]];
         }
       }
     })
