@@ -175,7 +175,7 @@ export default function Root() {
     }
     isGenerating(false);
   };
-  console.log(scale_range);
+
   return (
     <Container>
       <Head>
