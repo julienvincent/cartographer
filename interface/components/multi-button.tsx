@@ -95,7 +95,7 @@ type Props = {
 
 export const MultiButton: React.FC<Props> = (props) => {
   const [picker_showing, setPickerShowing] = React.useState(false);
-  const [_selected, setSelected] = React.useState(props.actions[0].name);
+  const [_selected, setSelected] = React.useState(props.actions[0]?.name);
 
   const action = props.actions.find((action) => action.name === (props.selected ?? _selected));
   const disabled = props.disabled || props.loading || false;
