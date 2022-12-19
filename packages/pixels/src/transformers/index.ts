@@ -1,3 +1,1 @@
-export * from './saturation';
-export * from './grayscale';
-export * from './invert';
+export * from './color-correction';

@@ -5,3 +5,11 @@ export type Pixel = {
 };
 
 export type PixelGrid = Pixel[][];
+
+type TransformerPayload = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+export type PixelTransformer = (pixel: Pixel, payload: TransformerPayload) => Pixel;
