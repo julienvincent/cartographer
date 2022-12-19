@@ -1,3 +1,4 @@
+import { Transformations } from '../workers/api.worker';
 import * as gen from '@cartographer/generation';
 import * as pixels from '@cartographer/pixels';
 import styled from 'styled-components';
@@ -122,10 +123,7 @@ type Props = {
   color_spectrum: pixels.BlockColorSpectrum;
   support_block_id: string;
 
-  transformations: {
-    saturation: number;
-    brightness: number;
-  };
+  transformations: Transformations;
 
   palette: defs.ColorPalette;
 };

@@ -1,3 +1,4 @@
+import { Transformations } from '../workers/api.worker';
 import * as overlay from './selection-overlay';
 import * as constants from '../constants';
 import styled from 'styled-components';
@@ -6,6 +7,8 @@ import * as defs from '../defs';
 import * as React from 'react';
 import Slider from './slider';
 import * as _ from 'lodash';
+
+import CheckBox from './check-box';
 
 const Container = styled.div`
   display: flex;
@@ -37,11 +40,8 @@ type Props = {
   scale: defs.Scale;
   onBoundsChange: (bounds: defs.Bounds, raw_bounds: defs.Bounds) => void;
 
-  saturation: number;
-  onSaturationChange: (contrast: number) => void;
-
-  brightness: number;
-  onBrightnessChange: (brightness: number) => void;
+  transformations: Transformations;
+  setTransformations: (transformations: Transformations) => void;
 };
 
 export const SourceImage: React.FC<Props> = (props) => {
@@ -127,20 +127,47 @@ export const SourceImage: React.FC<Props> = (props) => {
         <Slider
           label="Saturation"
           style={{ marginTop: 10, marginRight: 15 }}
-          value={props.saturation}
+          value={props.transformations.saturation || 0}
           onChange={(value) => {
-            props.onSaturationChange(value);
+            props.setTransformations({
+              ...props.transformations,
+              saturation: value
+            });
           }}
         />
 
         <Slider
           label="Brightness"
           style={{ marginTop: 10 }}
-          value={props.brightness}
+          value={props.transformations.brightness || 0}
           onChange={(value) => {
-            props.onBrightnessChange(value);
+            props.setTransformations({
+              ...props.transformations,
+              brightness: value
+            });
           }}
         />
+      </Options>
+
+      <Options>
+        <div>
+          <CheckBox
+            label="Enable dithering"
+            label_side="left"
+            tooltip={[
+              "Enabling dithering will introduce some intentional noise to the image with the aim of keeping as much of the original images' color as possible.",
+              'This has varying levels of success depending on the input image and scaling/zooming applied. It is recommended to play with the image saturation when enabling this.',
+              'Your milage may vary.'
+            ]}
+            value={!!props.transformations.dither}
+            onChange={(value) => {
+              props.setTransformations({
+                ...props.transformations,
+                dither: value
+              });
+            }}
+          />
+        </div>
       </Options>
     </Container>
   );

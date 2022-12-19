@@ -1,3 +1,4 @@
+import { Transformations } from '../workers/api.worker';
 import * as pixels from '@cartographer/pixels';
 import styled from 'styled-components';
 import * as hooks from '../hooks';
@@ -12,10 +13,7 @@ type Props = {
   bounds: defs.Bounds;
   color_spectrum: pixels.BlockColorSpectrum;
 
-  transformations: {
-    saturation: number;
-    brightness: number;
-  };
+  transformations: Transformations;
 
   palette: defs.ColorPalette;
 
@@ -82,6 +80,7 @@ export const ImagePreview: React.FC<Props> = (props) => {
     props.scale,
     props.transformations.brightness,
     props.transformations.saturation,
+    props.transformations.dither,
     props.color_spectrum
   ]);
 

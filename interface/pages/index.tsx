@@ -6,6 +6,7 @@ import BlockList from '../components/block-list';
 import CheckBox from '../components/check-box';
 
 import * as block_palettes from '@cartographer/block-palettes';
+import { Transformations } from '../workers/api.worker';
 import * as generation from '@cartographer/generation';
 import * as pixels from '@cartographer/pixels';
 import * as rr from 'react-responsive';
@@ -117,8 +118,7 @@ export const ClearButton = styled.p`
 export default function Root() {
   const [image_data, setImageData] = React.useState<ImageData>();
   const [bounds, setBounds] = React.useState<defs.Bounds>();
-  const [saturation, setSaturation] = React.useState(0);
-  const [brightness, setBrightness] = React.useState(0);
+  const [transformations, setTransformations] = React.useState<Transformations>({});
   const [color_spectrum, setColorSpectrum] = React.useState(pixels.BlockColorSpectrum.Full);
   const [scale_range, setScaleRange] = React.useState<[number, number]>([1, 1]);
   const [scale, setScale] = React.useState<defs.Scale>({ x: 1, y: 1 });
@@ -152,10 +152,7 @@ export default function Root() {
       color_spectrum,
       staircase_alg,
       support_block_id,
-      transformations: {
-        saturation,
-        brightness
-      }
+      transformations
     };
 
     isGenerating(true);
@@ -295,14 +292,8 @@ export default function Root() {
                 onBoundsChange={async (bounds) => {
                   setBounds(bounds);
                 }}
-                saturation={saturation}
-                onSaturationChange={async (value) => {
-                  setSaturation(value);
-                }}
-                brightness={brightness}
-                onBrightnessChange={async (value) => {
-                  setBrightness(value);
-                }}
+                setTransformations={setTransformations}
+                transformations={transformations}
               />
             </PreviewContainer>
           ) : (
@@ -327,10 +318,7 @@ export default function Root() {
                   image_data={image_data}
                   scale={scale}
                   color_spectrum={color_spectrum}
-                  transformations={{
-                    saturation,
-                    brightness
-                  }}
+                  transformations={transformations}
                 />
 
                 <Description style={{ marginTop: 10 }}>
@@ -438,10 +426,7 @@ export default function Root() {
           bounds={bounds}
           color_spectrum={color_spectrum}
           support_block_id={support_block_id}
-          transformations={{
-            saturation,
-            brightness
-          }}
+          transformations={transformations}
         />
       )}
     </Container>

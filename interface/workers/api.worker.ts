@@ -5,10 +5,9 @@ import * as comlink from 'comlink';
 import * as defs from '../defs';
 
 export type Transformations = {
-  grayscale?: boolean;
-  invert?: boolean;
   saturation?: number;
   brightness?: number;
+  dither?: boolean;
 };
 export type GenerationParams = {
   image_data: ImageData;
@@ -31,31 +30,17 @@ const baseImagePipeline = (params: GenerationParams) => {
 
   const image_data = context.getImageData(x, y, dx, dy);
 
-  const pixel_grid = pixels.conversion.convertImageDataToPixelGrid(image_data);
-
-  const scaled_pixel_grid = pixels.conversion.scaleDownPixelGrid(
-    pixel_grid,
-    params.scale.x * constants.SCALE_FACTOR,
-    params.scale.y * constants.SCALE_FACTOR
-  );
-
-  let transformed = scaled_pixel_grid;
-  if (params.transformations) {
-    transformed = pixels.transformers.alterColorationProperties(transformed, {
-      brightness: params.transformations.brightness,
-      saturation: params.transformations.saturation
-    });
-    if (params.transformations.invert) {
-      transformed = pixels.transformers.invert(transformed);
-    }
-    if (params.transformations.grayscale) {
-      transformed = pixels.transformers.applyGrayScale(transformed);
-    }
-  }
-
-  return pixels.conversion.convertPixelGridColorsForMC(transformed, {
-    palette: params.palette,
-    color_spectrum: params.color_spectrum
+  const palette_transformer = pixels.conversion.createColorPaletteTransformer(params);
+  return pixels.conversion.scaleAndProcessImageData({
+    image_data,
+    target_width: params.scale.x * constants.SCALE_FACTOR,
+    target_height: params.scale.y * constants.SCALE_FACTOR,
+    transformers: [
+      pixels.transformers.createColorTransformer(params.transformations || {}),
+      params.transformations?.dither
+        ? pixels.transformers.floydSteinbergDitherTransformer(palette_transformer)
+        : palette_transformer
+    ]
   });
 };
 
@@ -73,8 +58,7 @@ const generatePreview = (params: GenerationParams) => {
     width = height * ratio_yx;
   }
 
-  const scaled_up_pixel_grid = pixels.conversion.scaleUpPixelGrid(color_converted, width, height);
-  return pixels.conversion.convertPixelGridToImageData(scaled_up_pixel_grid);
+  return pixels.conversion.convertPixelGridToImageData(color_converted, width, height);
 };
 
 type BlockGenerationParams = GenerationParams & {

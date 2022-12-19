@@ -21,7 +21,6 @@ const Box = styled.div<{ selected: boolean }>`
 
 const Label = styled.p`
   color: ${(props) => props.theme.fg2};
-  margin-left: 10px;
   margin-right: 10px;
 `;
 
