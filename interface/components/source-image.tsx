@@ -152,6 +152,7 @@ export const SourceImage: React.FC<Props> = (props) => {
       <Options>
         <div>
           <CheckBox
+            style={{ marginTop: 5 }}
             label="Enable dithering"
             label_side="left"
             tooltip={[
