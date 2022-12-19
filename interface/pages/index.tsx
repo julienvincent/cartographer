@@ -175,7 +175,7 @@ export default function Root() {
     }
     isGenerating(false);
   };
-
+  console.log(scale_range);
   return (
     <Container>
       <Head>
@@ -251,7 +251,7 @@ export default function Root() {
                     disabled={!image_data}
                     style={{ marginRight: 5 }}
                     selected={`${scale.x}`}
-                    actions={_.range(1, scale_range[0]).map((option) => {
+                    actions={_.range(1, scale_range[0] + 1).map((option) => {
                       return {
                         name: `${option}`
                       };
@@ -269,7 +269,7 @@ export default function Root() {
                   <MultiButton
                     disabled={!image_data}
                     selected={`${scale.y}`}
-                    actions={_.range(1, scale_range[1]).map((option) => {
+                    actions={_.range(1, scale_range[1] + 1).map((option) => {
                       return {
                         name: `${option}`
                       };
@@ -300,7 +300,7 @@ export default function Root() {
             <ImageSelector
               style={{ margin: 'auto' }}
               onFileSelected={async (image_data) => {
-                setScaleRange([Math.ceil(image_data.width / 128), Math.ceil(image_data.height / 128)]);
+                setScaleRange([Math.floor(image_data.width / 128), Math.floor(image_data.height / 128)]);
                 setImageData(image_data);
               }}
             />
