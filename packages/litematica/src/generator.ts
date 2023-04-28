@@ -82,6 +82,16 @@ const createIndexKeyFromCoords = (block: Coords) => {
   return `${block.x}:${block.y}:${block.z}`;
 };
 
+const max = <T>(coll: T[], accessor: (item: T) => number) => {
+  return coll.reduce((acc, item) => {
+    const val = accessor(item);
+    if (val > acc) {
+      return val;
+    }
+    return acc;
+  }, accessor(coll[0]));
+};
+
 type Params = {
   blocks: BlockPosition[];
   name?: string;
@@ -89,9 +99,9 @@ type Params = {
   author?: string;
 };
 export const generateSchematicNBT = (params: Params) => {
-  const length = Math.max(...params.blocks.map((position) => position.z)) + 1;
-  const width = Math.max(...params.blocks.map((position) => position.x)) + 1;
-  const height = Math.max(...params.blocks.map((position) => position.y)) + 1;
+  const length = max(params.blocks, (position) => position.z) + 1;
+  const width = max(params.blocks, (position) => position.x) + 1;
+  const height = max(params.blocks, (position) => position.y) + 1;
 
   const volume = length * width * height;
   const AIR = createPaletteBlock({

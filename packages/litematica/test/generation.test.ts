@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 
 import * as litematica from '../src';
+import * as _ from 'lodash';
 
 describe('schematic-generation', () => {
   it('should generate a schematic file', () => {
@@ -49,5 +50,26 @@ describe('schematic-generation', () => {
     });
 
     expect(data).toMatchSnapshot();
+  });
+
+  it('should handle a large amount of data', () => {
+    const num = 128 * 10;
+
+    const blocks = _.range(num)
+      .map((x) => {
+        return _.range(num).map((z) => {
+          return {
+            id: 'minecraft:stone',
+            x,
+            y: 0,
+            z
+          };
+        });
+      })
+      .flat();
+
+    litematica.generateSchematicNBT({
+      blocks: blocks
+    });
   });
 });
