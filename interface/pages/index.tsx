@@ -332,7 +332,8 @@ export default function Root() {
                     'Staircasing is the placement of blocks at varying heights in order to control the color hue of the block south of it. Cartographer implements various algorithms for producing these staircases that have slightly different properties.',
                     'Continuous: Make continuous staircases that never reset back to y=0. This makes it easier to build but may reach the maximum build height on large maps.',
                     'Baseline: Make staircases that continuously reset to y=0 whenever an opportunity arises. This will result in a more compact map but may be harder to build.',
-                    'Boundary: Prefer making continuous staircases that never reset except when crossing map boundaries, in which case a single reset is allowed. This allows for most of the benefits of Continuous but should prevent maps from reaching the build-height limit.'
+                    'Boundary: Prefer making continuous staircases that never reset except when crossing map boundaries, in which case a single reset is allowed. This allows for most of the benefits of Continuous but should prevent maps from reaching the build-height limit.',
+                    'Upwards: same as Continuous but make it so the lowest part of the map is at y=0'
                   ]}
                 >
                   <Description style={{ marginRight: 10 }}>Staircase Algorithm</Description>
