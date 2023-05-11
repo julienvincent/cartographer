@@ -5,13 +5,13 @@ const getBlockSpaceDimensions = (block_space: BlockSpace) => {
   return block_space.reduce(
     (dimensions, block) => {
       if (block.x > dimensions.width) {
-        dimensions.width = block.x;
+        dimensions.width = block.x+1;
       }
       if (block.y > dimensions.height) {
-        dimensions.height = block.y;
+        dimensions.height = block.y+1;
       }
       if (block.z > dimensions.length) {
-        dimensions.length = block.z;
+        dimensions.length = block.z+1;
       }
       return dimensions;
     },
