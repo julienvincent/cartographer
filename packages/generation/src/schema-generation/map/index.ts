@@ -5,13 +5,13 @@ const getBlockSpaceDimensions = (block_space: BlockSpace) => {
   return block_space.reduce(
     (dimensions, block) => {
       if (block.x > dimensions.width) {
-        dimensions.width = block.x;
+        dimensions.width = block.x+1;
       }
       if (block.y > dimensions.height) {
-        dimensions.height = block.y;
+        dimensions.height = block.y+1;
       }
       if (block.z > dimensions.length) {
-        dimensions.length = block.z;
+        dimensions.length = block.z+1;
       }
       return dimensions;
     },
@@ -22,9 +22,12 @@ const getBlockSpaceDimensions = (block_space: BlockSpace) => {
 export const asNbtObject = (space: BlockSpace): object => {
   const { width, height, length } = getBlockSpaceDimensions(space);
 
-  const palette: string[] = ['minecraft:air'];
+  const palette: string[] = [];
 
   const addToPalette = (sid: string): number => {
+    if(sid === 'minecraft:air') {
+      return 0;
+    }
     let id: number = palette.indexOf(sid);
     if (id === -1) {
       id = palette.length;
@@ -40,7 +43,7 @@ export const asNbtObject = (space: BlockSpace): object => {
 
   const getSid = (x: number, y: number, z: number): string => {
     const id = index.get(`${x}:${y}:${z}`);
-    if (!id) {
+    if (!id|| id === 'minecraft:air') {
       return 'minecraft:air';
     }
     return id;
@@ -49,6 +52,9 @@ export const asNbtObject = (space: BlockSpace): object => {
   const blocks = _.range(width).reduce((blocks, x) => {
     return _.range(length).reduce((blocks, z) => {
       return _.range(height).reduce((blocks, y) => {
+        if(getSid(x, y, z)==='minecraft:air') {
+          return blocks;
+        }
         blocks.push({
           pos: {
             type: 'list',
