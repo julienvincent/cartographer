@@ -6,6 +6,7 @@ import * as utils from '../utils';
 import * as defs from '../defs';
 import * as React from 'react';
 import * as async from 'async';
+import Loader from './loader';
 
 type Props = {
   image_data: ImageData;
@@ -22,6 +23,7 @@ type Props = {
 };
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   padding: 10px;
   align-items: center;
@@ -31,6 +33,12 @@ const Container = styled.div`
 
 const Canvas = styled.canvas`
   border: 1px solid ${(props) => props.theme.bg2};
+`;
+
+const LoadingContainer = styled.div`
+  position: absolute;
+  left 10px;
+  top: 15px;
 `;
 
 const createPreviewQueue = () => {
@@ -50,12 +58,15 @@ export const ImagePreview: React.FC<Props> = (props) => {
 
   const [[width, height], setDimensions] = React.useState([0, 0]);
 
+  const [loading, setLoading] = React.useState(true);
+
   React.useEffect(() => {
     if (!canvas.current || !api.current) {
       return;
     }
 
     queue.current.push(async () => {
+      setLoading(true);
       const image_data = await api.current!.generatePreview({
         image_data: props.image_data,
         bounds: props.bounds,
@@ -70,6 +81,7 @@ export const ImagePreview: React.FC<Props> = (props) => {
       canvas.current!.getContext('2d')!.putImageData(image_data, 0, 0);
 
       setDimensions([image_data.width, image_data.height]);
+      setLoading(false);
     });
   }, [
     props.image_data,
@@ -93,6 +105,7 @@ export const ImagePreview: React.FC<Props> = (props) => {
         height
       }}
     >
+      <LoadingContainer>{loading ? <Loader /> : null}</LoadingContainer>
       <Canvas ref={canvas} />
     </Container>
   );
