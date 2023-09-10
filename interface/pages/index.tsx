@@ -105,6 +105,10 @@ export const Description = styled.p`
   color: ${(props) => props.theme.fg2};
 `;
 
+export const ErrorText = styled.p`
+  color: ${(props) => props.theme['light-red']};
+`;
+
 export const ClearButton = styled.p`
   font-weight: bold;
   align-self: flex-start;
@@ -133,6 +137,7 @@ export default function Root() {
   const api = hooks.withAPIWorker();
 
   const [generating, isGenerating] = React.useState(false);
+  const [generation_error, setGenerationError] = React.useState(false);
 
   const is_small_screen = rr.useMediaQuery({ query: '(max-width: 1750px)' });
   const is_safari =
@@ -155,23 +160,29 @@ export default function Root() {
       transformations
     };
 
+    setGenerationError(false);
     isGenerating(true);
-    switch (type) {
-      case 'litematic': {
-        const schema_nbt = await api.current.generateLitematicaSchema(params);
-        utils.download(schema_nbt, 'map.litematic');
-        break;
+    try {
+      switch (type) {
+        case 'litematic': {
+          const schema_nbt = await api.current.generateLitematicaSchema(params);
+          utils.download(schema_nbt, 'map.litematic');
+          break;
+        }
+        case 'nbt': {
+          const nbt = await api.current.generateMapNBT(params);
+          utils.download(nbt, 'map.nbt');
+          break;
+        }
+        case 'json': {
+          const json = await api.current.generateMapJSON(params);
+          utils.download(json, 'map.json');
+          break;
+        }
       }
-      case 'nbt': {
-        const nbt = await api.current.generateMapNBT(params);
-        utils.download(nbt, 'map.nbt');
-        break;
-      }
-      case 'json': {
-        const json = await api.current.generateMapJSON(params);
-        utils.download(json, 'map.json');
-        break;
-      }
+    } catch (err) {
+      console.log('Failed to generate', err);
+      setGenerationError(true);
     }
     isGenerating(false);
   };
@@ -376,6 +387,8 @@ export default function Root() {
                 </Tooltip>
 
                 <MapOptions style={{ marginTop: 10, marginBottom: 10 }}>
+                  {generation_error ? <ErrorText>Failed to generate</ErrorText> : null}
+
                   <MultiButton
                     style={{ marginRight: 10 }}
                     actions={[
