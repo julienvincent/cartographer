@@ -1,0 +1,3986 @@
+[
+  {
+    "id": "0",
+    "colors": [
+      {
+        "r": 127,
+        "g": 178,
+        "b": 56
+      },
+      {
+        "r": 109,
+        "g": 153,
+        "b": 48
+      },
+      {
+        "r": 89,
+        "g": 125,
+        "b": 39
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:grass_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:slime_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "colors": [
+      {
+        "r": 247,
+        "g": 233,
+        "b": 163
+      },
+      {
+        "r": 213,
+        "g": 201,
+        "b": 140
+      },
+      {
+        "r": 174,
+        "g": 164,
+        "b": 115
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:sand",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sandstone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sandstone_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:birch_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:birch_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:birch_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:glowstone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:end_stone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:end_stone_bricks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:end_stone_brick_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bone_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:birch_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:ochre_froglight",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "colors": [
+      {
+        "r": 199,
+        "g": 199,
+        "b": 199
+      },
+      {
+        "r": 171,
+        "g": 171,
+        "b": 171
+      },
+      {
+        "r": 140,
+        "g": 140,
+        "b": 140
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cobweb",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mushroom_stem",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_candle",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "colors": [
+      {
+        "r": 255,
+        "g": 0,
+        "b": 0
+      },
+      {
+        "r": 220,
+        "g": 0,
+        "b": 0
+      },
+      {
+        "r": 180,
+        "g": 0,
+        "b": 0
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:tnt",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:redstone_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "colors": [
+      {
+        "r": 160,
+        "g": 160,
+        "b": 255
+      },
+      {
+        "r": 138,
+        "g": 138,
+        "b": 220
+      },
+      {
+        "r": 112,
+        "g": 112,
+        "b": 180
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:ice",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:packed_ice",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_ice",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "colors": [
+      {
+        "r": 167,
+        "g": 167,
+        "b": 167
+      },
+      {
+        "r": 144,
+        "g": 144,
+        "b": 144
+      },
+      {
+        "r": 117,
+        "g": 117,
+        "b": 117
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:iron_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:iron_trapdoor",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {
+          "half": "bottom"
+        }
+      },
+      {
+        "id": "minecraft:heavy_weighted_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brewing_stand",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "colors": [
+      {
+        "r": 0,
+        "g": 124,
+        "b": 0
+      },
+      {
+        "r": 0,
+        "g": 106,
+        "b": 0
+      },
+      {
+        "r": 0,
+        "g": 87,
+        "b": 0
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:oak_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      },
+      {
+        "id": "minecraft:spruce_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      },
+      {
+        "id": "minecraft:birch_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      },
+      {
+        "id": "minecraft:jungle_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      },
+      {
+        "id": "minecraft:acacia_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      },
+      {
+        "id": "minecraft:dark_oak_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      },
+      {
+        "id": "minecraft:azalea_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      },
+      {
+        "id": "minecraft:bamboo_block",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "colors": [
+      {
+        "r": 164,
+        "g": 168,
+        "b": 184
+      },
+      {
+        "r": 141,
+        "g": 144,
+        "b": 158
+      },
+      {
+        "r": 115,
+        "g": 118,
+        "b": 129
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:clay",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "colors": [
+      {
+        "r": 151,
+        "g": 109,
+        "b": 77
+      },
+      {
+        "r": 130,
+        "g": 94,
+        "b": 66
+      },
+      {
+        "r": 106,
+        "g": 76,
+        "b": 54
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:jungle_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:jungle_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:jungle_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dirt",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:coarse_dirt",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:rooted_dirt",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:jukebox",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:granite",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:granite_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:jungle_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:packed_mud",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "colors": [
+      {
+        "r": 112,
+        "g": 112,
+        "b": 112
+      },
+      {
+        "r": 96,
+        "g": 96,
+        "b": 96
+      },
+      {
+        "r": 79,
+        "g": 79,
+        "b": 79
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cobblestone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cobblestone_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mossy_cobblestone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mossy_cobblestone_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stone_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:smooth_stone_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stone_bricks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stone_brick_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:andesite",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:andesite_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bedrock",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:gravel",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stone_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "colors": [
+      {
+        "r": 64,
+        "g": 64,
+        "b": 255
+      },
+      {
+        "r": 55,
+        "g": 55,
+        "b": 220
+      },
+      {
+        "r": 45,
+        "g": 45,
+        "b": 180
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:water",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "colors": [
+      {
+        "r": 143,
+        "g": 119,
+        "b": 72
+      },
+      {
+        "r": 123,
+        "g": 102,
+        "b": 62
+      },
+      {
+        "r": 100,
+        "g": 84,
+        "b": 50
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:oak_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:oak_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:oak_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crafting_table",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:oak_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "colors": [
+      {
+        "r": 255,
+        "g": 252,
+        "b": 245
+      },
+      {
+        "r": 220,
+        "g": 217,
+        "b": 211
+      },
+      {
+        "r": 180,
+        "g": 177,
+        "b": 172
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:birch_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:diorite",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:diorite_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:quartz_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:quartz_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sea_lantern",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "colors": [
+      {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      {
+        "r": 220,
+        "g": 220,
+        "b": 220
+      },
+      {
+        "r": 180,
+        "g": 180,
+        "b": 180
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:white_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:white_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:snow_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:snow",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "colors": [
+      {
+        "r": 216,
+        "g": 127,
+        "b": 51
+      },
+      {
+        "r": 186,
+        "g": 109,
+        "b": 44
+      },
+      {
+        "r": 152,
+        "g": 89,
+        "b": 36
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:orange_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:orange_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pumpkin",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:acacia_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_sand",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_sandstone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_sandstone_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:honey_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:honeycomb_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:raw_copper_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_copper_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_cut_copper_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:acacia_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "colors": [
+      {
+        "r": 178,
+        "g": 76,
+        "b": 216
+      },
+      {
+        "r": 153,
+        "g": 65,
+        "b": 186
+      },
+      {
+        "r": 125,
+        "g": 53,
+        "b": 152
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:magenta_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magenta_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purpur_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purpur_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "colors": [
+      {
+        "r": 102,
+        "g": 153,
+        "b": 216
+      },
+      {
+        "r": 88,
+        "g": 132,
+        "b": 186
+      },
+      {
+        "r": 72,
+        "g": 108,
+        "b": 152
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_blue_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_blue_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "colors": [
+      {
+        "r": 229,
+        "g": 229,
+        "b": 51
+      },
+      {
+        "r": 197,
+        "g": 197,
+        "b": 44
+      },
+      {
+        "r": 161,
+        "g": 161,
+        "b": 36
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:yellow_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:yellow_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:hay_block",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sponge",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bamboo_block",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:bamboo_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bamboo_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bamboo_mosaic",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bamboo_mosaic_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bamboo_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "colors": [
+      {
+        "r": 127,
+        "g": 204,
+        "b": 25
+      },
+      {
+        "r": 109,
+        "g": 176,
+        "b": 21
+      },
+      {
+        "r": 89,
+        "g": 144,
+        "b": 17
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:lime_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:lime_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:melon",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "colors": [
+      {
+        "r": 242,
+        "g": 127,
+        "b": 165
+      },
+      {
+        "r": 208,
+        "g": 109,
+        "b": 142
+      },
+      {
+        "r": 170,
+        "g": 89,
+        "b": 116
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:pink_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pink_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pearlescent_froglight",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cherry_leaves",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "persistent": "true"
+        }
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "colors": [
+      {
+        "r": 76,
+        "g": 76,
+        "b": 76
+      },
+      {
+        "r": 65,
+        "g": 65,
+        "b": 65
+      },
+      {
+        "r": 53,
+        "g": 53,
+        "b": 53
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:gray_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:gray_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dead_tube_coral_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dead_brain_coral_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dead_bubble_coral_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dead_fire_coral_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dead_horn_coral_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:tinted_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "21",
+    "colors": [
+      {
+        "r": 153,
+        "g": 153,
+        "b": 153
+      },
+      {
+        "r": 132,
+        "g": 132,
+        "b": 132
+      },
+      {
+        "r": 108,
+        "g": 108,
+        "b": 108
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_gray_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_gray_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "colors": [
+      {
+        "r": 76,
+        "g": 127,
+        "b": 153
+      },
+      {
+        "r": 65,
+        "g": 109,
+        "b": 132
+      },
+      {
+        "r": 53,
+        "g": 89,
+        "b": 108
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cyan_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cyan_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:prismarine",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:prismarine_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "colors": [
+      {
+        "r": 127,
+        "g": 63,
+        "b": 178
+      },
+      {
+        "r": 109,
+        "g": 54,
+        "b": 153
+      },
+      {
+        "r": 89,
+        "g": 44,
+        "b": 125
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:purple_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:purple_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mycelium",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:amethyst_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "colors": [
+      {
+        "r": 51,
+        "g": 76,
+        "b": 178
+      },
+      {
+        "r": 44,
+        "g": 65,
+        "b": 153
+      },
+      {
+        "r": 36,
+        "g": 53,
+        "b": 125
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:blue_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blue_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "25",
+    "colors": [
+      {
+        "r": 102,
+        "g": 76,
+        "b": 51
+      },
+      {
+        "r": 88,
+        "g": 65,
+        "b": 44
+      },
+      {
+        "r": 72,
+        "g": 53,
+        "b": 36
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:brown_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brown_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_oak_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:dark_oak_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_oak_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:spruce_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:soul_sand",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:soul_soil",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_oak_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "26",
+    "colors": [
+      {
+        "r": 102,
+        "g": 127,
+        "b": 51
+      },
+      {
+        "r": 88,
+        "g": 109,
+        "b": 44
+      },
+      {
+        "r": 72,
+        "g": 89,
+        "b": 36
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:green_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:green_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dried_kelp_block",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "27",
+    "colors": [
+      {
+        "r": 153,
+        "g": 51,
+        "b": 51
+      },
+      {
+        "r": 132,
+        "g": 44,
+        "b": 44
+      },
+      {
+        "r": 108,
+        "g": 36,
+        "b": 36
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:red_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:bricks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:brick_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:nether_wart_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:shroomlight",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mangrove_log",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:mangrove_planks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mangrove_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mangrove_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "colors": [
+      {
+        "r": 25,
+        "g": 25,
+        "b": 25
+      },
+      {
+        "r": 21,
+        "g": 21,
+        "b": 21
+      },
+      {
+        "r": 17,
+        "g": 17,
+        "b": 17
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:black_wool",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_carpet",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_stained_glass",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_concrete",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_concrete_powder",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:black_glazed_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:coal_block",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:obsidian",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crying_obsidian",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blackstone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:blackstone_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:basalt",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:netherite_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:polished_blackstone_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sculk",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sculk_catalyst",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:sculk_shrieker",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "colors": [
+      {
+        "r": 250,
+        "g": 238,
+        "b": 77
+      },
+      {
+        "r": 215,
+        "g": 205,
+        "b": 66
+      },
+      {
+        "r": 176,
+        "g": 168,
+        "b": 54
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:gold_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:light_weighted_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:raw_gold_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "colors": [
+      {
+        "r": 92,
+        "g": 219,
+        "b": 213
+      },
+      {
+        "r": 79,
+        "g": 188,
+        "b": 183
+      },
+      {
+        "r": 64,
+        "g": 154,
+        "b": 150
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:diamond_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:prismarine_bricks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:prismarine_brick_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_prismarine",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dark_prismarine_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:beacon",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "colors": [
+      {
+        "r": 74,
+        "g": 128,
+        "b": 255
+      },
+      {
+        "r": 63,
+        "g": 110,
+        "b": 220
+      },
+      {
+        "r": 52,
+        "g": 90,
+        "b": 180
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:lapis_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "colors": [
+      {
+        "r": 0,
+        "g": 217,
+        "b": 58
+      },
+      {
+        "r": 0,
+        "g": 187,
+        "b": 50
+      },
+      {
+        "r": 0,
+        "g": 153,
+        "b": 40
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:emerald_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "33",
+    "colors": [
+      {
+        "r": 129,
+        "g": 86,
+        "b": 49
+      },
+      {
+        "r": 111,
+        "g": 74,
+        "b": 42
+      },
+      {
+        "r": 91,
+        "g": 60,
+        "b": 34
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:spruce_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:spruce_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:spruce_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:oak_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:jungle_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:podzol",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:spruce_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mangrove_log",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:mangrove_roots",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "34",
+    "colors": [
+      {
+        "r": 112,
+        "g": 2,
+        "b": 0
+      },
+      {
+        "r": 96,
+        "g": 1,
+        "b": 0
+      },
+      {
+        "r": 79,
+        "g": 1,
+        "b": 0
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:netherrack",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:nether_bricks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:nether_brick_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:magma_block",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_nether_bricks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:red_nether_brick_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "colors": [
+      {
+        "r": 209,
+        "g": 177,
+        "b": 161
+      },
+      {
+        "r": 180,
+        "g": 152,
+        "b": 138
+      },
+      {
+        "r": 147,
+        "g": 124,
+        "b": 113
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:white_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:calcite",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cherry_planks",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cherry_slab",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cherry_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:stripped_cherry_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "y"
+        }
+      },
+      {
+        "id": "minecraft:cherry_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "36",
+    "colors": [
+      {
+        "r": 159,
+        "g": 82,
+        "b": 36
+      },
+      {
+        "r": 137,
+        "g": 70,
+        "b": 31
+      },
+      {
+        "r": 112,
+        "g": 57,
+        "b": 25
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:orange_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "37",
+    "colors": [
+      {
+        "r": 149,
+        "g": 87,
+        "b": 108
+      },
+      {
+        "r": 128,
+        "g": 75,
+        "b": 93
+      },
+      {
+        "r": 105,
+        "g": 61,
+        "b": 76
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:magenta_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "38",
+    "colors": [
+      {
+        "r": 112,
+        "g": 108,
+        "b": 138
+      },
+      {
+        "r": 96,
+        "g": 93,
+        "b": 119
+      },
+      {
+        "r": 79,
+        "g": 76,
+        "b": 97
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_blue_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "39",
+    "colors": [
+      {
+        "r": 186,
+        "g": 133,
+        "b": 36
+      },
+      {
+        "r": 160,
+        "g": 114,
+        "b": 31
+      },
+      {
+        "r": 131,
+        "g": 93,
+        "b": 25
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:yellow_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "40",
+    "colors": [
+      {
+        "r": 103,
+        "g": 117,
+        "b": 53
+      },
+      {
+        "r": 88,
+        "g": 100,
+        "b": 45
+      },
+      {
+        "r": 72,
+        "g": 82,
+        "b": 37
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:lime_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "41",
+    "colors": [
+      {
+        "r": 160,
+        "g": 77,
+        "b": 78
+      },
+      {
+        "r": 138,
+        "g": 66,
+        "b": 67
+      },
+      {
+        "r": 112,
+        "g": 54,
+        "b": 55
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:pink_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_cherry_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:stripped_cherry_wood",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "42",
+    "colors": [
+      {
+        "r": 57,
+        "g": 41,
+        "b": 35
+      },
+      {
+        "r": 49,
+        "g": 35,
+        "b": 30
+      },
+      {
+        "r": 40,
+        "g": 28,
+        "b": 24
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:gray_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:tuff",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cherry_log",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {
+          "axis": "x"
+        }
+      },
+      {
+        "id": "minecraft:cherry_wood",
+        "attributes": {
+          "flammable": true,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "43",
+    "colors": [
+      {
+        "r": 135,
+        "g": 107,
+        "b": 98
+      },
+      {
+        "r": 116,
+        "g": 92,
+        "b": 84
+      },
+      {
+        "r": 95,
+        "g": 75,
+        "b": 69
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:light_gray_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_exposed_copper",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_exposed_cut_copper_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mud_bricks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mud_brick_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "44",
+    "colors": [
+      {
+        "r": 87,
+        "g": 92,
+        "b": 92
+      },
+      {
+        "r": 75,
+        "g": 79,
+        "b": 79
+      },
+      {
+        "r": 61,
+        "g": 64,
+        "b": 64
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:cyan_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:mud",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "45",
+    "colors": [
+      {
+        "r": 122,
+        "g": 73,
+        "b": 88
+      },
+      {
+        "r": 105,
+        "g": 62,
+        "b": 75
+      },
+      {
+        "r": 86,
+        "g": 51,
+        "b": 62
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:purple_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "46",
+    "colors": [
+      {
+        "r": 76,
+        "g": 62,
+        "b": 92
+      },
+      {
+        "r": 65,
+        "g": 53,
+        "b": 79
+      },
+      {
+        "r": 53,
+        "g": 43,
+        "b": 64
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:blue_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "47",
+    "colors": [
+      {
+        "r": 76,
+        "g": 50,
+        "b": 35
+      },
+      {
+        "r": 65,
+        "g": 43,
+        "b": 30
+      },
+      {
+        "r": 53,
+        "g": 35,
+        "b": 24
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:brown_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:dripstone_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:pointed_dripstone",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "48",
+    "colors": [
+      {
+        "r": 76,
+        "g": 82,
+        "b": 42
+      },
+      {
+        "r": 65,
+        "g": 70,
+        "b": 36
+      },
+      {
+        "r": 53,
+        "g": 57,
+        "b": 29
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:green_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "49",
+    "colors": [
+      {
+        "r": 142,
+        "g": 60,
+        "b": 46
+      },
+      {
+        "r": 122,
+        "g": 51,
+        "b": 39
+      },
+      {
+        "r": 100,
+        "g": 42,
+        "b": 32
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:red_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "50",
+    "colors": [
+      {
+        "r": 37,
+        "g": 22,
+        "b": 16
+      },
+      {
+        "r": 31,
+        "g": 18,
+        "b": 13
+      },
+      {
+        "r": 26,
+        "g": 15,
+        "b": 11
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:black_terracotta",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "51",
+    "colors": [
+      {
+        "r": 189,
+        "g": 48,
+        "b": 49
+      },
+      {
+        "r": 163,
+        "g": 41,
+        "b": 42
+      },
+      {
+        "r": 133,
+        "g": 33,
+        "b": 34
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:crimson_nylium",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "52",
+    "colors": [
+      {
+        "r": 148,
+        "g": 63,
+        "b": 97
+      },
+      {
+        "r": 127,
+        "g": 54,
+        "b": 83
+      },
+      {
+        "r": 104,
+        "g": 44,
+        "b": 68
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:crimson_stem",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_crimson_stem",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crimson_planks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crimson_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:crimson_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "53",
+    "colors": [
+      {
+        "r": 92,
+        "g": 25,
+        "b": 29
+      },
+      {
+        "r": 79,
+        "g": 21,
+        "b": 25
+      },
+      {
+        "r": 64,
+        "g": 17,
+        "b": 20
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:crimson_hyphae",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_crimson_hyphae",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "54",
+    "colors": [
+      {
+        "r": 22,
+        "g": 126,
+        "b": 134
+      },
+      {
+        "r": 18,
+        "g": 108,
+        "b": 115
+      },
+      {
+        "r": 15,
+        "g": 88,
+        "b": 94
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_nylium",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_oxidized_copper",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_oxidized_cut_copper_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "55",
+    "colors": [
+      {
+        "r": 58,
+        "g": 142,
+        "b": 140
+      },
+      {
+        "r": 50,
+        "g": 122,
+        "b": 120
+      },
+      {
+        "r": 40,
+        "g": 100,
+        "b": 98
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_stem",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_warped_stem",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:warped_planks",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:warped_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_weathered_copper",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:waxed_weathered_cut_copper_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:warped_pressure_plate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "56",
+    "colors": [
+      {
+        "r": 86,
+        "g": 44,
+        "b": 62
+      },
+      {
+        "r": 74,
+        "g": 37,
+        "b": 53
+      },
+      {
+        "r": 60,
+        "g": 31,
+        "b": 43
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_hyphae",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:stripped_warped_hyphae",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "57",
+    "colors": [
+      {
+        "r": 20,
+        "g": 180,
+        "b": 133
+      },
+      {
+        "r": 17,
+        "g": 155,
+        "b": 114
+      },
+      {
+        "r": 14,
+        "g": 127,
+        "b": 93
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:warped_wart_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "58",
+    "colors": [
+      {
+        "r": 100,
+        "g": 100,
+        "b": 100
+      },
+      {
+        "r": 86,
+        "g": 86,
+        "b": 86
+      },
+      {
+        "r": 70,
+        "g": 70,
+        "b": 70
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:deepslate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cobbled_deepslate",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      },
+      {
+        "id": "minecraft:cobbled_deepslate_slab",
+        "attributes": {
+          "flammable": false,
+          "requires_support": true
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "59",
+    "colors": [
+      {
+        "r": 216,
+        "g": 175,
+        "b": 147
+      },
+      {
+        "r": 186,
+        "g": 150,
+        "b": 126
+      },
+      {
+        "r": 152,
+        "g": 123,
+        "b": 103
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:raw_iron_block",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "id": "60",
+    "colors": [
+      {
+        "r": 127,
+        "g": 167,
+        "b": 150
+      },
+      {
+        "r": 109,
+        "g": 144,
+        "b": 129
+      },
+      {
+        "r": 89,
+        "g": 117,
+        "b": 105
+      }
+    ],
+    "blocks": [
+      {
+        "id": "minecraft:glow_lichen",
+        "attributes": {
+          "flammable": true,
+          "requires_support": true
+        },
+        "properties": {
+          "down": "true"
+        }
+      },
+      {
+        "id": "minecraft:verdant_froglight",
+        "attributes": {
+          "flammable": false,
+          "requires_support": false
+        },
+        "properties": {}
+      }
+    ]
+  }
+]
