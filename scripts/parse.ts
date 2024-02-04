@@ -23,7 +23,10 @@ const final = Object.entries(data as any).reduce((palette: any[], [id, item]: an
         if (!block.validVersions[target_version]) {
           return [];
         }
-        const version = block.validVersions[block.validVersions[target_version].replace('&', '')];
+        let version = block.validVersions[target_version];
+        if (typeof version === 'string') {
+          version = block.validVersions[version.replace('&', '')];
+        }
         if (!version) {
           return [];
         }
