@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "build:packages": "pnpm run -r --filter {../packages/**} build",
     "watch": "next dev",
-    "build": "next build",
+    "build": "pnpm build:packages && next build",
     "start": "next start"
   },
   "dependencies": {

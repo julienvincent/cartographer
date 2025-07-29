@@ -1,0 +1,6 @@
+services:
+  cartographer:
+    build: .
+    container_name: cartographer
+    ports:
+      - "3000:3000"

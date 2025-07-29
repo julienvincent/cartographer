@@ -9,8 +9,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@cartographer/pixels": "workspace:^",
-    "@cartographer/litematica": "workspace:^",
+    "@cartographer/pixels": "workspace:*",
+    "@cartographer/litematica": "workspace:*",
     "lodash": "^4.17.21",
     "nbt": "^0.8.1",
     "pako": "^2.1.0"

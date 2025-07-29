@@ -8,6 +8,6 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "@cartographer/pixels": "^0.0.1"
+    "@cartographer/pixels": "workspace:*"
   }
 }

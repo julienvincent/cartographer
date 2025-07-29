@@ -2,6 +2,47 @@
 
 A web-based tool for converting images into Minecraft map-art, formatted in a variety of ways (most commonly in the `litematica` format). These schematics can then be used as a blueprint for building map-art in Minecraft.
 
+## Usage
+
+### setup
+to build the project for the standalone version or to run it, you can install dependency and build the project by running these command:
+```sh
+pnpm install && pnpm run build
+```
+
+#### pnpm
+then you can serve the project by moving to the `./interface` folder, then run `pnpm start`
+```sh
+cd ./interface
+pnpm run start
+```
+
+#### standalone
+or to use the standalone version of the project you can move to the `./interface/build/standalone` folder then run the `server.js` like so :
+```sh
+cp -r ./interface/build/static ./interface/build/standalone/build
+cd ./interface/build/standalone
+node ./server.js
+```
+> [!WARNING]
+> for some reason nextjs doesn't automatically move static folder from the build
+> folder into the `./standalone/build` folder, so be sure to add the 
+> `build/static` into the `build/standalone/build` folder
+
+### docker
+or skip everything and just deploy with docker
+```sh
+docker image rm cartographer:latest    #remove existing cartographer image
+docker build . -t cartographer:latest
+docker run --rm -p 3000:3000 --name cartographer -it cartographer:latest
+``` 
+
+or even better, just `up` it
+
+```sh
+docker compose up -d
+```
+
 ## About
 
 There are already some good implementations/alternatives to this tool out in the wild, most notably being [mapartcraft](https://rebane2001.com/mapartcraft/), however I found their interfaces very clunky to work in and hard to iterate fluidly on a map-art idea. I also wanted to add features that were missing and add support for outputting in alternative data formats such as `.litematic` files for the excellent [Litematica](https://github.com/maruohon/litematica) mod.

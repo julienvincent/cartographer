@@ -20,13 +20,13 @@ importers:
   interface:
     dependencies:
       '@cartographer/block-palettes':
-        specifier: 'workspace:'
+        specifier: "workspace:*"
         version: link:../packages/block-palettes
       '@cartographer/generation':
-        specifier: 'workspace:'
+        specifier: "workspace:*"
         version: link:../packages/generation
       '@cartographer/pixels':
-        specifier: 'workspace:'
+        specifier: "workspace:*"
         version: link:../packages/pixels
       '@fortawesome/fontawesome-svg-core':
         specifier: ^6.2.1
@@ -111,16 +111,16 @@ importers:
   packages/block-palettes:
     dependencies:
       '@cartographer/pixels':
-        specifier: ^0.0.1
+        specifier: "workspace:*"
         version: link:../pixels
 
   packages/generation:
     dependencies:
       '@cartographer/litematica':
-        specifier: workspace:^
+        specifier: "workspace:*"
         version: link:../litematica
       '@cartographer/pixels':
-        specifier: workspace:^
+        specifier: "workspace:*"
         version: link:../pixels
       lodash:
         specifier: ^4.17.21
