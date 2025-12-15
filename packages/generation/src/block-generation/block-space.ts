@@ -11,7 +11,8 @@ export type BlockSpace = BlockWithCoords[];
 export enum StaircaseAlgorithm {
   Continuous = 'continuous',
   Baseline = 'baseline',
-  Boundary = 'boundary'
+  Boundary = 'boundary',
+  Upwards = 'upwards'
 }
 
 type CalculateBlockOffsetParams = {
@@ -32,6 +33,8 @@ type CalculateBlockOffsetParams = {
  * - Boundary: Prefer making continuous staircases that never reset except when crossing map boundaries. This
  *   allows for the benefits of Continuous but should prevent maps from reaching the build-height limit. This
  *   defaults to the Baseline algorithm when crossing boundaries.
+ * 
+ *  - Upwards: Make continuous staircases that never reset back to y=0 but make it so the lowest part is always at y=0.
  */
 const calculateBlockOffset = (params: CalculateBlockOffsetParams): number => {
   const { previous } = params;
@@ -68,6 +71,11 @@ const calculateBlockOffset = (params: CalculateBlockOffsetParams): number => {
       }
       return diff;
     }
+
+    case StaircaseAlgorithm.Upwards: {
+      return diff;
+    }
+
   }
 };
 
@@ -107,6 +115,7 @@ export const generateBlockSpace = (params: GenerateBlockSpaceParams) => {
   for (let x = 0; x < width; x++) {
     let previous: BlockWithCoords | undefined;
     let last_reset = height / 128 - 1;
+    let lowest_y = 0;
 
     for (let z = height - 1; z !== -1; z--) {
       const block = params.block_grid[z][x];
@@ -141,6 +150,10 @@ export const generateBlockSpace = (params: GenerateBlockSpaceParams) => {
           z: next.z
         });
       }
+
+      if (next.y < lowest_y) {
+        lowest_y = next.y;
+      }
     }
 
     if (previous) {
@@ -152,24 +165,40 @@ export const generateBlockSpace = (params: GenerateBlockSpaceParams) => {
         z: previous.z - 1
       });
     }
+
+    //check if we need to shift the blocks up to y=0
+    if(params.staircase_alg === StaircaseAlgorithm.Upwards) {
+      // Shift all the blocks where x is the same up to y=0 if there are any negative y values
+      if (lowest_y < 0) {
+        block_space.forEach((block) => {
+          if (block.x === x) {
+            block.y += Math.abs(lowest_y);
+          }
+        });
+      }
+    }
   }
 
-  const lowest_y = block_space.reduce((y, block) => {
-    if (block.y < y) {
-      return block.y;
-    }
-    return y;
-  }, 0);
+  
+  if(params.staircase_alg != StaircaseAlgorithm.Upwards) {
+    // Find the lowest Y value in the block space
+    const lowest_y = block_space.reduce((y, block) => {
+      if (block.y < y) {
+        return block.y;
+      }
+      return y;
+    }, 0);
 
-  // If the map traverses into the negative Y's then we shift everything back up to Y=0
-  if (lowest_y < 0) {
-    const shift_factor = lowest_y * -1;
-    return block_space.map((block) => {
-      return {
-        ...block,
-        y: block.y + shift_factor
-      };
-    });
+    // If the map traverses into the negative Y's then we shift everything back up to Y=0
+    if (lowest_y < 0) {
+      const shift_factor = lowest_y * -1;
+      return block_space.map((block) => {
+        return {
+          ...block,
+          y: block.y + shift_factor
+        };
+      });
+    }
   }
 
   return block_space;
