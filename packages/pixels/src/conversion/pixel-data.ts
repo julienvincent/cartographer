@@ -75,8 +75,8 @@ export const scaleAndProcessImageData = (params: ProcessImageDataParams) => {
     for (let target_x = 0; target_x < params.target_width; target_x++) {
       const pixels: defs.Pixel[] = [];
 
-      const source_y_origin = target_y === 0 ? y_scale : target_y * y_scale;
-      const source_x_origin = target_x === 0 ? x_scale : target_x * x_scale;
+      const source_y_origin = (target_y + 0.5) * y_scale;
+      const source_x_origin = (target_x + 0.5) * x_scale;
 
       const range_min_y = Math.round(source_y_origin - y_scale / 2);
       const range_max_y = Math.round(source_y_origin + y_scale / 2);
